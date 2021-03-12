@@ -5,10 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TestComponent } from './test/test.component';
 import { HttpClientModule } from '@angular/common/http';
+
+
 import { ProductCartComponent } from './+product/product-cart/product-cart/product-cart.component';
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
       TestComponent,
       ProductCartComponent
@@ -16,7 +18,8 @@ import { ProductCartComponent } from './+product/product-cart/product-cart/produ
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
