@@ -1,9 +1,12 @@
 <div class="container-fluid">
+  <h6>Hot Deals</h6><br>
   <div class="row">
-    <div class="col-2" style="justify-content: center;">
-      <img src="../../../../assets/Img/1.jpg" alt="" style="width: 90%;">
-      <p>product details</p>
-      <h6>price</h6>
-    </div>
+    <ng-container *ngFor="let ele of productList">
+      <div class="col-2" style="justify-content: center;">
+        <img [src]="ele.image" alt="" style="width: 90%;">
+        <p>{{ ele.name }}</p>
+        <h6>{{ ele.price }}</h6>
+      </div>
+    </ng-container>
   </div>
 </div>

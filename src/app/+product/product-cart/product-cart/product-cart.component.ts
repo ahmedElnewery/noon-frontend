@@ -1,6 +1,7 @@
 import { IProduct } from './../../../+shared/interfaces/product';
 import { ProductService } from './../../../+shared/services/product.service';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-product-cart',
@@ -9,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductCartComponent implements OnInit {
 
-  constructor(private productServ: ProductService,) { }
+  constructor(private productServ: ProductService, private activeRoute: ActivatedRoute) { }
 
   productList: IProduct[] = [];
   errorMessage: string = '';
@@ -20,7 +21,12 @@ export class ProductCartComponent implements OnInit {
       err => this.errorMessage = err
     );
 
-    //this.activeRoute.paramMap.s
+
+    //this.activeRoute.paramMap.subscribe((params:ParamMap)=>{})
+  }
+
+  ngAfterViewInit(): void {
+    console.log(this.productList);
   }
 
 }
