@@ -1,3 +1,4 @@
+import { RelatedProductComponent } from './+product/related-product/related-product.component';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -36,6 +37,7 @@ import { ProductSliderComponent } from './+product/product-slider/product-slider
       ProductSummaryComponent,
       ProductsSpecificationComponent,
       ProductSliderComponent,
+      RelatedProductComponent
    ],
   imports: [
     BrowserModule,
