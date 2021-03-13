@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import $ from 'jquery';
-
+declare var $ : any;
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
@@ -12,9 +11,6 @@ export class ProductDetailsComponent implements OnInit {
 
 
   ngOnInit(): void {
-
-
-
 
   }
 
