@@ -25,8 +25,6 @@ export class ProductCartComponent implements OnInit {
     //this.activeRoute.paramMap.subscribe((params:ParamMap)=>{})
   }
 
-  ngAfterViewInit(): void {
-    console.log(this.productList);
-  }
+
 
 }

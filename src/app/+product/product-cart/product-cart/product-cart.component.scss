@@ -1,0 +1,18 @@
+.fa{
+  font-size: xx-large;
+}
+.prodContainer {
+  padding: 1%;
+  justify-content: center;
+
+}
+.cart {
+  padding: 1%;
+  text-align: center;
+  box-shadow:0 8px 8px 0 lightgray;
+}
+
+[class*="col-"] {
+  background-clip: padding-box;
+  border: 1% solid transparent;
+}
