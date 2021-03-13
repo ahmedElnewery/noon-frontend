@@ -18,6 +18,7 @@ import { FooterComponent } from './+layout/footer/footer.component';
 import { SliderComponent } from './shared-UI/slider/slider.component';
 import { ProductSummaryComponent } from './+product/product-summary/product-summary.component';
 import { ProductsSpecificationComponent } from './+product/products-specification/products-specification.component';
+import { ProductSliderComponent } from './+product/product-slider/product-slider.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { ProductsSpecificationComponent } from './+product/products-specificatio
       SliderComponent,
       ProductDetailsComponent,
       ProductSummaryComponent,
-      ProductsSpecificationComponent
+      ProductsSpecificationComponent,
+      ProductSliderComponent,
    ],
   imports: [
     BrowserModule,

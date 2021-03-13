@@ -1,0 +1,15 @@
+<div class="row align-items-center">
+  <div class="col-4">
+    <div class="images-containerd-flex flex-column">
+      <div class="image-slide" *ngFor="let img of images">
+        <img class="d-block w-100" [src]="img.src" alt="Product Image" (click)="selectImg(img)" />
+      </div>
+    </div>
+  </div>
+  <div class="col-8">
+    <div class="current-img">
+      <img class="d-block w-100 product-img" [src]="currentImg" alt="Product Image"  />
+
+    </div>
+  </div>
+</div>
