@@ -1,3 +1,4 @@
+
 <div class="product-slider-single normal-slider">
   <img *ngFor="let img of images"
   [src]="img.src"
@@ -6,12 +7,17 @@
 
 </div>
 
-<div class="product-slider-single-nav normal-slider">
-  <div class="slider-nav-img" *ngFor="let img of images">
-    <img
-      [src]="img.src"
-      alt="Product Image"
-    />
-  </div>
+      <div class="product-slider-single-nav normal-slider d-flex flex-column">
+        <div class="slider-nav-img" *ngFor="let img of images">
+          <img
+            [src]="img.src"
+            alt="Product Image"
+          />
+        </div>
 
-</div>
+    </div>
+
+
+
+
+

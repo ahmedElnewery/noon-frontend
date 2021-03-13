@@ -1,3 +1,4 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -7,6 +8,7 @@ import { TestComponent } from './test/test.component';
 import { HttpClientModule } from '@angular/common/http';
 
 
+import { ProductDetailsComponent } from './+product/product-details/product-details.component';
 import { ProductCartComponent } from './+product/product-cart/product-cart/product-cart.component';
 import { ProductRateComponent } from './+shared-UI/product-rate/product-rate.component';
 import { HeaderComponent } from './+layout/header/header.component';
@@ -14,6 +16,9 @@ import { ProductSlidshowComponent } from './+product/product-slidshow/product-sl
 import { ProductCategoryComponent } from './+product/product-category/product-category.component';
 import { FooterComponent } from './+layout/footer/footer.component';
 import { SliderComponent } from './shared-UI/slider/slider.component';
+import { ProductSummaryComponent } from './+product/product-summary/product-summary.component';
+import { ProductsSpecificationComponent } from './+product/products-specification/products-specification.component';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +30,10 @@ import { SliderComponent } from './shared-UI/slider/slider.component';
       ProductSlidshowComponent,
       ProductCategoryComponent,
       FooterComponent,
-      SliderComponent
+      SliderComponent,
+      ProductDetailsComponent,
+      ProductSummaryComponent,
+      ProductsSpecificationComponent
    ],
   imports: [
     BrowserModule,
