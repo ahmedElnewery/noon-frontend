@@ -1,0 +1,11 @@
+<div class="container-fluid" style="padding: 4% 0%;">
+  <h5>Shop by brand</h5>
+  <div class="row" style="padding: 0 5%;">
+    <ng-container *ngFor="let img of brandImg">
+      <div class="col-2" style="padding: 1% 0;;">
+        <img [src]="img.src" alt="">
+      </div>
+    </ng-container>
+
+  </div>
+</div>
