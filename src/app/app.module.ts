@@ -29,25 +29,6 @@ import { ProductByBrandComponent } from './+product/+main-page/product-by-brand/
 @NgModule({
   declarations: [
     AppComponent,
-<<<<<<< HEAD
-    TestComponent,
-    ProductCartComponent,
-    ProductRateComponent,
-    HeaderComponent,
-    ProductSlidshowComponent,
-    ProductCategoryComponent,
-    FooterComponent,
-    SliderComponent,
-    ProductDetailsComponent,
-    ProductSummaryComponent,
-    ProductsSpecificationComponent,
-    ProductSliderComponent,
-    MainPageComponent,
-    ProductHotDealsComponent,
-    ProductTechDevicesComponent,
-    ProductByBrandComponent,
-  ],
-=======
       TestComponent,
       ProductCartComponent,
       ProductRateComponent,
@@ -60,9 +41,13 @@ import { ProductByBrandComponent } from './+product/+main-page/product-by-brand/
       ProductSummaryComponent,
       ProductsSpecificationComponent,
       ProductSliderComponent,
-      RelatedProductComponent
+      RelatedProductComponent,
+      ProductTechDevicesComponent,
+      ProductByBrandComponent,
+      ProductHotDealsComponent,
+      MainPageComponent,
+      FooterComponent
    ],
->>>>>>> 220a548588d0aa5c7caf0602b80af9b3c772168a
   imports: [
     BrowserModule,
     AppRoutingModule,
