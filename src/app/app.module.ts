@@ -5,7 +5,6 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TestComponent } from './test/test.component';
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -28,7 +27,7 @@ import { ProductByBrandComponent } from './+product/+main-page/product-by-brand/
 @NgModule({
   declarations: [
     AppComponent,
-      TestComponent,
+
       ProductCartComponent,
       ProductRateComponent,
       HeaderComponent,
