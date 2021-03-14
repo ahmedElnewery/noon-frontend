@@ -24,19 +24,37 @@ import { ProductTechDevicesComponent } from './+product/+main-page/product-tech-
 import { ProductByBrandComponent } from './+product/+main-page/product-by-brand/product-by-brand.component';
 import { AddProductComponent } from './+admin/add-product/add-product.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SignInComponent } from './+auth/sign-in/sign-in.component';
+import { SignUpComponent } from './+auth/sign-up/sign-up.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-
+    ProductCartComponent,
+    ProductRateComponent,
+    HeaderComponent,
+    ProductSlidshowComponent,
+    ProductCategoryComponent,
+    FooterComponent,
+    ProductDetailsComponent,
+    ProductSummaryComponent,
+    ProductsSpecificationComponent,
+    ProductSliderComponent,
+    RelatedProductComponent,
+    ProductTechDevicesComponent,
+    ProductByBrandComponent,
+    ProductHotDealsComponent,
+    MainPageComponent,
+    FooterComponent,
+    SignInComponent,
+    SignUpComponent,
       ProductCartComponent,
       ProductRateComponent,
       HeaderComponent,
       ProductSlidshowComponent,
       ProductCategoryComponent,
       FooterComponent,
-
       ProductDetailsComponent,
       ProductSummaryComponent,
       ProductsSpecificationComponent,
@@ -54,7 +72,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

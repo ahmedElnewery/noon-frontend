@@ -1,0 +1,25 @@
+<div class="container" style="padding: 5% 0;">
+  <div class="row" style="justify-content: center; text-align: center;">
+    <div class="col-6">
+      <h4>Welcom Back!</h4>
+      <b>
+        <h3>Sign In to your account</h3>
+      </b>
+      <p>Don't have an account? <a routerLink="/sign-up"> Sign Up</a></p>
+      <form (ngSubmit)="signIn()">
+        <div class="form-group">
+          <label for="email" style="float: left;">Email</label>
+          <input type="email" class="form-control" id="email" name="email">
+        </div>
+        <div class="form-group">
+          <label for="password" style="float: left;">Password</label>
+          <input type="password" class="form-control" id="password" name="password">
+        </div>
+        <a href="#">Forget Your Password?</a><br><br>
+        <button type="submit" class="btn btn-block">
+          <h4>SIGN IN</h4>
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
