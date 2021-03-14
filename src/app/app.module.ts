@@ -22,6 +22,8 @@ import { MainPageComponent } from './+product/+main-page/main-page.component';
 import { ProductHotDealsComponent } from './+product/+main-page/product-hot-deals/product-hot-deals.component';
 import { ProductTechDevicesComponent } from './+product/+main-page/product-tech-devices/product-tech-devices.component';
 import { ProductByBrandComponent } from './+product/+main-page/product-by-brand/product-by-brand.component';
+import { AddProductComponent } from './+admin/add-product/add-product.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -44,13 +46,15 @@ import { ProductByBrandComponent } from './+product/+main-page/product-by-brand/
       ProductByBrandComponent,
       ProductHotDealsComponent,
       MainPageComponent,
-      FooterComponent
+      FooterComponent,
+      AddProductComponent
    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

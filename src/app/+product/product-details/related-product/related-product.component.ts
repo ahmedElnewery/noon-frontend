@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IProduct } from 'src/app/+shared/interfaces/product';
+import { IProduct } from 'src/app/+shared/interfaces/IProduct';
 import { ProductService } from 'src/app/+shared/services/product.service';
 declare var $: any;
 

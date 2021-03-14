@@ -1,0 +1,103 @@
+<div class="container my-5">
+  <div class="row justify-content-center">
+    {{ addProductForm.value | json }}
+    <div class="col-10">
+      <h2>Add Product</h2>
+      <form [formGroup]="addProductForm">
+        <div class="form-group">
+          <label for="productName">Product Name</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="name"
+            name="productName"
+            required
+          />
+        </div>
+        <button
+          type="button"
+          class="btn btn-secondary btn-sm"
+          (click)="addNewImgSrc()"
+        >
+          +
+        </button>
+        <div class="row">
+          <div
+            class="col-md-4"
+            formArrayName="image"
+            *ngFor="let img of image.controls; let i = index"
+          >
+            <div class="form-group">
+              <label for="imgSrc"> Image Source </label>
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="imgSrc"
+                  required
+                  [formControlName]="i"
+                />
+                <div class="input-group-append">
+                  <button class="btn btn-danger" (click)="removeImgSrc(i)">
+                    <i class="far fa-trash-alt"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="describtion">Product Describtion</label>
+          <textarea
+            class="form-control"
+            name="describtion"
+            rows="3"
+            formControlName="describtion"
+          ></textarea>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">
+            <div class="form-group">
+              <label for="countInStock">Count In Stock</label>
+              <input
+                type="number"
+                class="form-control"
+                name="countInStock"
+                required
+                formControlName="countInStock"
+                min="0"
+              />
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="form-group">
+              <label for="price">Count In Stock</label>
+              <input type="number" class="form-control" name="price" required
+              formControlName="price" />
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="form-group">
+              <label for="categeory">Categeory</label>
+              <select class="form-control" name="categeory"  formControlName="categeory" (ngModelChange)=onCategeoryChange() >
+                <option [ngValue]="default" >{{default}}</option>
+                <option *ngFor="let cat of allCategeories"  [ngValue]="cat.name">{{cat.displayName}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="form-group">
+              <label for="subCategeory">Sub Categeory</label>
+
+              <select class="form-control" name="subCategeory"  formControlName="subcategeory">
+                <option [ngValue]="default" >{{default}}</option>
+                <option *ngFor="let cat of selectedSubCategeory" [value]="cat.name">{{cat.displayName}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <input class="btn btn-primary" type="submit" value="add product"/>
+      </form>
+    </div>
+  </div>
+</div>

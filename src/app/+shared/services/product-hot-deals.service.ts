@@ -1,4 +1,4 @@
-import { IProduct } from './../interfaces/product';
+import { IProduct } from '../interfaces/IProduct';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';

@@ -1,4 +1,4 @@
-import { IProduct } from '../../../+shared/interfaces/product';
+import { IProduct } from '../../../+shared/interfaces/IProduct';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { ProductHotDealsService } from 'src/app/+shared/services/product-hot-deals.service';
