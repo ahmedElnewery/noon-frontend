@@ -1,15 +1,12 @@
+.specification{
+  background-color: #fff;
+}
 .nav.nav-pills .nav-link {
-  color: #FF6F61;
-  background: #000000;
   border-radius: 0;
   transition: all .3s;
 }
 
-.nav.nav-pills .nav-link:hover,
-.nav.nav-pills .nav-link.active {
-  color: #000000;
-  background: #FF6F61;
-}
+
 .tab-content {
   background: #ffffff;
   padding: 25px 15px 15px 15px;
@@ -38,7 +35,6 @@
 }
 
  .tab-content .reviewer {
-  color: #FF6F61;
   font-size: 18px;
   font-weight: 600;
 }
@@ -50,7 +46,7 @@
 }
 
  .tab-content .ratting {
-  color: #FF6F61;
+  color: #FEEE00;
   margin-bottom: 15px;
 }
 
@@ -82,16 +78,11 @@
   display: inline-block;
   height: 35px;
   padding: 0 15px;
-  color: #FF6F61;
   background: #ffffff;
-  border: 1px solid #FF6F61;
   border-radius: 4px;
   margin-bottom: 15px;
   transition: all .3s;
 }
 
- .tab-content .form button:hover {
-  color: #ffffff;
-  background: #FF6F61;
-}
+
 

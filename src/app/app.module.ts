@@ -1,3 +1,4 @@
+import { RelatedProductComponent } from './+product/related-product/related-product.component';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -28,6 +29,7 @@ import { ProductByBrandComponent } from './+product/+main-page/product-by-brand/
 @NgModule({
   declarations: [
     AppComponent,
+<<<<<<< HEAD
     TestComponent,
     ProductCartComponent,
     ProductRateComponent,
@@ -45,6 +47,22 @@ import { ProductByBrandComponent } from './+product/+main-page/product-by-brand/
     ProductTechDevicesComponent,
     ProductByBrandComponent,
   ],
+=======
+      TestComponent,
+      ProductCartComponent,
+      ProductRateComponent,
+      HeaderComponent,
+      ProductSlidshowComponent,
+      ProductCategoryComponent,
+      FooterComponent,
+      SliderComponent,
+      ProductDetailsComponent,
+      ProductSummaryComponent,
+      ProductsSpecificationComponent,
+      ProductSliderComponent,
+      RelatedProductComponent
+   ],
+>>>>>>> 220a548588d0aa5c7caf0602b80af9b3c772168a
   imports: [
     BrowserModule,
     AppRoutingModule,
