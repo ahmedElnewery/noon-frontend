@@ -24,35 +24,40 @@ import { MainPageComponent } from './+product/+main-page/main-page.component';
 import { ProductHotDealsComponent } from './+product/+main-page/product-hot-deals/product-hot-deals.component';
 import { ProductTechDevicesComponent } from './+product/+main-page/product-tech-devices/product-tech-devices.component';
 import { ProductByBrandComponent } from './+product/+main-page/product-by-brand/product-by-brand.component';
+import { SignInComponent } from './+auth/sign-in/sign-in.component';
+import { SignUpComponent } from './+auth/sign-up/sign-up.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-      TestComponent,
-      ProductCartComponent,
-      ProductRateComponent,
-      HeaderComponent,
-      ProductSlidshowComponent,
-      ProductCategoryComponent,
-      FooterComponent,
-      SliderComponent,
-      ProductDetailsComponent,
-      ProductSummaryComponent,
-      ProductsSpecificationComponent,
-      ProductSliderComponent,
-      RelatedProductComponent,
-      ProductTechDevicesComponent,
-      ProductByBrandComponent,
-      ProductHotDealsComponent,
-      MainPageComponent,
-      FooterComponent
-   ],
+    TestComponent,
+    ProductCartComponent,
+    ProductRateComponent,
+    HeaderComponent,
+    ProductSlidshowComponent,
+    ProductCategoryComponent,
+    FooterComponent,
+    SliderComponent,
+    ProductDetailsComponent,
+    ProductSummaryComponent,
+    ProductsSpecificationComponent,
+    ProductSliderComponent,
+    RelatedProductComponent,
+    ProductTechDevicesComponent,
+    ProductByBrandComponent,
+    ProductHotDealsComponent,
+    MainPageComponent,
+    FooterComponent,
+    SignInComponent,
+    SignUpComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
