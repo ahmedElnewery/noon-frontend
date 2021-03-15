@@ -3,7 +3,7 @@
     {{ addProductForm.value | json }}
     <div class="col-10">
       <h2>Add Product</h2>
-      <form [formGroup]="addProductForm">
+      <form [formGroup]="addProductForm"   ngNativeValidate>
         <div class="form-group">
           <label for="productName">Product Name</label>
           <input
@@ -11,6 +11,16 @@
             class="form-control"
             formControlName="name"
             name="productName"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="brand"> Brand</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="brand"
+            name="brand"
             required
           />
         </div>
@@ -71,17 +81,29 @@
           </div>
           <div class="col-sm-3">
             <div class="form-group">
-              <label for="price">Count In Stock</label>
-              <input type="number" class="form-control" name="price" required
-              formControlName="price" />
+              <label for="price">Price</label>
+              <input
+                type="number"
+                class="form-control"
+                name="price"
+                required
+                formControlName="price"
+              />
             </div>
           </div>
           <div class="col-sm-3">
             <div class="form-group">
               <label for="categeory">Categeory</label>
-              <select class="form-control" name="categeory"  formControlName="categeory" (ngModelChange)=onCategeoryChange() >
-                <option [ngValue]="default" >{{default}}</option>
-                <option *ngFor="let cat of allCategeories"  [ngValue]="cat.name">{{cat.displayName}}</option>
+              <select
+                class="form-control"
+                name="categeory"
+                formControlName="categeory"
+                (ngModelChange)="onCategeoryChange()"
+              >
+                <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+                <option *ngFor="let cat of allCategeories" [ngValue]="cat.name">
+                  {{ cat.displayName }}
+                </option>
               </select>
             </div>
           </div>
@@ -89,15 +111,183 @@
             <div class="form-group">
               <label for="subCategeory">Sub Categeory</label>
 
-              <select class="form-control" name="subCategeory"  formControlName="subcategeory">
-                <option [ngValue]="default" >{{default}}</option>
-                <option *ngFor="let cat of selectedSubCategeory" [value]="cat.name">{{cat.displayName}}</option>
+              <select
+                class="form-control"
+                name="subCategeory"
+                formControlName="subcategeory"
+
+              >
+                <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+                <option *ngFor="let cat of subcategeoryList" [ngValue]="cat.name" (ngModelChange)="onsubCategeoryChange()">
+                  {{ cat.displayName }}
+                </option>
               </select>
             </div>
           </div>
         </div>
-        <input class="btn btn-primary" type="submit" value="add product"/>
       </form>
+      <!-- start fashion -->
+      <!-- men wear chocie -->
+      <div [ngSwitch]="selectedSubCategeory">
+      <div *ngSwitchCase = "fashion.menWear">
+        <form [formGroup]="menWear" (ngSubmit)="addProduct(menWear)" ngNativeValidate >
+          {{ menWear.value | json }}
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="size">size</label>
+                <select class="form-control" name="size" formControlName="size">
+                  <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+                  <option *ngFor="let size of allsizes" [ngValue]="size.value"> {{ size.value }}   </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="material">material</label>
+                <select class="form-control" name="material" formControlName="material">
+                  <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+                  <option *ngFor="let material of allMaterial" [ngValue]="material.value"> {{ material.value }}   </option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="color">color</label>
+                <select class="form-control" name="color" formControlName="color">
+                  <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+                  <option *ngFor="let color of allColor" [value]="color.value"> {{ color.value }}   </option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <input class="btn btn-primary" type="submit" value="add product" />
+
+        </form>
+      </div>
+<!-- women wear chocie -->
+<div *ngSwitchCase = "fashion.womenWear">
+  <form [formGroup]="womenWear" >
+    {{ womenWear.value | json }}
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="size">size</label>
+          <select class="form-control" name="size" formControlName="size">
+            <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+            <option *ngFor="let size of allsizes" [ngValue]="size.value"> {{ size.value }}   </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="material">material</label>
+          <select class="form-control" name="material" formControlName="material">
+            <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+            <option *ngFor="let material of allMaterial" [ngValue]="material.value"> {{ material.value }}   </option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="color">color</label>
+          <select class="form-control" name="color" formControlName="color">
+            <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+            <option *ngFor="let color of allColor" [value]="color.value"> {{ color.value }}   </option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<!-- kids wear chocie -->
+<div *ngSwitchCase = "fashion.kidWear">
+  <form [formGroup]="kidsWear">
+    {{ kidsWear.value | json }}
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="size">size</label>
+          <select class="form-control" name="size" formControlName="size">
+            <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+            <option *ngFor="let size of allsizes" [ngValue]="size.value"> {{ size.value }}   </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="material">material</label>
+          <select class="form-control" name="material" formControlName="material">
+            <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+            <option *ngFor="let material of allMaterial" [ngValue]="material.value"> {{ material.value }}   </option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="color">color</label>
+          <select class="form-control" name="color" formControlName="color">
+            <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+            <option *ngFor="let color of allColor" [value]="color.value"> {{ color.value }}   </option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- end fashion -->
+<!-- start electonics -->
+<!-- mobile choice -->
+<div *ngSwitchCase = "electronics.mobiles">
+  <form [formGroup]="mobile">
+    {{ mobile.value | json }}
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="screenSize">screen Size</label>
+          <select class="form-control" name="screenSize" formControlName="screenSize">
+            <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+            <option *ngFor="let size of mobileScreenSize" [ngValue]="size.value"> {{ size.value }}   </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="internalMemory">Internal Memroy</label>
+          <select class="form-control" name="internalMemory" formControlName="internalMemory">
+            <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+            <option *ngFor="let memory of mobileInternalMemroy" [ngValue]="memory.value"> {{ memory.value }}   </option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="mobileBattery">mobileBattery</label>
+          <select class="form-control" name="battery" formControlName="battery">
+            <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+            <option *ngFor="let battery of mobileBattery" [value]="battery.value"> {{ battery.value }}   </option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+
+
+
+
+
+
+
+      </div>
     </div>
   </div>
 </div>

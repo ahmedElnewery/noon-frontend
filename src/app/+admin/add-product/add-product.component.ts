@@ -1,3 +1,6 @@
+import { Battery, InternalMemory, ScreenSize } from './../../+shared/enums/electronics';
+import { Color, Material, Size } from './../../+shared/enums/fashion';
+import { ElectronicsSubCategeory, FahionSubCategeory } from './../../+shared/enums/allsubCategeory';
 import { categeories } from './../../+shared/enums/allCategeory';
 import { ICategeory } from './../../+shared/interfaces/ICategory';
 import { IProduct } from 'src/app/+shared/interfaces/IProduct';
@@ -17,7 +20,7 @@ export class AddProductComponent implements OnInit {
       name: "fashion", displayName: "Fashion", subcategeory: [
         { name: "menWear", displayName: "Men Wear" },
         { name: "womenWear", displayName: "Women Wear" },
-        { name: "KidWear", displayName: "Kid Wear" }
+        { name: "kidWear", displayName: "Kid Wear" }
       ]
     },
     {
@@ -38,47 +41,123 @@ export class AddProductComponent implements OnInit {
         { name: "skinCare", displayName: "Skin Care" },
         { name: "hairCare", displayName: "Hair Care" }]
     }]
-  selectedSubCategeory=[];
-  default: string = 'please select..';
+    /**************************************/
+  subcategeoryList = [];
+  selectedSubCategeory: string = ""
+  defaultOption: string = 'please select..';
+  /******************* */
+  electronics =ElectronicsSubCategeory
+  fashion = FahionSubCategeory;
 
-  product: IProduct = new Product("", [""], "", "", "", 0, 0, 0, [])
+  //enums
+  allsizes = convertEnumToArray(Size);
+  allMaterial = convertEnumToArray(Material);
+  allColor = convertEnumToArray(Color);
+  /****** mobile****** */
+  mobileScreenSize= convertEnumToArray(ScreenSize);
+  mobileInternalMemroy = convertEnumToArray(InternalMemory);
+  mobileBattery = convertEnumToArray(Battery);
+  // product: IProduct = new Product("", [""], "", "", "", 0, 0, 0, [])
+  /************* forms **************** */
   addProductForm = this.fb.group({
     name: [""],
     image: this.fb.array([""]),
     brand: [""],
-    category: [""],
     describtion: [""],
     countInStock: [0],
-    price: [10],
+    price: [0],
     categeory: [""],
-    subcategeory: ["dafault"]
+    subcategeory: [""]
   })
+  ///********* fashion form*************** */
+  menWear = this.fb.group({
+    size: [""],
+    material: [""],
+    color: [""]
+  })
+  womenWear = this.fb.group({
+    size: [""],
+    material: [""],
+    color: [""]
+  })
+  kidsWear = this.fb.group({
+    size: [""],
+    material: [""],
+    color: [""]
+  })
+/*****************  elctronics form *************************** */
+mobile = this.fb.group({
+  screenSize: [""],
+  internalMemory: [""],
+  battery: [""]
+})
+camera = this.fb.group({
+  viewFinder:[""],
+  resolution: [""],
+})
+labtop = this.fb.group({
+  hardDisk:[""],
+  ram: [""],
+  screenSize:[""]
+})
+tv = this.fb.group({
+  screenSize:[""],
+  noOfUsbPort: [""],
+})
+/************************* beauty form **********************/
+makeup = this.fb.group({
+  screenSize: [""],
+  internalMemory: [""],
+  battery: [""]
+})
+skinCare = this.fb.group({
+  viewFinder:[""],
+  resolution: [""],
+})
+hairCare = this.fb.group({
+  hardDisk:[""],
+  ram: [""],
+  screenSize:[""]
+})
+
+/********************** Home form ******************** */
+
+kitchen = this.fb.group({
+  baseMaterial:[""],
+})
+homeDecore = this.fb.group({
+  baseMaterial:[""],
+  color:[""]
+})
+furniture = this.fb.group({
+  baseMaterial:[""],
+  color:[""]
+})
+
   constructor(private fb: FormBuilder, private changeDetectorRef: ChangeDetectorRef) {
-    this.categeory.setValue(this.default, {onlySelf: true});
-    // this.subcategeory.setValue(this.default, {onlySelf: true});
+    this.categeory.setValue(this.defaultOption, { onlySelf: true });
 
   }
 
   get image() {
     return this.addProductForm.get('image') as FormArray;
   }
-  get categeory(){
+  get categeory() {
     return this.addProductForm.get('categeory')
   }
-  get subcategeory(){
+  get subcategeory() {
     return this.addProductForm.get('subcategeory')
   }
   //life cycle hooks
   ngOnInit(): void {
-    this.onCategeoryChange()
+    this.onCategeoryChange();
+    this.onsubCategeoryChange()
+
   }
   ngAfterViewChecked() {
     this.changeDetectorRef.detectChanges();
 
   }
-  ngOnChanges(changes: SimpleChanges) {
-    console.log("klnjo[[jp[j")
-}
   /******** */
   addNewImgSrc() {
     this.image.push(this.fb.control(''))
@@ -86,27 +165,41 @@ export class AddProductComponent implements OnInit {
   removeImgSrc(i) {
     this.image.removeAt(i);
   }
-  onCategeoryChange(){
-    this.categeory.valueChanges.subscribe((change)=>{
-switch (change) {
-  case categeories.fashion:
- this.selectedSubCategeory =  this.allCategeories.filter((cat)=>cat.name === categeories.fashion)[0].subcategeory
-    break;
-    case categeories.home:
-      this.selectedSubCategeory =  this.allCategeories.filter((cat)=>cat.name === categeories.home)[0].subcategeory
-    break;
-      case categeories.beauty_health:
-        this.selectedSubCategeory =  this.allCategeories.filter((cat)=>cat.name === categeories.beauty_health)[0].subcategeory
-    break;
-    case categeories.electronics:
-      this.selectedSubCategeory =  this.allCategeories.filter((cat)=>cat.name === categeories.electronics)[0].subcategeory
-    break;
-  default:
-    break;
-}
+  onCategeoryChange() {
+    this.categeory.valueChanges.subscribe((change) => {
+      switch (change) {
+        case categeories.fashion:
+          this.subcategeoryList = this.allCategeories.filter((cat) => cat.name === categeories.fashion)[0].subcategeory;
+          break;
+        case categeories.home:
+          this.subcategeoryList = this.allCategeories.filter((cat) => cat.name === categeories.home)[0].subcategeory
+          break;
+        case categeories.beauty_health:
+          this.subcategeoryList = this.allCategeories.filter((cat) => cat.name === categeories.beauty_health)[0].subcategeory
+          break;
+        case categeories.electronics:
+          this.subcategeoryList = this.allCategeories.filter((cat) => cat.name === categeories.electronics)[0].subcategeory
+          break;
+        default:
+          break;
+      }
     })
-    if(this.categeory.value == "fashion"){
-
-    }
   }
+  onsubCategeoryChange() {
+    this.subcategeory.valueChanges.subscribe((change) => {
+      console.log(change)
+      if(change){
+        this.selectedSubCategeory =change
+
+      }
+    })
+  }
+  addMenWear(form){
+
+    console.log({...this.addProductForm.value,... this.menWear.value})
+  }
+}
+function convertEnumToArray(data: Object) {
+  return Object.keys(data)
+    .map(key => ({ value: data[key], key: key }))
 }

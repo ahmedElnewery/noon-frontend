@@ -26,6 +26,7 @@ import { AddProductComponent } from './+admin/add-product/add-product.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignInComponent } from './+auth/sign-in/sign-in.component';
 import { SignUpComponent } from './+auth/sign-up/sign-up.component';
+import { EnumToArrayPipe } from './+shared/pipes/enum-to-array.pipe';
 
 
 @NgModule({
@@ -65,7 +66,8 @@ import { SignUpComponent } from './+auth/sign-up/sign-up.component';
       ProductHotDealsComponent,
       MainPageComponent,
       FooterComponent,
-      AddProductComponent
+      AddProductComponent,
+      EnumToArrayPipe
    ],
   imports: [
     BrowserModule,
