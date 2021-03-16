@@ -9,21 +9,16 @@ export interface ISubCategeory{
   displayName:string,
  }
 export interface IFashion{
-brand:string,
 size:string,
 color:string,
-depatment:string,
 material:string
 }
-export interface IElectronic{
-  barnd:string
-}
+
 export interface ITV extends IProduct{
 noOfHDMI:number,
   noOfUsb:number
 }
 export interface IMobile{
-  ram:string,
   internalMemory:string,
   screenSize:string,
   battery:string

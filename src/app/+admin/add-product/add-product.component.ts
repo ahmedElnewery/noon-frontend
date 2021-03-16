@@ -1,12 +1,13 @@
-import { Battery, InternalMemory, ScreenSize } from './../../+shared/enums/electronics';
+import { ProductService } from 'src/app/+shared/services/product.service';
+import { Battery, InternalMemory, MemorySize, OperatingSystem, Proccessor, ScreenSize, TvScreenSize, UsbPort } from './../../+shared/enums/electronics';
 import { Color, Material, Size } from './../../+shared/enums/fashion';
-import { ElectronicsSubCategeory, FahionSubCategeory } from './../../+shared/enums/allsubCategeory';
+import { BeautyCategeory, ElectronicsSubCategeory, FahionSubCategeory, HomeSubCategeory } from './../../+shared/enums/allsubCategeory';
 import { categeories } from './../../+shared/enums/allCategeory';
 import { ICategeory } from './../../+shared/interfaces/ICategory';
 import { IProduct } from 'src/app/+shared/interfaces/IProduct';
-import { Product } from './../../+shared/classes/productModel';
+import { MenWear, Product } from './../../+shared/classes/productModel';
 import { Component, OnInit, ChangeDetectorRef, SimpleChanges } from '@angular/core';
-import { FormArray, FormBuilder } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-add-product',
@@ -41,33 +42,42 @@ export class AddProductComponent implements OnInit {
         { name: "skinCare", displayName: "Skin Care" },
         { name: "hairCare", displayName: "Hair Care" }]
     }]
-    /**************************************/
+  /**************************************/
   subcategeoryList = [];
-  selectedSubCategeory: string = ""
+  selectedSubCategeory: string = "";
+  iAmOnForm: FormGroup
   defaultOption: string = 'please select..';
   /******************* */
-  electronics =ElectronicsSubCategeory
+  electronics = ElectronicsSubCategeory
   fashion = FahionSubCategeory;
 
-  //enums
+  /**************enums/******************/
+//fashion
   allsizes = convertEnumToArray(Size);
   allMaterial = convertEnumToArray(Material);
   allColor = convertEnumToArray(Color);
-  /****** mobile****** */
-  mobileScreenSize= convertEnumToArray(ScreenSize);
+
+  //mobile
+  mobileScreenSize = convertEnumToArray(ScreenSize);
   mobileInternalMemroy = convertEnumToArray(InternalMemory);
   mobileBattery = convertEnumToArray(Battery);
-  // product: IProduct = new Product("", [""], "", "", "", 0, 0, 0, [])
+  //labtop
+  proccessor =convertEnumToArray(Proccessor)
+  memorySize = convertEnumToArray(MemorySize);
+  operatingSystem = convertEnumToArray(OperatingSystem)
+  //tv
+  tvScreenSize=convertEnumToArray(TvScreenSize);
+  usbPorts= convertEnumToArray(UsbPort)
   /************* forms **************** */
   addProductForm = this.fb.group({
     name: [""],
     image: this.fb.array([""]),
     brand: [""],
-    describtion: [""],
+    description: [""],
     countInStock: [0],
     price: [0],
-    categeory: [""],
-    subcategeory: [""]
+    category: [""],
+    subCategeory: [""]
   })
   ///********* fashion form*************** */
   menWear = this.fb.group({
@@ -85,56 +95,56 @@ export class AddProductComponent implements OnInit {
     material: [""],
     color: [""]
   })
-/*****************  elctronics form *************************** */
-mobile = this.fb.group({
-  screenSize: [""],
-  internalMemory: [""],
-  battery: [""]
-})
-camera = this.fb.group({
-  viewFinder:[""],
-  resolution: [""],
-})
-labtop = this.fb.group({
-  hardDisk:[""],
-  ram: [""],
-  screenSize:[""]
-})
-tv = this.fb.group({
-  screenSize:[""],
-  noOfUsbPort: [""],
-})
-/************************* beauty form **********************/
-makeup = this.fb.group({
-  screenSize: [""],
-  internalMemory: [""],
-  battery: [""]
-})
-skinCare = this.fb.group({
-  viewFinder:[""],
-  resolution: [""],
-})
-hairCare = this.fb.group({
-  hardDisk:[""],
-  ram: [""],
-  screenSize:[""]
-})
+  /*****************  elctronics form *************************** */
+  mobile = this.fb.group({
+    screenSize: [""],
+    internalMemory: [""],
+    battery: [""]
+  })
+  camera = this.fb.group({
+    viewFinder: [""],
+    resolution: [""],
+  })
+  labtop = this.fb.group({
+    operatingSystem: [""],
+    memorySize: [""],
+    proccessor: [""]
+  })
+  tv = this.fb.group({
+    screenSize: [""],
+    noOfUsbPort: [""],
+  })
+  /************************* beauty form **********************/
+  makeup = this.fb.group({
+    screenSize: [""],
+    internalMemory: [""],
+    battery: [""]
+  })
+  skinCare = this.fb.group({
+    viewFinder: [""],
+    resolution: [""],
+  })
+  hairCare = this.fb.group({
+    hardDisk: [""],
+    ram: [""],
+    screenSize: [""]
+  })
 
-/********************** Home form ******************** */
+  /********************** Home form ******************** */
 
-kitchen = this.fb.group({
-  baseMaterial:[""],
-})
-homeDecore = this.fb.group({
-  baseMaterial:[""],
-  color:[""]
-})
-furniture = this.fb.group({
-  baseMaterial:[""],
-  color:[""]
-})
+  kitchen = this.fb.group({
+    baseMaterial: [""],
+  })
+  homeDecore = this.fb.group({
+    baseMaterial: [""],
+    color: [""]
+  })
+  furniture = this.fb.group({
+    baseMaterial: [""],
+    color: [""]
+  })
 
-  constructor(private fb: FormBuilder, private changeDetectorRef: ChangeDetectorRef) {
+  constructor(private fb: FormBuilder, private changeDetectorRef: ChangeDetectorRef, private productService: ProductService) {
     this.categeory.setValue(this.defaultOption, { onlySelf: true });
 
   }
@@ -143,10 +153,10 @@ furniture = this.fb.group({
     return this.addProductForm.get('image') as FormArray;
   }
   get categeory() {
-    return this.addProductForm.get('categeory')
+    return this.addProductForm.get('category')
   }
-  get subcategeory() {
-    return this.addProductForm.get('subcategeory')
+  get subCategeory() {
+    return this.addProductForm.get('subCategeory')
   }
   //life cycle hooks
   ngOnInit(): void {
@@ -186,17 +196,61 @@ furniture = this.fb.group({
     })
   }
   onsubCategeoryChange() {
-    this.subcategeory.valueChanges.subscribe((change) => {
+    this.subCategeory.valueChanges.subscribe((change) => {
       console.log(change)
-      if(change){
-        this.selectedSubCategeory =change
+      if (change) {
+        this.selectedSubCategeory = change
 
       }
     })
   }
-  addMenWear(form){
-
-    console.log({...this.addProductForm.value,... this.menWear.value})
+  returnProduct(categeorizedProperties) {
+    let product = Object.assign(categeorizedProperties, this.addProductForm.value)
+    console.log(product)
+    this.productService.addProduct(product).subscribe((data) => console.log(data), err => console.log(err.message))
+  }
+  // add product function
+  addProduct() {
+    switch (this.selectedSubCategeory) {
+      case this.fashion.menWear:
+        this.returnProduct(this.menWear.value)
+        break;
+      case FahionSubCategeory.womenWear:
+        this.returnProduct(this.womenWear.value)
+        break;
+      case FahionSubCategeory.kidWear:
+        this.returnProduct(this.kidsWear.value)
+        break;
+      case ElectronicsSubCategeory.mobiles:
+        this.returnProduct(this.mobile.value)
+        break;
+      case ElectronicsSubCategeory.labtops:
+        this.returnProduct(this.labtop.value)
+        break;
+      case ElectronicsSubCategeory.tv:
+        this.returnProduct(this.tv.value)
+        break;
+      case BeautyCategeory.hairCare:
+        this.returnProduct(this.hairCare.value)
+        break;
+      case BeautyCategeory.skinCare:
+        this.returnProduct(this.skinCare.value)
+        break;
+      case BeautyCategeory.makeup:
+        this.returnProduct(this.makeup.value)
+        break;
+      case HomeSubCategeory.furniture:
+        this.returnProduct(this.furniture.value)
+        break;
+      case HomeSubCategeory.homeDecor:
+        this.returnProduct(this.homeDecore.value)
+        break;
+      case HomeSubCategeory.kitchen:
+        this.returnProduct(this.kitchen.value)
+        break;
+      default:
+        break;
+    }
   }
 }
 function convertEnumToArray(data: Object) {
