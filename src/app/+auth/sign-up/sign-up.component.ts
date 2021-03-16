@@ -18,6 +18,8 @@ export class SignUpComponent implements OnInit {
       return;
     }
     // temporary
+    console.warn(this.userServ.signUp(userModel));
+
     alert("the sign up process successful");
   }
 
