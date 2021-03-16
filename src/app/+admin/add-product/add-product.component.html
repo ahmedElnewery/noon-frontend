@@ -352,10 +352,167 @@
 
   </form>
 </div>
+<!-- end electronic -->
+<!-- start beauty -->
+<!-- makeup choice -->
+<div *ngSwitchCase = "beauty.makeup">
+  <form [formGroup]="makeup" (ngSubmit)="addProduct()" ngNativeValidate>
+    {{ makeup.value | json }}
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="foundation">Foundation</label>
+          <select class="form-control" name="foundation" formControlName="foundation">
+            <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+            <option *ngFor="let found of foundation" [ngValue]="found.value"> {{ found.value }}   </option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="color">Color</label>
+        <select class="form-control" name="color" formControlName="color">
+          <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+          <option *ngFor="let color of allColor" [ngValue]="color.value"> {{ color.value }}   </option>
+        </select>
+      </div>
+
+
+    </div>
+    <input class="btn btn-primary" type="submit" value="add product" />
+
+  </form>
+</div>
+
+<!-- hair care choice -->
+<div *ngSwitchCase = "beauty.hairCare">
+  <form [formGroup]="hairCare" (ngSubmit)="addProduct()" ngNativeValidate>
+    {{ hairCare.value | json }}
+    <div class="row">
+     <div class="col-md-4">
+        <div class="form-group">
+          <label for="hairType">Hair Type</label>
+          <select class="form-control" name="hairType" formControlName="hairType">
+            <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+            <option *ngFor="let hair of hairType" [ngValue]="hair.value"> {{ hair.value }}   </option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="formulation">Formulation</label>
+        <select class="form-control" name="formulation" formControlName="formulation">
+          <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+          <option *ngFor="let formul of formulation" [ngValue]="formul.value"> {{ formul.value }}   </option>
+        </select>
+      </div>
+
+
+    </div>
+    <input class="btn btn-primary" type="submit" value="add product" />
+
+  </form>
+</div>
+
+<!-- skin care choice -->
+<div *ngSwitchCase = "beauty.skinCare">
+  <form [formGroup]="skinCare" (ngSubmit)="addProduct()" ngNativeValidate>
+    {{ skinCare.value | json }}
+    <div class="row">
+     <div class="col-md-4">
+        <div class="form-group">
+          <label for="skinType">Skin Type</label>
+          <select class="form-control" name="skinType" formControlName="skinType">
+            <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+            <option *ngFor="let skin of skinType" [ngValue]="skin.value"> {{ skin.value }}   </option>
+          </select>
+        </div>
+      </div>
 
 
 
+    </div>
+    <input class="btn btn-primary" type="submit" value="add product" />
 
+  </form>
+</div>
+<!-- end bueaty -->
+<!-- start home -->
+<!-- kitchen choice -->
+<div *ngSwitchCase = "home.kitchen">
+  <form [formGroup]="kitchen" (ngSubmit)="addProduct()" ngNativeValidate>
+    {{ kitchen.value | json }}
+    <div class="row">
+     <div class="col-md-4">
+        <div class="form-group">
+          <label for="baseMaterial">Base Material</label>
+          <select class="form-control" name="baseMaterial" formControlName="baseMaterial">
+            <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+            <option *ngFor="let mat of baseMaterial" [ngValue]="mat.value"> {{ mat.value }}   </option>
+          </select>
+        </div>
+      </div>
+
+    </div>
+    <input class="btn btn-primary" type="submit" value="add product" />
+
+  </form>
+</div>
+
+<!-- home decore choice -->
+<div *ngSwitchCase = "home.homeDecor">
+  <form [formGroup]="homeDecore" (ngSubmit)="addProduct()" ngNativeValidate>
+    {{ homeDecore.value | json }}
+    <div class="row">
+     <div class="col-md-4">
+        <div class="form-group">
+          <label for="baseMaterial">Base Material</label>
+          <select class="form-control" name="baseMaterial" formControlName="baseMaterial">
+            <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+            <option *ngFor="let mat of baseMaterial" [ngValue]="mat.value"> {{ mat.value }}   </option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="color">Color</label>
+          <select class="form-control" name="color" formControlName="color">
+            <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+            <option *ngFor="let color of allColor" [ngValue]="color.value"> {{ color.value }}   </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <input class="btn btn-primary" type="submit" value="add product" />
+
+  </form>
+</div>
+<!-- furniture choice -->
+<div *ngSwitchCase = "home.furniture">
+  <form [formGroup]="furniture" (ngSubmit)="addProduct()" ngNativeValidate>
+    {{ furniture.value | json }}
+    <div class="row">
+     <div class="col-md-4">
+        <div class="form-group">
+          <label for="baseMaterial">Base Material</label>
+          <select class="form-control" name="baseMaterial" formControlName="baseMaterial">
+            <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+            <option *ngFor="let mat of baseMaterial" [ngValue]="mat.value"> {{ mat.value }}   </option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="color">Color</label>
+          <select class="form-control" name="color" formControlName="color">
+            <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+            <option *ngFor="let color of allColor" [ngValue]="color.value"> {{ color.value }}   </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <input class="btn btn-primary" type="submit" value="add product" />
+
+  </form>
+</div>
 
 
       </div>

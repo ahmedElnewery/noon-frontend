@@ -14,5 +14,7 @@ export enum Color{
   black="black",
   white="white",
   red ="red",
-  yellow="yellow"
+  yellow="yellow",
+  pink="pink",
+  brown= "brown"
 }

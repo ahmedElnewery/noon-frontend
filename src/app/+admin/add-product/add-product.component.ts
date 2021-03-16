@@ -1,3 +1,5 @@
+import { BaseMaterial } from './../../+shared/enums/home';
+import { Formulation, Foundation, HairType, SkinType } from './../../+shared/enums/beauty';
 import { ProductService } from 'src/app/+shared/services/product.service';
 import { Battery, InternalMemory, MemorySize, OperatingSystem, Proccessor, ScreenSize, TvScreenSize, UsbPort } from './../../+shared/enums/electronics';
 import { Color, Material, Size } from './../../+shared/enums/fashion';
@@ -50,7 +52,8 @@ export class AddProductComponent implements OnInit {
   /******************* */
   electronics = ElectronicsSubCategeory
   fashion = FahionSubCategeory;
-
+   beauty= BeautyCategeory;
+   home= HomeSubCategeory
   /**************enums/******************/
 //fashion
   allsizes = convertEnumToArray(Size);
@@ -68,6 +71,16 @@ export class AddProductComponent implements OnInit {
   //tv
   tvScreenSize=convertEnumToArray(TvScreenSize);
   usbPorts= convertEnumToArray(UsbPort)
+ // makeup care
+ foundation =convertEnumToArray (Foundation);
+
+ // hair
+ hairType= convertEnumToArray(HairType)
+ formulation = convertEnumToArray(Formulation)
+ //skin
+ skinType =convertEnumToArray(SkinType)
+ //home
+ baseMaterial = convertEnumToArray(BaseMaterial)
   /************* forms **************** */
   addProductForm = this.fb.group({
     name: [""],
@@ -116,18 +129,15 @@ export class AddProductComponent implements OnInit {
   })
   /************************* beauty form **********************/
   makeup = this.fb.group({
-    screenSize: [""],
-    internalMemory: [""],
-    battery: [""]
+    color: [""],
+    foundation: [""],
   })
   skinCare = this.fb.group({
-    viewFinder: [""],
-    resolution: [""],
+    skinType: [""],
   })
   hairCare = this.fb.group({
-    hardDisk: [""],
-    ram: [""],
-    screenSize: [""]
+    hairType: [""],
+    formulation: [""],
   })
 
   /********************** Home form ******************** */
