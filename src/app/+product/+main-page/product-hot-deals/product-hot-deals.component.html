@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<!-- <div class="container-fluid">
   <h5>Hot Deals</h5>
   <div class="row flex-row flex-nowrap overflow-auto prodContainer">
     <ng-container *ngFor="let ele of hotDealsProductList">
@@ -14,4 +14,9 @@
       </div>
     </ng-container>
   </div>
+</div> -->
+
+<div class="container-fluid">
+  <h5>Electronic devices</h5>
+  <app-product-card [productList]='hotDealsProductList'></app-product-card>
 </div>

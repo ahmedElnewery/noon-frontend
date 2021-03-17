@@ -1,7 +1,7 @@
 import { IProduct } from '../../../+shared/interfaces/IProduct';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { ProductHotDealsService } from 'src/app/+shared/services/product-hot-deals.service';
+import { ProductService } from 'src/app/+shared/services/product.service';
 
 @Component({
   selector: 'app-product-tech-devices',
@@ -10,13 +10,13 @@ import { ProductHotDealsService } from 'src/app/+shared/services/product-hot-dea
 })
 export class ProductTechDevicesComponent implements OnInit {
 
-  constructor(private productServ: ProductHotDealsService, private activeRoute: ActivatedRoute) { }
+  constructor(private productServ: ProductService, private activeRoute: ActivatedRoute) { }
 
   techDevicesProductList: IProduct[] = [];
   errorMessage: string = '';
 
   ngOnInit(): void {
-    this.productServ.getProduct().subscribe(
+    this.productServ.getElectronicProduct().subscribe(
       data => this.techDevicesProductList = data,
       err => this.errorMessage = err
     );

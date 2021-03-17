@@ -27,6 +27,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignInComponent } from './+auth/sign-in/sign-in.component';
 import { SignUpComponent } from './+auth/sign-up/sign-up.component';
 import { EnumToArrayPipe } from './+shared/pipes/enum-to-array.pipe';
+import { ProductCardComponent } from './+product/+main-page/product-card/product-card.component';
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import { EnumToArrayPipe } from './+shared/pipes/enum-to-array.pipe';
       MainPageComponent,
       FooterComponent,
       AddProductComponent,
-      EnumToArrayPipe
+      EnumToArrayPipe,
+      ProductCardComponent
    ],
   imports: [
     BrowserModule,

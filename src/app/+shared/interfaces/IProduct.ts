@@ -7,5 +7,5 @@ export interface IProduct {
   countInStock: number;
   price: number;
   category: string;
-  subCategeory:string;
+  subCategeory: string;
 }
