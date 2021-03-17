@@ -9,29 +9,35 @@ export class Product implements IProduct {
   image: string[];
   brand: string;
   category: string;
-  subCategeory: string;
+  subcategory: string;
   description: string;
   countInStock: number;
   price: number;
+  overview:string;
+  rating:number =0;
+numReviews:number=0;
+discount:number=0
 
   constructor(
     name: string,
     image: string[],
     brand: string,
     category: string,
-    subCategeory: string,
+    subcategory: string,
     description: string,
     countInStock: number,
     price: number,
+    overview:string
   ) {
     this.name = name;
     this.image = image;
     this.brand = brand;
     this.category = category;
-    this.subCategeory = subCategeory
+    this.subcategory = subcategory
     this.description = description;
     this.countInStock = countInStock;
     this.price = price;
+    this.overview = overview
   }
 }
 // export class TV extends Product {
@@ -42,15 +48,15 @@ export class Product implements IProduct {
 //   }
 
 // }
-export class MenWear extends Product {
-  size:string;
-  material:string
-  color:string
-  constructor(name: string, image: string[], brand: string, category: string, subCategeory: string, description: string, countInStock: number, price: number, material: string, size: string, color: string) {
-    super(name, image, brand, category, subCategeory, description, countInStock, price)
-    this.size = size
-    this.material = material;
-    this.color = color;
+// export class MenWear extends Product {
+//   size:string;
+//   material:string
+//   color:string
+//   constructor(name: string, image: string[], brand: string, category: string, subCategeory: string, description: string, countInStock: number, price: number, material: string, size: string, color: string) {
+//     super(name, image, brand, category, subCategeory, description, countInStock, price)
+//     this.size = size
+//     this.material = material;
+//     this.color = color;
 
-  }
-}
+//   }
+// }

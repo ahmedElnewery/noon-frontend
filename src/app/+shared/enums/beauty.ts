@@ -3,6 +3,7 @@ export enum Foundation{
   penceil ="penceil",
   powder="powder"
 }
+//hairCare
 export enum HairType{
 oily= "oily",
 curly="curly",
@@ -13,6 +14,7 @@ export enum Formulation{
   liquid="liquid",
   cream ="cream"
 }
+//skinCare
 export enum SkinType{
   sensitive= "sensitive",
   oily="oily",

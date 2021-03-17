@@ -7,7 +7,7 @@ import { BeautyCategeory, ElectronicsSubCategeory, FahionSubCategeory, HomeSubCa
 import { categeories } from './../../+shared/enums/allCategeory';
 import { ICategeory } from './../../+shared/interfaces/ICategory';
 import { IProduct } from 'src/app/+shared/interfaces/IProduct';
-import { MenWear, Product } from './../../+shared/classes/productModel';
+import { Product } from './../../+shared/classes/productModel';
 import { Component, OnInit, ChangeDetectorRef, SimpleChanges } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 
@@ -30,7 +30,7 @@ export class AddProductComponent implements OnInit {
       name: "electronics", displayName: "Electronics", subcategeory: [
         { name: "mobiles", displayName: "Mobiles" },
         { name: "labtops", displayName: "Labtops" },
-        { name: "tv", displayName: "tv" }]
+        { name: "tv", displayName: "TV" }]
     },
     {
       name: "home", displayName: "Home", subcategeory: [
@@ -47,7 +47,6 @@ export class AddProductComponent implements OnInit {
   /**************************************/
   subcategeoryList = [];
   selectedSubCategeory: string = "";
-  iAmOnForm: FormGroup
   defaultOption: string = 'please select..';
   /******************* */
   electronics = ElectronicsSubCategeory
@@ -90,7 +89,8 @@ export class AddProductComponent implements OnInit {
     countInStock: [0],
     price: [0],
     category: [""],
-    subCategeory: [""]
+    subcategory: [""],
+    overview:[""]
   })
   ///********* fashion form*************** */
   menWear = this.fb.group({
@@ -124,7 +124,7 @@ export class AddProductComponent implements OnInit {
     proccessor: [""]
   })
   tv = this.fb.group({
-    screenSize: [""],
+    tvScreenSize: [""],
     noOfUsbPort: [""],
   })
   /************************* beauty form **********************/
@@ -165,8 +165,8 @@ export class AddProductComponent implements OnInit {
   get categeory() {
     return this.addProductForm.get('category')
   }
-  get subCategeory() {
-    return this.addProductForm.get('subCategeory')
+  get subcategory() {
+    return this.addProductForm.get('subcategory')
   }
   //life cycle hooks
   ngOnInit(): void {
@@ -206,7 +206,7 @@ export class AddProductComponent implements OnInit {
     })
   }
   onsubCategeoryChange() {
-    this.subCategeory.valueChanges.subscribe((change) => {
+    this.subcategory.valueChanges.subscribe((change) => {
       console.log(change)
       if (change) {
         this.selectedSubCategeory = change

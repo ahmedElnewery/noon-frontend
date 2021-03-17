@@ -1,9 +1,9 @@
 /********* mobile ************ */
 export enum ScreenSize{
-  xlg = "6.5px",
-  lg="6px",
-  md="5px",
-  sm="4px"
+  xlg = "6.5inch",
+  lg="6inch",
+  md="5inch",
+  sm="4inch"
 
 }
 export enum InternalMemory{
@@ -25,9 +25,9 @@ mac ="mac"
 
 }
 export enum MemorySize{
-  _4="16 g",
-  _8 = "32 g",
-  _16 ="64 g",
+  _4="16g",
+  _8 = "32g",
+  _16 ="64g",
 
 }
 export enum Proccessor{

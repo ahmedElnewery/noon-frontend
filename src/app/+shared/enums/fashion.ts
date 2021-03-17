@@ -5,10 +5,10 @@ export enum Material{
   fabric="fabric"
 }
 export enum Size{
-  Sm="small",
-  Md = "medium",
-  Lg ="large",
-  Xlg="xlarge"
+  Sm="sm",
+  Md = "md",
+  Lg ="l",
+  Xlg="xl"
 }
 export enum Color{
   black="black",
