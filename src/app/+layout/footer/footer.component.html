@@ -1,35 +1,35 @@
 <div class="container-fluid contain">
   <div class="row">
-    <div class="col-4">
+    <div class="col-lg-4 col-md-4 col-sm-4">
       <h5>We're Always Here To Help</h5>
       <p>Reach out to us through any of these support channels</p>
     </div>
-    <div class="col-2 offset-2 foot">
+    <div class="col-lg-2 col-md-2 col-sm-4 offset-2 foot">
       <div class="row">
         <div class="col-2"><i class="fa fa-exclamation" aria-hidden="true"></i></div>
         <div class="col-10">
-          <h6>HELP CENTER</h6><b>
+          <h6>HELP</h6><b>
             <h5>help.noon.com</h5>
           </b>
         </div>
       </div>
     </div>
-    <div class="col-2 foot">
+    <div class="col-lg-2 col-md-2 col-sm-4 foot">
       <div class="row">
-        <div class="col-2"><i class="fa fa-exclamation" aria-hidden="true"></i></div>
+        <div class="col-2"><i class="fa fa-envelope-open" aria-hidden="true"></i></div>
         <div class="col-10">
-          <h6>HELP CENTER</h6><b>
-            <h5>help.noon.com</h5>
+          <h6>EMAIL</h6><b>
+            <h5>egypt@noon.com</h5>
           </b>
         </div>
       </div>
     </div>
-    <div class="col-2 foot">
+    <div class="col-lg-2 col-md-2 col-sm-4 foot">
       <div class="row">
-        <div class="col-2"><i class="fa fa-exclamation" aria-hidden="true"></i></div>
+        <div class="col-2"><i class="fa fa-phone" aria-hidden="true"></i></div>
         <div class="col-10">
-          <h6>HELP CENTER</h6><b>
-            <h5>help.noon.com</h5>
+          <h6>PHONE</h6><b>
+            <h5>16358</h5>
           </b>
         </div>
       </div>
@@ -38,7 +38,108 @@
 </div>
 
 <div class="container-fluid">
+  <div class="row" style="padding: 0.5% 0%;">
+    <div class="col-2">
+      <ul>
+        <b>
+          <h6>ELECTRONICS</h6>
+        </b>
+        <ng-container class="middelFoot" *ngFor="let ele of electronics">
 
+          <a href="#">
+            <li>{{ ele }}</li>
+          </a>
+        </ng-container>
+      </ul>
+    </div>
+    <div class="col-2">
+      <ul>
+        <b>
+          <h6>FASHION</h6>
+        </b>
+        <ng-container class="middelFoot" *ngFor="let ele of fashion">
+
+          <a href="#">
+            <li>{{ ele }}</li>
+          </a>
+        </ng-container>
+      </ul>
+    </div>
+    <div class="col-2">
+      <ul>
+        <b>
+          <h6>HOME AND KITCHEN</h6>
+        </b>
+        <ng-container class="middelFoot" *ngFor="let ele of home">
+
+          <a href="#">
+            <li>{{ ele }}</li>
+          </a>
+        </ng-container>
+      </ul>
+    </div>
+    <div class="col-2">
+      <ul>
+        <b>
+          <h6>ELECTRONICS</h6>
+        </b>
+        <ng-container class="middelFoot" *ngFor="let ele of beauty">
+
+          <a href="#">
+            <li>{{ ele }}</li>
+          </a>
+        </ng-container>
+      </ul>
+    </div>
+    <div class="col-2">
+      <ul>
+        <b>
+          <h6>ELECTRONICS</h6>
+        </b>
+        <ng-container class="middelFoot" *ngFor="let ele of kids">
+
+          <a href="#">
+            <li>{{ ele }}</li>
+          </a>
+        </ng-container>
+      </ul>
+    </div>
+    <div class="col-2">
+      <ul>
+        <b>
+          <h6>ELECTRONICS</h6>
+        </b>
+        <ng-container class="middelFoot" *ngFor="let ele of topBrands">
+
+          <a href="#">
+            <li>{{ ele }}</li>
+          </a>
+        </ng-container>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<div class="container-fluid">
+  <div class="row" style="padding: 3% 0%;">
+    <div class="col-6" style="text-align: center;">
+      <p>SHOP ON THE GO</p>
+      <a href="#"><img src="https://k.nooncdn.com/s/app/com/common/images/logos/app-store.svg" alt="App Store"
+          class="ko4e2j-16 llIndi" style="width: 20%; height: 90%;"></a>
+      <a href="#"><img src="https://k.nooncdn.com/s/app/com/common/images/logos/google-play.svg" alt="Google Play"
+          class="ko4e2j-16 llIndi" style="width: 20%; height: 90%;"></a>
+    </div>
+    <div class="col-6" style="text-align: center;">
+      <p>CONNECT WITH US</p>
+      <div class="social-icons">
+        <a class="social-icon" href="#"><i class="fab fa-facebook-f"></i></a>
+        <a class="social-icon" href="#"><i class="fab fa-twitter"></i></a>
+        <a class="social-icon" href="#"><i class="fab fa-instagram"></i></a>
+        <a class="social-icon" href="#"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="container-fluid" style="opacity: 0.5; padding: 1% 5%;">
