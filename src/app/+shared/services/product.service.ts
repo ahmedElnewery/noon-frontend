@@ -35,21 +35,21 @@ export class ProductService {
 
   //function to get only all electronic product
   getElectronicProduct(): Observable<IProduct[]> {
-    return this._http.get<IProduct[]>(`${ProductAPI.GET_ALL_PRODUCTS}/electrnoics`).pipe(
+    return this._http.get<IProduct[]>(`${ProductAPI.GET_ALL_PRODUCTS}/bycategory/electronics`).pipe(
       catchError(err => { return throwError(err.message); })
     )
   }
 
   //function to get only all home product
   getHomeProduct(): Observable<IProduct[]> {
-    return this._http.get<IProduct[]>(`${ProductAPI.GET_ALL_PRODUCTS}/home`).pipe(
+    return this._http.get<IProduct[]>(`${ProductAPI.GET_ALL_PRODUCTS}/bycategory/home`).pipe(
       catchError(err => { return throwError(err.message); })
     )
   }
 
   //function to get only all fashion product
   getFashionProduct(): Observable<IProduct[]> {
-    return this._http.get<IProduct[]>(`${ProductAPI.GET_ALL_PRODUCTS}/fashion`).pipe(
+    return this._http.get<IProduct[]>(`${ProductAPI.GET_ALL_PRODUCTS}/bycategory/fashion`).pipe(
       catchError(err => { return throwError(err.message); })
     )
   }
