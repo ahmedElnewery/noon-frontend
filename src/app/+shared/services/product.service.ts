@@ -19,6 +19,11 @@ export class ProductService {
       catchError(err => { return throwError(err.message); })
     )
   }
+  getProductByID(id): Observable<IProduct> {
+    return this._http.get<IProduct>(`${ProductAPI.GET_PRODUCT_BY_ID}/${id}`).pipe(
+      catchError(err => { return throwError(err.message); })
+    )
+  }
   addProduct(product): Observable<IProduct> {
 
     return this._http.post<IProduct>(ProductAPI.ADD_PRODUCT,

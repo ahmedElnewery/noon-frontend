@@ -28,6 +28,9 @@ import { SignInComponent } from './+auth/sign-in/sign-in.component';
 import { SignUpComponent } from './+auth/sign-up/sign-up.component';
 import { EnumToArrayPipe } from './+shared/pipes/enum-to-array.pipe';
 import { ProductCardComponent } from './+product/+main-page/product-card/product-card.component';
+import { SpinnerComponent } from './+shared-UI/spinner/spinner.component';
+import { NumberToStringPipe } from './+shared/pipes/number-to-string.pipe';
+import { PropertiesTableComponent } from './+product/product-details/product-summary/properties-table/properties-table.component';
 
 
 @NgModule({
@@ -51,26 +54,13 @@ import { ProductCardComponent } from './+product/+main-page/product-card/product
     FooterComponent,
     SignInComponent,
     SignUpComponent,
-      ProductCartComponent,
-      ProductRateComponent,
-      HeaderComponent,
-      ProductSlidshowComponent,
-      ProductCategoryComponent,
-      FooterComponent,
-      ProductDetailsComponent,
-      ProductSummaryComponent,
-      ProductsSpecificationComponent,
-      ProductSliderComponent,
-      RelatedProductComponent,
-      ProductTechDevicesComponent,
-      ProductByBrandComponent,
-      ProductHotDealsComponent,
-      MainPageComponent,
-      FooterComponent,
-      AddProductComponent,
-      EnumToArrayPipe,
-      ProductCardComponent
-   ],
+    AddProductComponent,
+    EnumToArrayPipe,
+    ProductCardComponent,
+    SpinnerComponent,
+    NumberToStringPipe,
+    PropertiesTableComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -1,21 +1,32 @@
-<div class="product-detail">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-9">
-        <div class="product-detail-top p-4">
-          <div class="row">
-            <div class="col-md-6">
-              <app-product-slider></app-product-slider>
-            </div>
-            <div class="col-md-6">
-              <app-product-summary></app-product-summary>
+<div class="container-fluid">
+  <div class="product-detail">
+    <ng-template #spinner>
+      <app-spinner></app-spinner>
+    </ng-template>
+    <ng-template #wrapper>
+      <div class="row">
+        <div class="col-lg-9">
+          <div class="product-detail-top p-4">
+            <div class="row">
+              <div class="col-md-6">
+                <app-product-slider
+                  [currentProduct]="product"
+                ></app-product-slider>
+              </div>
+              <div class="col-md-6">
+                <app-product-summary
+                  [currentProduct]="product"
+                ></app-product-summary>
+              </div>
             </div>
           </div>
+          <app-products-specification></app-products-specification>
+          <app-related-product></app-related-product>
         </div>
-        <app-products-specification></app-products-specification>
-        <app-related-product></app-related-product>
       </div>
-
+    </ng-template>
+    <div class="container-fluid" *ngIf="loading; then spinner; else wrapper">
+      *ngIf="isLoggedIn; then userBlock; else elseBlock"
     </div>
   </div>
 </div>

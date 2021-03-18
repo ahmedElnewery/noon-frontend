@@ -7,7 +7,7 @@ import { SignInComponent } from './+auth/sign-in/sign-in.component';
 import { SignUpComponent } from './+auth/sign-up/sign-up.component';
 
 const routes: Routes = [
-  { path: "productdetails", component: ProductDetailsComponent },
+  { path: "productdetails/:id", component: ProductDetailsComponent },
   { path: "admin", component: AddProductComponent },
   { path: "", component: MainPageComponent },
   { path: "signin", component: SignInComponent },

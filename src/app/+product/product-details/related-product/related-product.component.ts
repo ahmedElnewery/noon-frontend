@@ -15,14 +15,14 @@ export class RelatedProductComponent implements OnInit {
   errorMessage: string = '';
 
   ngOnInit(): void {
-    this.productServ.getProduct().subscribe(
-      data => {
-        this.productList = data
-        console.log(data)
-      },
-      err => this.errorMessage = err
-    );
-    this.initializeSlider()
+    // this.productServ.getProduct().subscribe(
+    //   data => {
+    //     this.productList = data
+    //     console.log(data)
+    //   },
+    //   err => this.errorMessage = err
+    // );
+    // this.initializeSlider()
   }
   initializeSlider() {
     $(document).ready(function () {

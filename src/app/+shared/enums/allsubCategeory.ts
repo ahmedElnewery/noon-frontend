@@ -18,3 +18,17 @@ export enum BeautyCategeory{
   skinCare="skinCare",
   hairCare="hairCare",
 }
+export enum AllSubcategories{
+  menWear ="menWear",
+  womenWear="womenWear",
+  kidWear="kidWear",
+  mobiles ="mobiles",
+  labtops="labtops",
+  tv="tv",
+  kitchen ="kitchen",
+  homeDecor="homeDecor",
+  furniture="furniture",
+  makeup ="makeup",
+  skinCare="skinCare",
+  hairCare="hairCare",
+}

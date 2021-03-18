@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { IProduct } from './../../../+shared/interfaces/IProduct';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-product-slider',
@@ -6,21 +7,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product-slider.component.scss']
 })
 export class ProductSliderComponent implements OnInit {
-  images = [
-    { src: "../../../assets/Img/products/chothes/product-1.jpg" },
-    { src: "../../../assets/Img/products/chothes/product-2.jpg" },
-    { src: "../../../assets/Img/products/chothes/product-3.jpg" },
-    { src: "../../../assets/Img/products/chothes/product-4.jpg" },
-
-
-  ]
-  currentImg= "../../../assets/Img/products/chothes/product-5.jpg"
+  @Input() currentProduct:IProduct
+  images:string[]
+  currentImg;
+  restImages:string []
   constructor() { }
 
   ngOnInit(): void {
   }
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['currentProduct']) {
+      this.images=this.currentProduct.image
+      this.currentImg=this.currentProduct.image[0]
+      this.restImages =this.images.slice(1)
+    }
+}
   selectImg(img){
-    this.currentImg= img.src
+    this.currentImg= img
   }
 
 }
