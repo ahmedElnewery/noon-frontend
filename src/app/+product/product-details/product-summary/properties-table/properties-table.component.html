@@ -2,51 +2,36 @@
   <table class="table table-sm table-borderless mb-0">
     <tbody>
       <ng-container [ngSwitch]="product.subcategory">
-        <ng-container *ngSwitchCase="allCategories.fashion">
-          <tr>
-            <th class="pl-0 w-25" scope="row"><strong>Brand</strong></th>
-            <td>{{ product?.brand }}</td>
-          </tr>
-          <tr>
-            <th class="pl-0 w-25" scope="row"><strong>Material</strong></th>
-            <td>{{ product?.material }}</td>
-          </tr>
+        <ng-container *ngSwitchCase="allSubcategories.menWear">
+          <app-table-row [options] ="{Brand:product?.brand,Material:product?.material}" ></app-table-row>
+        </ng-container>
+        <ng-container *ngSwitchCase="allSubcategories.womenWear">
+          <app-table-row [options] ="{Brand:product?.brand,Material:product?.material}" ></app-table-row>
+        </ng-container>
+        <ng-container *ngSwitchCase="allSubcategories.kidWear">
+          <app-table-row [options] ="{Brand:product?.brand,Material:product?.material}" ></app-table-row>
         </ng-container>
         <ng-container *ngSwitchCase="allSubcategories.mobiles">
-          <tr>
-            <th class="pl-0 w-25" scope="row"><strong>Battery</strong></th>
-            <td>{{ product?.battery }}</td>
-          </tr>
-          <tr>
-            <th class="pl-0 w-25" scope="row"><strong>Internal Memory</strong></th>
-            <td>{{ product?.internalMemory }}</td>
-          </tr>
-          <tr>
-            <th class="pl-0 w-25" scope="row"><strong>Screen Size</strong></th>
-            <td>{{ product?.screenSize }}</td>
-          </tr>
+          <app-table-row [options] ="{Battery:product?.battery,'Screen_Size':product?.screenSize,Internal_Memory:product?.internalMemory}" ></app-table-row>
         </ng-container>
         <ng-container *ngSwitchCase="allSubcategories.tv">
-          <tr>
-            <th class="pl-0 w-25" scope="row"><strong>tv</strong></th>
-            <td>{{ product?.brand }}</td>
-          </tr>
-          <tr>
-            <th class="pl-0 w-25" scope="row"><strong>Material</strong></th>
-            <td>{{ product?.material }}</td>
-          </tr>
+          <app-table-row [options] ="{Screen_Size:product?.tvScreenSize,'No_Of_USB_Port':product?.noOfUsbPort}" ></app-table-row>
         </ng-container>
         <ng-container *ngSwitchCase="allSubcategories.labtops">
-          <tr>
-            <th class="pl-0 w-25" scope="row"><strong>labtop</strong></th>
-            <td>{{ product?.brand }}</td>
-          </tr>
-          <tr>
-            <th class="pl-0 w-25" scope="row"><strong>Material</strong></th>
-            <td>{{ product?.material }}</td>
-          </tr>
+          <app-table-row [options] ="{Operating_System:product?.operatingSystem,'Memory_Size':product?.memorySize,Processor:product?.proccessor}" ></app-table-row>
         </ng-container>
-
+        <ng-container *ngSwitchCase="allSubcategories.kitchen">
+          <app-table-row [options] ="{Base_Material:product?.baseMaterial}" ></app-table-row>
+        </ng-container>
+        <ng-container *ngSwitchCase="allSubcategories.skinCare">
+          <app-table-row [options] ="{Skin_Type:product?.skinType}" ></app-table-row>
+        </ng-container>
+        <ng-container *ngSwitchCase="allSubcategories.hairCare">
+          <app-table-row [options] ="{Hair_Type:product?.hairType}" ></app-table-row>
+        </ng-container>
+        <ng-container *ngSwitchCase="allSubcategories.makeup">
+          <app-table-row [options] ="{Foundation:product?.hairType,Color:product?.color}" ></app-table-row>
+        </ng-container>
       </ng-container>
     </tbody>
   </table>

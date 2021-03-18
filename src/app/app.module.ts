@@ -31,6 +31,10 @@ import { ProductCardComponent } from './+product/+main-page/product-card/product
 import { SpinnerComponent } from './+shared-UI/spinner/spinner.component';
 import { NumberToStringPipe } from './+shared/pipes/number-to-string.pipe';
 import { PropertiesTableComponent } from './+product/product-details/product-summary/properties-table/properties-table.component';
+import { TableRowComponent } from './+product/product-details/product-summary/properties-table/table-row/table-row.component';
+import { SnakeCasePipe } from './+shared/pipes/snake-case.pipe';
+import { CartFormComponent } from './+product/product-details/product-summary/cart-form/cart-form.component';
+import { RatingComponent } from './+shared-UI/rating/rating.component';
 
 
 @NgModule({
@@ -59,7 +63,11 @@ import { PropertiesTableComponent } from './+product/product-details/product-sum
     ProductCardComponent,
     SpinnerComponent,
     NumberToStringPipe,
-    PropertiesTableComponent
+    PropertiesTableComponent,
+    TableRowComponent,
+    SnakeCasePipe,
+    CartFormComponent,
+    RatingComponent
   ],
   imports: [
     BrowserModule,

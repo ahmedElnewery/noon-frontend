@@ -3,15 +3,11 @@
   <p class="mb-2 text-muted text-uppercase small">
     {{ detailsProduct.subcategory }}
   </p>
-  <i
-    class="fa fa-star"
-    aria-hidden="true"
-    style="color: orange; float: right; font-size: large"
-    ><b>{{ detailsProduct.rating }} </b
-    ><span style="color: lightgrey">{{
-      detailsProduct.numReviews + 10
-    }}</span></i
-  >
+<app-rating [value]="detailsProduct.rating" color="rgb(254, 238, 0)" ></app-rating>
+    <a style="color: lightgrey" class="ml-4">{{
+      detailsProduct.numReviews + 10}}
+    </a>
+
 
   <p>
     <span class="mr-1 text-muted">Was:</span>
@@ -47,61 +43,6 @@
   <app-properties-table [product]= 'detailsProduct'></app-properties-table>
 
   <hr />
+<app-cart-form [inStockArray]= 'inStockArr' ></app-cart-form>
 
-  <form>
-    <div class="row align-items-end">
-      <div class="col-3">
-        <label for="quantity">quantity</label>
-        <select id="quantity" class="form-control">
-          <ng-container *ngFor="let count of inStockArr">
-            <option [ngValue]="count">{{ count }}</option>
-          </ng-container>
-        </select>
-      </div>
-      <div class="col-9">
-        <input
-          type="submit"
-          class="btn btn-primary w-100"
-          value="add To Cart"
-        />
-      </div>
-    </div>
-
-    <div class="pb-0 mt-4">Select size</div>
-
-    <div class="mt-1">
-      <ng-container *ngFor="let size of allSizes | keyvalue">
-        <div class="form-check form-check-inline pl-0">
-          <input
-            type="radio"
-            class="form-check-input"
-            id="{{ size.key }}"
-            name="slectedSize"
-          />
-          <label class="form-check-label text-uppercase" for="{{ size.key }}">{{
-            size.value
-          }}</label>
-        </div>
-      </ng-container>
-    </div>
-    <div class="pb-0 mt-4">Select color</div>
-
-    <div class="mt-1">
-      <ng-container *ngFor="let color of allColor | keyvalue">
-        <div class="form-check form-check-inline pl-0">
-          <input
-            type="radio"
-            class="form-check-input"
-            id="{{ color.key }}"
-            name="slectedColor"
-          />
-          <label
-            class="form-check-label text-uppercase"
-            for="{{ color.key }}"
-            >{{ color.value }}</label
-          >
-        </div>
-      </ng-container>
-    </div>
-  </form>
 </section>
