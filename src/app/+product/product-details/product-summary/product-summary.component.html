@@ -1,36 +1,61 @@
 <section class="py-5">
-  <h5>Fantasy T-shirt</h5>
-  <p class="mb-2 text-muted text-uppercase small">Shirts</p>
+  <h5>{{ detailsProduct.name }}</h5>
+  <p class="mb-2 text-muted text-uppercase small">
+    {{ detailsProduct.subcategory }}
+  </p>
   <i
     class="fa fa-star"
     aria-hidden="true"
     style="color: orange; float: right; font-size: large"
-    ><b>4.0 </b><span style="color: lightgrey">(1)</span></i
+    ><b>{{ detailsProduct.rating }} </b
+    ><span style="color: lightgrey">{{
+      detailsProduct.numReviews + 10
+    }}</span></i
   >
 
   <p>
-    <span class="mr-1"><strong>$12.99</strong></span>
+    <span class="mr-1 text-muted">Was:</span>
+    <span class="mr-1 was"
+      ><strong> {{ detailsProduct.price | currency }}</strong></span
+    >
+  </p>
+  <p>
+    <span class="mr-1 text-muted">NOW:</span>
+    <span class="mr-1 now"
+      ><strong>
+        {{
+          detailsProduct.price -
+            (detailsProduct.price * detailsProduct.discount) / 100 | currency
+        }}</strong
+      ></span
+    >
+  </p>
+  <p>
+    <span class="mr-1 text-muted">Saving:</span>
+    <span class="mr-1 now">
+      <strong>
+        {{
+          (detailsProduct.price * detailsProduct.discount) / 100 | currency
+        }}
+      </strong >
+    </span >
+      <span class="badge badge-pill badge-success ml-3 p-2">
+        {{ detailsProduct.discount + " %" }}</span
+      >
   </p>
   <p class="pt-1">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, sapiente
-    illo. Sit error voluptas repellat rerum quidem, soluta enim perferendis
-    voluptates laboriosam. Distinctio, officia quis dolore quos sapiente tempore
-    alias.
+    {{ detailsProduct.description }}
   </p>
   <div class="table-responsive">
     <table class="table table-sm table-borderless mb-0">
       <tbody>
         <tr>
-          <th class="pl-0 w-25" scope="row"><strong>Model</strong></th>
-          <td>Shirt 5407X</td>
+          <th class="pl-0 w-25" scope="row"><strong>Brand</strong></th>
+          <td>{{ detailsProduct?.brand }}</td>
         </tr>
         <tr>
-          <th class="pl-0 w-25" scope="row"><strong>Color</strong></th>
-          <td>Black</td>
-        </tr>
-        <tr>
-          <th class="pl-0 w-25" scope="row"><strong>Delivery</strong></th>
-          <td>USA, Europe</td>
+          <th class="pl-0 w-25" scope="row"><strong>Material</strong></th>
+          <td>{{ detailsProduct?.material }}</td>
         </tr>
       </tbody>
     </table>
@@ -41,10 +66,11 @@
     <div class="col-3">
       <label for="quantity">quantity</label>
       <select id="quantity" class="form-control">
-        <option value="0" selected>0</option>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
+        <ng-container  *ngFor="let count of inStockArr">
+          <option [ngValue]="count">{{count}}</option>
+        </ng-container>
+
+
       </select>
     </div>
     <div class="col-9">
