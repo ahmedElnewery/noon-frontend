@@ -18,7 +18,6 @@ export class ProductCategoryComponent implements OnInit {
     { src: "../../../assets/Img/test/en_mb-category-05.png" },
     { src: "../../../assets/Img/test/en_mb-category-07.png" },
     { src: "../../../assets/Img/test/en_mb-category-09.png" },
-    { src: "../../../assets/Img/test/en_category-01.png" },
   ]
   constructor() { }
 

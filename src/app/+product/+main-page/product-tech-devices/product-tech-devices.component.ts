@@ -20,6 +20,10 @@ export class ProductTechDevicesComponent implements OnInit {
       data => this.techDevicesProductList = data,
       err => this.errorMessage = err
     );
+
+    setTimeout(() => {
+      console.warn(this.techDevicesProductList);
+    }, 5000)
   }
 
 }
