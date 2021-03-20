@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { IProduct } from 'src/app/+shared/interfaces/IProduct';
 import { ProductService } from 'src/app/+shared/services/product.service';
 declare var $: any;
@@ -9,31 +9,43 @@ declare var $: any;
   styleUrls: ['./related-product.component.scss']
 })
 export class RelatedProductComponent implements OnInit {
+  @Input() subcategory
   constructor(private productServ: ProductService) { }
-
-  productList: IProduct[] = [];
+  relatedProducts: IProduct[] = [];
   errorMessage: string = '';
+  loading: boolean = false
 
   ngOnInit(): void {
-    // this.productServ.getProduct().subscribe(
-    //   data => {
-    //     this.productList = data
-    //     console.log(data)
-    //   },
-    //   err => this.errorMessage = err
-    // );
-    // this.initializeSlider()
+    this.getProductsBySubcategory()
+
+
   }
-  initializeSlider() {
-    $(document).ready(function () {
-      $('.related-product').slick({
-        dots: false,
-        arrows:true,
-        slidesToShow: 3,
-        slidesToScroll: 3,
-        focusOnSelect: true,
-        infinite:true
-      });
-    })
+  getProductsBySubcategory() {
+    this.loading = true
+    this.productServ.getProductsBySubcategory(this.subcategory).subscribe(
+      data => {
+        this.loading = false
+        this.relatedProducts = data
+      },
+
+      err => {
+        this.errorMessage = err;
+        this.loading = false
+      }
+    );
+
   }
+  // initializeSlider() {
+  //   $(document).ready(function () {
+  //     console.log($('.related-product').width())
+  //     $('.related-product').slick({
+  //       dots: false,
+  //       arrows: true,
+  //       slidesToShow: 3,
+  //       slidesToScroll: 3,
+  //       focusOnSelect: true,
+  //       infinite: true
+  //     });
+  //   })
+  // }
 }

@@ -20,8 +20,8 @@
               </div>
             </div>
           </div>
-          <app-products-specification></app-products-specification>
-          <app-related-product></app-related-product>
+          <app-products-specification [currentProduct]="product"></app-products-specification>
+          <app-related-product [subcategory]="product.subcategory"></app-related-product>
         </div>
       </div>
     </ng-template>

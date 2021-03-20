@@ -32,6 +32,12 @@ export class ProductService {
       catchError(err => { return throwError(err.message) })
     )
   }
+  //function to get by subcategory
+  getProductsBySubcategory(subcategory): Observable<IProduct[]> {
+    return this._http.get<IProduct[]>(`${ProductAPI.GET_PRODUCT_BY_SUBCATEGORY}/${subcategory}`).pipe(
+      catchError(err => { return throwError(err.message); })
+    )
+  }
 
   //function to get only all electronic product
   getElectronicProduct(): Observable<IProduct[]> {
