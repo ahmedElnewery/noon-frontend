@@ -1,8 +1,22 @@
 <app-product-slidshow></app-product-slidshow>
 <app-product-category></app-product-category>
+
+<!-- mom section -->
+<div class="container-fluid">
+  <div>
+    <img src="../../../assets/Img/test/en_title-01.png" style='width: 100%;' alt="">
+  </div>
+  <div class="row" style="justify-content: space-between; padding:0 5%">
+    <ng-container *ngFor="let img of momImgs">
+      <div class="col-2">
+        <img [src]='img.src' alt="" style="width: 120%;">
+      </div>
+    </ng-container>
+  </div>
+</div><br>
 <app-product-hot-deals></app-product-hot-deals>
 <br>
-<!-- ads -->
+<!-- ads section-->
 <div class="container-fluid">
   <div class="row" style="justify-content: center;">
     <div class="col-6">
@@ -16,7 +30,7 @@
 <br>
 <app-product-tech-devices></app-product-tech-devices>
 <br>
-<!-- ads 2 -->
+<!-- ads 2 section-->
 <div class="container-fluid">
   <div class="row" style="justify-content: center;">
     <div class="col-6">
@@ -26,6 +40,6 @@
       <img src="../../../../assets/Img/test/en_block-12.png" style="width: 100%; height: 100%;" alt="">
     </div>
   </div>
-</div>
-<br>
+</div><br>
+<app-product-fashion></app-product-fashion><br>
 <app-product-by-brand></app-product-by-brand>
