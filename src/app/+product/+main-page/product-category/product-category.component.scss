@@ -1,8 +1,13 @@
 .categoryImg{
-  padding: 1% 5%; justify-content: space-between;
+   justify-content: space-between;
+   padding: 2% 5%;
 }
 .categoryImg img{
   width: 150%;
-  height: 100%;
+}
 
+@media (max-width: 978px) {
+  .categoryImg img{
+    width: 90%;
+  }
 }

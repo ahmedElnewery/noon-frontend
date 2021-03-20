@@ -1,3 +1,4 @@
+import { IUser } from './../../+shared/interfaces/IUser';
 import { throwError } from 'rxjs';
 import { UserService } from './../../+shared/services/user.service';
 import { Component, OnInit } from '@angular/core';
@@ -27,13 +28,18 @@ export class SignInComponent implements OnInit {
 
   }
 
+  user: IUser;
+
   signIn() {
     //alert("still working on it");
     if (this.formGroup.valid) {
       this.userSer.signIn(this.formGroup.value).subscribe(
         data => {
-          console.log(data);
+          this.user = data;
+          console.warn(data);
           alert("sign in successfully");
+          console.warn(this.user.token);
+          localStorage.setItem('userToken', this.user.token);
         },
         err => {
           console.warn(err.message);

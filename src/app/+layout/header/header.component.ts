@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  productSubcategory = ['Electronics', 'Mobiles', 'Fachion', 'Home', 'Beauty', 'Baby', 'Deals']
   constructor() { }
 
   ngOnInit(): void {

@@ -16,10 +16,14 @@ export class ProductTechDevicesComponent implements OnInit {
   errorMessage: string = '';
 
   ngOnInit(): void {
-    this.productServ.getElectronicProduct().subscribe(
+    this.productServ.getHomeProduct().subscribe(
       data => this.techDevicesProductList = data,
       err => this.errorMessage = err
     );
+
+    setTimeout(() => {
+      console.warn(this.techDevicesProductList);
+    }, 5000)
   }
 
 }
