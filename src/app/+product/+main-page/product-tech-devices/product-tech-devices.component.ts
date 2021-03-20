@@ -1,6 +1,5 @@
 import { IProduct } from '../../../+shared/interfaces/IProduct';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
 import { ProductService } from 'src/app/+shared/services/product.service';
 
 @Component({
@@ -10,7 +9,7 @@ import { ProductService } from 'src/app/+shared/services/product.service';
 })
 export class ProductTechDevicesComponent implements OnInit {
 
-  constructor(private productServ: ProductService, private activeRoute: ActivatedRoute) { }
+  constructor(private productServ: ProductService) { }
 
   techDevicesProductList: IProduct[] = [];
   errorMessage: string = '';
