@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { FilterService } from 'src/app/+shared/services/filter.service';
-
+import { IProduct } from 'src/app/+shared/interfaces/IProduct';
 @Component({
   selector: 'app-filter',
   templateUrl: './filter.component.html',
