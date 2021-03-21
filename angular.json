@@ -33,8 +33,6 @@
               "node_modules/slick-carousel/slick/slick-theme.scss",
               "node_modules/@fortawesome/fontawesome-free/css/all.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-
-
               "src/styles.scss"
             ],
             "scripts": [
@@ -136,5 +134,8 @@
       }
     }
   },
-  "defaultProject": "noon-frontend"
+  "defaultProject": "noon-frontend",
+  "cli": {
+    "analytics": false
+  }
 }

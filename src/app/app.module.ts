@@ -35,6 +35,8 @@ import { TableRowComponent } from './+product/product-details/product-summary/pr
 import { SnakeCasePipe } from './+shared/pipes/snake-case.pipe';
 import { CartFormComponent } from './+product/product-details/product-summary/cart-form/cart-form.component';
 import { RatingComponent } from './+shared-UI/rating/rating.component';
+import { ByCategoryComponent } from './+filter/by-category/by-category.component';
+import { FilterComponent } from './+filter/filter/filter.component';
 
 
 @NgModule({
@@ -67,7 +69,9 @@ import { RatingComponent } from './+shared-UI/rating/rating.component';
     TableRowComponent,
     SnakeCasePipe,
     CartFormComponent,
-    RatingComponent
+    RatingComponent,
+    ByCategoryComponent,
+    FilterComponent
   ],
   imports: [
     BrowserModule,

@@ -5,13 +5,17 @@ import { Routes, RouterModule } from '@angular/router';
 import { MainPageComponent } from './+product/+main-page/main-page.component';
 import { SignInComponent } from './+auth/sign-in/sign-in.component';
 import { SignUpComponent } from './+auth/sign-up/sign-up.component';
+import { ByCategoryComponent } from './+filter/by-category/by-category.component';
+import { FilterComponent } from './+filter/filter/filter.component';
 
 const routes: Routes = [
   { path: "productdetails/:id", component: ProductDetailsComponent },
   { path: "admin", component: AddProductComponent },
   { path: "", component: MainPageComponent },
   { path: "signin", component: SignInComponent },
-  { path: "signup", component: SignUpComponent }
+  { path: "signup", component: SignUpComponent },
+  {path:'allcategory/:cateName',component:ByCategoryComponent},
+  {path:'filter/:subcateName',component:FilterComponent}
 ];
 
 @NgModule({
