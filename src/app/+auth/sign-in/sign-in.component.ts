@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserData } from 'src/app/+shared/classes/user-data';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { SignUpComponent } from 'src/app/+auth/sign-up/sign-up.component';
 
 @Component({
   selector: 'app-sign-in',

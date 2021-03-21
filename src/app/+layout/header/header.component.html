@@ -9,25 +9,27 @@
       </div>
       <div class="col-lg-8 col-md-7 col-sm-4 col-8">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="what are you looking for?">
+          <input type="text" style="margin-top: 1%;" class="form-control" placeholder="what are you looking for?">
         </div>
       </div>
       <div class="col-lg-1 col-md-1 col-sm-2 col-4">
         <span class="dropdown">
-          <a href="#" class="dropdown-toggle" role="button">Ship to<span class="caret"></span></a>
+          <button href="#" class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">Ship
+            to<span class="caret"></span></button>
           <ul class="dropdown-menu">
-            <li> <a href="#">UAE</a> </li>
-            <li> <a href="#">KSA</a> </li>
-            <li> <a href="#">EGYPT</a> </li>
+            <li> <a class="dropdown-item" href="#">UAE</a> </li>
+            <li> <a class="dropdown-item" href="#">KSA</a> </li>
+            <li> <a class="dropdown-item" href="#">EGYPT</a> </li>
           </ul>
         </span>
       </div>
       <div class="col-lg-1 col-md-1 col-sm-2 col-4">
-        <a routerLink="/signin" routerLinkActive="router-link-active">Sign In</a>&nbsp;&nbsp;<i class="fa fa-user-o"
-          aria-hidden="true"></i>
+        <button class="btn" data-toggle="modal" data-target="#signInModal">Sign
+          In</button>&nbsp;&nbsp;<i class="fa fa-user-o" aria-hidden="true"></i>
       </div>
       <div class="col-lg-1 col-md-1 col-sm-2 col-4">
-        <a routerLink="/product_cart">Cart</a>&nbsp;&nbsp;<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+        <button class="btn" routerLink="/product_cart">Cart&nbsp;<i class="fa fa-shopping-cart"
+            aria-hidden="true"></i></button>
       </div>
     </div>
   </header>
@@ -36,32 +38,33 @@
 <div class="container-fluid">
   <div class="row secondNav" style="padding: 1% 2%">
     <div class="col-lg-2 col-md-2  dropdown">
-      <button class="btn  dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" >
+      <button class="btn  dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
         All category<span class="caret"></span>
       </button>
-      <div class="dropdown-menu" style="width: 400px;"  (mouseleave)="leaveList()">
-      <div class="row" style="width: 100%;">
-        
-          
-        <ul class="col-sm-5 " style="list-style: none;" >
-          <li *ngFor="let cate of allcategory"  >
-            <a  class="dropdown-item" (click)="goToThisCategory(cate.name)"  
-              
-            (mouseover)="getSubcategory(cate.cateid)">{{cate.name}}</a> </li>
+      <div class="dropdown-menu" style="width: 400px;" (mouseleave)="leaveList()">
+        <div class="row" style="width: 100%;">
+
+
+          <ul class="col-sm-5 " style="list-style: none;">
+            <li *ngFor="let cate of allcategory">
+              <a class="dropdown-item" (click)="goToThisCategory(cate.name)"
+                (mouseover)="getSubcategory(cate.cateid)">{{cate.name}}</a>
+            </li>
           </ul>
-        
-      <div class="col-sm-5 "  *ngIf="isHover"  >
-        <p (click)="goToFillter(item.name)" class="dropdown-item" *ngFor="let item of allSubctegory">{{item.name}}</p>
-           
-      </div>
-      </div>
-      
+
+          <div class="col-sm-5 " *ngIf="isHover">
+            <p (click)="goToFillter(item.name)" class="dropdown-item" *ngFor="let item of allSubctegory">{{item.name}}
+            </p>
+
+          </div>
+        </div>
+
 
 
 
 
         <!-- end dropdown -->
-        </div>
+      </div>
     </div>
     <!-- <div class="col-lg-1 col-md-4 col-sm-4 ">
       <a href="#"><b>Electronics</b></a>
@@ -91,4 +94,10 @@
     </ng-container>
 
   </div>
+</div>
+
+<!-- hideen sign in modal -->
+<div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+  aria-hidden="true">
+  <app-sign-in></app-sign-in>
 </div>
