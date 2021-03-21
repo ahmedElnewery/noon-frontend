@@ -16,7 +16,7 @@ export class ProductHotDealsComponent implements OnInit {
   errorMessage: string = '';
 
   ngOnInit(): void {
-    this.productServ.getFashionProduct().subscribe(
+    this.productServ.getElectronicProduct().subscribe(
       data => this.hotDealsProductList = data,
       err => this.errorMessage = err
     );

@@ -11,6 +11,8 @@ export class HeaderComponent implements OnInit {
   allcategory:any[]=[];
   allSubctegory:any[]=[];
   isHover=false;
+  //productSubcategory:any[]=[];
+  productSubcategory = ['Electronics', 'Mobiles', 'Fachion', 'Home', 'Beauty', 'Baby', 'Deals'];
   constructor(private filterService:FilterService,private router:Router) { }
   goToThisCategory(category){
     
@@ -36,6 +38,9 @@ export class HeaderComponent implements OnInit {
       {
          console.log('error',error)
       }
+  
+ 
+
 
      );
      this.isHover=true;

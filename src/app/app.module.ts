@@ -37,6 +37,7 @@ import { CartFormComponent } from './+product/product-details/product-summary/ca
 import { RatingComponent } from './+shared-UI/rating/rating.component';
 import { ByCategoryComponent } from './+filter/by-category/by-category.component';
 import { FilterComponent } from './+filter/filter/filter.component';
+import { ProductFashionComponent } from './+product/+main-page/product-fashion/product-fashion.component';
 
 
 @NgModule({
@@ -71,15 +72,15 @@ import { FilterComponent } from './+filter/filter/filter.component';
     CartFormComponent,
     RatingComponent,
     ByCategoryComponent,
-    FilterComponent
+    FilterComponent,
+    ProductFashionComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule,
-    FormsModule
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

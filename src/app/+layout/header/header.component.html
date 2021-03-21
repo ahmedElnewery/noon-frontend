@@ -1,18 +1,18 @@
 <div class="container-fluid">
   <header>
     <div class="row head">
-      <div class="col-lg-1 col-md-2 col-sm-2 col-xs-4">
+      <div class="col-lg-1 col-md-2 col-sm-2 col-4">
         <a href="#">
           <img src="https://k.nooncdn.com/s/app/com/noon/images/logos/noon-black-en.svg" alt="noon"
             style="width: 100%; height: 100%;">
         </a>
       </div>
-      <div class="col-lg-8 col-md-7 col-sm-4 col-xs-8">
+      <div class="col-lg-8 col-md-7 col-sm-4 col-8">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="what are you looking for?">
         </div>
       </div>
-      <div class="col-lg-1 col-md-1 col-sm-2 col-xs-2">
+      <div class="col-lg-1 col-md-1 col-sm-2 col-4">
         <span class="dropdown">
           <a href="#" class="dropdown-toggle" role="button">Ship to<span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -22,11 +22,11 @@
           </ul>
         </span>
       </div>
-      <div class="col-lg-1 col-md-1 col-sm-2 col-xs-2">
+      <div class="col-lg-1 col-md-1 col-sm-2 col-4">
         <a routerLink="/signin" routerLinkActive="router-link-active">Sign In</a>&nbsp;&nbsp;<i class="fa fa-user-o"
           aria-hidden="true"></i>
       </div>
-      <div class="col-lg-1 col-md-1 col-sm-2 col-xs-2">
+      <div class="col-lg-1 col-md-1 col-sm-2 col-4">
         <a href="#">Cart</a>&nbsp;&nbsp;<i class="fa fa-shopping-cart" aria-hidden="true"></i>
       </div>
     </div>
@@ -63,7 +63,7 @@
         <!-- end dropdown -->
         </div>
     </div>
-    <div class="col-lg-1 col-md-4 col-sm-4 ">
+    <!-- <div class="col-lg-1 col-md-4 col-sm-4 ">
       <a href="#"><b>Electronics</b></a>
     </div>
     <div class="col-lg-1 col-md-2 col-sm-2">
@@ -83,6 +83,12 @@
     </div>
     <div class="col-lg-1 col-md-2 col-sm-2">
       <a href="#"><b class="text-danger">Deals</b></a>
-    </div>
+    </div> -->
+    <ng-container *ngFor="let ele of productSubcategory">
+      <div class="col-lg-1 col-md-2 col-2">
+        <a href="#"><b>{{ele}}</b></a>
+      </div>
+    </ng-container>
+
   </div>
 </div>
