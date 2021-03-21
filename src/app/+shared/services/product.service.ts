@@ -1,3 +1,4 @@
+import { IReview } from './../interfaces/IReview';
 import { ProductAPI } from './../../../@core/APIs/productsAPI';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -59,5 +60,18 @@ export class ProductService {
       catchError(err => { return throwError(err.message); })
     )
   }
-
+  getToken(){
+  return localStorage.getItem("userToken")
+  }
+  //add review
+  addReview(review:IReview,productId): Observable<IReview> {
+    return this._http.post<IReview>(`${ProductAPI.ADD_REVIEW}/${productId}/reviews`,review,{
+      headers:{
+        'Content-Type':'application/json',
+        Authorization:`Bearer ${this.getToken()}`
+      }
+    }).pipe(
+      catchError(err => { return throwError(err.message); })
+    )
+  }
 }

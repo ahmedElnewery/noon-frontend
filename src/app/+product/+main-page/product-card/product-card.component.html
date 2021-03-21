@@ -1,6 +1,8 @@
 <div class="row flex-row flex-nowrap overflow-auto prodContainer">
   <ng-container *ngFor="let ele of productList">
-    <div class="col-lg-2 col-sm-4 col-4 cart">
+    <div class="col-lg-2 col-sm-4 col-4 ">
+      <a class="product-link" [routerLink]="'/productdetails/'+ele._id">
+      <div class="cart">
       <img [src]="ele.image[0]" alt="" style="width: 90%;">
 
       <p>{{ ele.name }}</p>
@@ -12,5 +14,7 @@
       <i class="fa fa-cart-plus" aria-hidden="true" style="float: right;"></i><br><br>
       <app-product-rate></app-product-rate>
     </div>
+  </a>
+  </div>
   </ng-container>
 </div>

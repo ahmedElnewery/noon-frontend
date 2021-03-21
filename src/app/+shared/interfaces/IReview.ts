@@ -1,7 +1,5 @@
 export interface IReview{
-  reviewerName:String,
-  email:string,
-  date:string,
+  reviewer:String,
   rating:number,
-reviewText:string,
+  comment:string,
 }
