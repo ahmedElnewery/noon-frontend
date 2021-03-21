@@ -27,7 +27,7 @@
           aria-hidden="true"></i>
       </div>
       <div class="col-lg-1 col-md-1 col-sm-2 col-4">
-        <a href="#">Cart</a>&nbsp;&nbsp;<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+        <a routerLink="/product_cart">Cart</a>&nbsp;&nbsp;<i class="fa fa-shopping-cart" aria-hidden="true"></i>
       </div>
     </div>
   </header>
@@ -35,8 +35,33 @@
 
 <div class="container-fluid">
   <div class="row secondNav" style="padding: 1% 2%">
-    <div class="col-lg-2 col-md-2">
-      <a href="#" role="button">All category<span class="caret"></span></a>
+    <div class="col-lg-2 col-md-2  dropdown">
+      <button class="btn  dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" >
+        All category<span class="caret"></span>
+      </button>
+      <div class="dropdown-menu" style="width: 400px;"  (mouseleave)="leaveList()">
+      <div class="row" style="width: 100%;">
+        
+          
+        <ul class="col-sm-5 " style="list-style: none;" >
+          <li *ngFor="let cate of allcategory"  >
+            <a  class="dropdown-item" (click)="goToThisCategory(cate.name)"  
+              
+            (mouseover)="getSubcategory(cate.cateid)">{{cate.name}}</a> </li>
+          </ul>
+        
+      <div class="col-sm-5 "  *ngIf="isHover"  >
+        <p (click)="goToFillter(item.name)" class="dropdown-item" *ngFor="let item of allSubctegory">{{item.name}}</p>
+           
+      </div>
+      </div>
+      
+
+
+
+
+        <!-- end dropdown -->
+        </div>
     </div>
     <!-- <div class="col-lg-1 col-md-4 col-sm-4 ">
       <a href="#"><b>Electronics</b></a>

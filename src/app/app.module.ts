@@ -35,6 +35,8 @@ import { TableRowComponent } from './+product/product-details/product-summary/pr
 import { SnakeCasePipe } from './+shared/pipes/snake-case.pipe';
 import { CartFormComponent } from './+product/product-details/product-summary/cart-form/cart-form.component';
 import { RatingComponent } from './+shared-UI/rating/rating.component';
+import { ByCategoryComponent } from './+filter/by-category/by-category.component';
+import { FilterComponent } from './+filter/filter/filter.component';
 import { ProductFashionComponent } from './+product/+main-page/product-fashion/product-fashion.component';
 
 
@@ -69,6 +71,8 @@ import { ProductFashionComponent } from './+product/+main-page/product-fashion/p
     SnakeCasePipe,
     CartFormComponent,
     RatingComponent,
+    ByCategoryComponent,
+    FilterComponent,
     ProductFashionComponent
   ],
   imports: [

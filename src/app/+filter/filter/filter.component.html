@@ -1,0 +1,72 @@
+
+ <main class="container-fluid mainbady">
+    <div class="row">
+        <!-- side bar -->
+        <div class="col-sm-3">
+            side pare
+            <input #input1 type="number">
+            <button class="btn" (click)=goProduct(input1.value)>go</button>
+            </div>
+            <!-- end side bar -->
+            <div class="col-sm-9">
+         <div class="row">
+         <div class="col-sm-6">{{productSize}} Results for"Skin Care"</div>
+          <div class="col-sm-3">
+           
+              <div class="dropdown">
+              <button class="btn dropdown-toggle" data-toggle="dropdown">RECOMENDED</button>
+              <ul class="dropdown-menu">
+                <li ><a class="dropdown-item "  (click)="highToLow()" >high to low</a> </li>
+                <li ><a class="dropdown-item "  (click)="lowToHigh()">low to high</a> </li>
+              </ul>
+            </div>
+          </div>
+    <!-- ///////////////////////// -->
+    <div class="col-sm-3">
+           
+        <div class="dropdown">
+        <button class="btn dropdown-toggle" data-toggle="dropdown">per page</button>
+        <ul class="dropdown-menu">
+          <li ><a class="dropdown-item "  href="#" >5 per page</a> </li>
+          <li ><a class="dropdown-item "  href="#">6 per page</a> </li>
+        </ul>
+      </div>
+    </div>
+         </div>
+    <div class="row">
+      <div class="col-sm-3" *ngFor="let item of products">
+        <div class="card" >
+            <img class="card-img-top" src="{{item.image[0]}}" alt="Card image" style="width:100%">
+            <div class="card-body">
+              <p style="font-size: 12px; color:gray;" class="card-title">
+              {{item.brand}}<br>
+              {{item.description}}
+              </p>
+              <h5>EGP {{item.price}}</h5> 
+            </div>
+          </div>
+    </div>
+    <!-- end card -->
+    </div>
+    
+            </div>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            </div>
+            </main> 
+            
+    
