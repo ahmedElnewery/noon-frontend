@@ -6,9 +6,12 @@
     text-align: center;
     box-shadow:0 8px 8px 0 lightgray;
   }
-  
+
+  .product-link{
+    text-decoration: none;
+    color: black;
+  }
   [class*="col-"] {
     background-clip: padding-box;
     border: 1% solid transparent;
   }
-  
