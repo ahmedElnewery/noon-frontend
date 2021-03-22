@@ -58,11 +58,10 @@
             class="reviews-submitted"
             *ngFor="let review of currentProduct.reviews"
           >
-          <div class="d-flex">
-            <div class="reviewer">
-              <span>{{ review.reviewer.email }}</span>
-            </div>
-            <div > {{review.rating}}</div>
+          <div class="d-flex justify-content-between">
+
+              <span class="reviewer">{{ review.reviewer?.email }}</span>
+            <span class="reviewer"> {{review?.createdDate}}</span>
           </div>
             <div class="ratting">
               <app-rating

@@ -21,12 +21,16 @@ export class ProductsSpecificationComponent implements OnInit {
 
   }
 
+
   addReview() {
    const review = {...this.addReviewFrom.value,rating:this.selectedValue}
 
     this.productService.addReview(review, this.currentProduct._id).subscribe(
       (data) => {
+        console.log(data)
        this.currentProduct.reviews = [...this.currentProduct.reviews,data]
+       this.currentProduct.numReviews+=1;
+       this.currentProduct.rating = this.currentProduct.reviews.reduce((acc,curr)=>{ return acc+curr},0)/this.currentProduct.numReview
        this.error =""
       },
      err => this.error ="you have already review this product"

@@ -28,12 +28,9 @@
   margin-bottom: 45px;
 }
 
- .tab-content .reviewer {
-  font-size: 18px;
-  font-weight: 600;
-}
 
- .tab-content .reviewer span {
+
+ .tab-content span.reviewer {
   color: #666666;
   font-size: 14px;
   font-weight: 400;
@@ -52,7 +49,7 @@
   width: 100%;
   height: 35px;
   padding: 0 15px;
-  color: #666666;
+  color: #fff;
   border: 1px solid #dddddd;
   border-radius: 4px;
   margin-bottom: 15px;
