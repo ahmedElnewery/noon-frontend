@@ -64,14 +64,14 @@ export class ProductService {
   return localStorage.getItem("userToken")
   }
   //add review
-  addReview(review:IReview,productId): Observable<IReview> {
-    return this._http.post<IReview>(`${ProductAPI.ADD_REVIEW}/${productId}/reviews`,review,{
+  addReview(review:any,productId): Observable<any> {
+    return this._http.post<any>(`${ProductAPI.ADD_REVIEW}/${productId}/reviews`,review,{
       headers:{
         'Content-Type':'application/json',
         Authorization:`Bearer ${this.getToken()}`
       }
     }).pipe(
-      catchError(err => { return throwError(err.message); })
+      catchError(err => { return throwError(err); })
     )
   }
 }

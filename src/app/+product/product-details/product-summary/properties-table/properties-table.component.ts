@@ -16,7 +16,6 @@ allCategories =categeories;
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.product)
   }
 
 }

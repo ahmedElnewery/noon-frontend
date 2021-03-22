@@ -22,12 +22,6 @@
   margin-bottom: 10px;
 }
 
- .tab-content ul li::before {
-  content: '\f061';
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
-  padding-right: 5px;
-}
 
  .tab-content .reviews-submitted {
   position: relative;
@@ -84,4 +78,20 @@
 }
 
 
+.rating-list li {
+  float: right;
+  color: #ddd;
+  padding: 10px 5px;
+
+}
+
+.rating-list li:hover,
+.rating-list li:hover ~ li, .rating-list li.selected {
+  color: #ffd700;
+}
+
+.rating-list {
+  display: inline-block;
+  list-style: none;
+}
 

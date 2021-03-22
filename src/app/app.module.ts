@@ -38,6 +38,7 @@ import { RatingComponent } from './+shared-UI/rating/rating.component';
 import { ByCategoryComponent } from './+filter/by-category/by-category.component';
 import { FilterComponent } from './+filter/filter/filter.component';
 import { ProductFashionComponent } from './+product/+main-page/product-fashion/product-fashion.component';
+import { SelectRatingComponent } from './+shared-UI/select-rating/select-rating.component';
 
 
 @NgModule({
@@ -73,7 +74,8 @@ import { ProductFashionComponent } from './+product/+main-page/product-fashion/p
     RatingComponent,
     ByCategoryComponent,
     FilterComponent,
-    ProductFashionComponent
+    ProductFashionComponent,
+    SelectRatingComponent
   ],
   imports: [
     BrowserModule,

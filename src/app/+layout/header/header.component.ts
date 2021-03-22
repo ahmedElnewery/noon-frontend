@@ -25,14 +25,11 @@ export class HeaderComponent implements OnInit {
   }
   leaveList() {
     this.isHover = false;
-    console.log("lesrfr")
   }
   getSubcategory(cateid) {
     this.filterService.getAllSubcategoryByCateId(cateid).subscribe(
       data => {
-        //console.log("Success",data);
         this.allSubctegory = data;
-        // console.log(this.allSubctegory)
       },
       error => {
         console.log('error', error)

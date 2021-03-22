@@ -58,9 +58,12 @@
             class="reviews-submitted"
             *ngFor="let review of currentProduct.reviews"
           >
+          <div class="d-flex">
             <div class="reviewer">
-              <span>{{ review.createdAt }}</span>
+              <span>{{ review.reviewer.email }}</span>
             </div>
+            <div > {{review.rating}}</div>
+          </div>
             <div class="ratting">
               <app-rating
                 [value]="review.rating"
@@ -74,21 +77,28 @@
           <div class="reviews-submit">
 
             <form [formGroup]="addReviewFrom"  (ngSubmit)="addReview()">
+
+              <div [class.alert]="error" class="alert-danger" role="alert">
+                {{error}}
+              </div>
             <h4>Give your Review:</h4>
             <div class="rating">
-              <input type="number" min="0" max="5" class="form-control" formControlName="rating" name="rating"/>
-              <!-- <i class="far fa-star"></i>
-              <i class="far fa-star"></i>
-              <i class="far fa-star"></i>
-              <i class="far fa-star"></i>
-              <i class="far fa-star"></i> -->
+              <ul class="list-inline rating-list"
+              *ngFor="let star of stars" style="display: inline-block" >
+                <li (click)="countStar(star)"
+                    [ngClass]="{'selected': (star <= selectedValue)}">
+                  <i class="fa fa-star"></i>
+                </li>
+          </ul>
+
+
             </div>
             <div class="row form" >
                 <div class="col-sm-12">
                   <textarea placeholder="Review" formControlName="comment" name="comment"></textarea>
                 </div>
                 <div class="col-sm-3">
-                  <input class="btn btn-primary" type="submit" value="add product" />
+                  <input class="btn btn-primary" type="submit" value="review" />
                 </div>
 
               </div>

@@ -17,14 +17,17 @@ export class ProductSummaryComponent implements OnInit {
   allColor =Color;
   allSubcategories =AllSubcategories
   allCategories =categeories;
-  constructor() { }
+  product:IProduct
+  constructor() {
+    this.product = this.currentProduct
+
+   }
 
   ngOnInit(): void {
   }
   ngOnChanges(changes: SimpleChanges) {
     if (changes['currentProduct']) {
       this.detailsProduct = this.currentProduct;
-      console.log(this.detailsProduct)
       this.inStockArr = Array.from({ length: this.detailsProduct.countInStock }, (_, i) => i + 1);
 
     }

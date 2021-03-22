@@ -207,7 +207,6 @@ export class AddProductComponent implements OnInit {
   }
   onsubCategeoryChange() {
     this.subcategory.valueChanges.subscribe((change) => {
-      console.log(change)
       if (change) {
         this.selectedSubCategeory = change
 
@@ -216,7 +215,6 @@ export class AddProductComponent implements OnInit {
   }
   returnProduct(categeorizedProperties) {
     let product = Object.assign(categeorizedProperties, this.addProductForm.value)
-    console.log(product)
     this.productService.addProduct(product).subscribe((data) => console.log(data), err => console.log(err.message))
   }
   // add product function
