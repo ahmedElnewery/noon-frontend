@@ -3,10 +3,45 @@
     <div class="row">
         <!-- side bar -->
         <div class="col-sm-3">
-            side pare
-            <input #input1 type="number">
-            <button class="btn" (click)=goProduct(input1.value)>go</button>
-            </div>
+          <div class="row my-5">
+            <label>brand</label>
+            <input #brand  class="col-sm-7" type="text">
+          
+            <button class="btn col-sm-2" (click)="goBrand(brand)">go</button>
+           </div>
+           <!-- 1-brand -->
+           <div class="row my-5">
+           <input #input1  class="col-sm-4" type="number">
+           <span class="col-sm-2" > to</span>
+           <input #input2  class="col-sm-4" type="number">
+           <button class="btn col-sm-2" (click)="goProduct(input1.value,input2.value)">go</button>
+          </div>
+           <!-- 2-price -->
+           <div class="row my-5">
+         <div class="col-sm-12">
+           <span>{{rang.value}} Stars or More</span><br>
+          <input width="100%" type="range" max="5" value="1" min="1" step=".3" #rang (change)="startFilter(rang.value)">
+
+
+         </div>
+
+           </div>
+           <!-- 3-start  -->
+
+
+
+
+
+
+
+
+
+
+           
+           <!-- 5_types   -->
+          
+             <!-- end side bar--> 
+          </div>
             <!-- end side bar -->
             <div class="col-sm-9">
          <div class="row">
@@ -23,14 +58,14 @@
           </div>
     <!-- ///////////////////////// -->
     <div class="col-sm-3">
-           
+<!--            
         <div class="dropdown">
         <button class="btn dropdown-toggle" data-toggle="dropdown">per page</button>
         <ul class="dropdown-menu">
           <li ><a class="dropdown-item "  href="#" >5 per page</a> </li>
           <li ><a class="dropdown-item "  href="#">6 per page</a> </li>
         </ul>
-      </div>
+      </div> -->
     </div>
          </div>
     <div class="row">
@@ -42,13 +77,26 @@
               {{item.brand}}<br>
               {{item.description}}
               </p>
-              <h5>EGP {{item.price}}</h5> 
+              <h5>EGP {{item.price}}</h5>
+              <span> {{item.rating}}</span><span>*</span> 
             </div>
           </div>
     </div>
     <!-- end card -->
     </div>
-    
+    <div class="row">
+   
+    <ul class="pagination mx-auto my-4" >
+      <li class="page-item  " id="prev" ><a (click)="prevPageFun()" class="page-link" >Previous</a></li>
+      <li class="page-item"><a (click)="goToNext(0)" class="page-link" >1</a></li>
+      <li class="page-item" ><a (click)="goToNext(1)"  class="page-link" >2</a></li>
+      <li class="page-item"><a (click)="goToNext(2)"  class="page-link" >3</a></li>
+      <li class="page-item"><a (click)="goToNext(3)"  class="page-link" >4</a></li>
+      <li class="page-item" id="next"><a  (click)="nextPageFun()"  class="page-link" >Next</a></li>
+    </ul>
+
+   
+    </div>
             </div>
             
             

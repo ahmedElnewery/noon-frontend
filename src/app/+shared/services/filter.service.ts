@@ -9,7 +9,9 @@ export class FilterService {
 
   constructor(private _http:HttpClient) { }
 //productByCategory:any[]=[];
+specialProperty(subcategoryName){
 
+}
 getProductByCtegory(categoryName){
 this._url="http://localhost:8000/api/products/bycategory/"+categoryName;
 return this._http.get<any>(this._url);
@@ -29,5 +31,8 @@ getProductBySubcategory(SubcategoryName){
 }
 
 
-
+getAllSubcategoryByName(cateName){
+  this._url="http://localhost:8000/api/filter/subcategoryarr/"+cateName;
+  return this._http.get<any>(this._url);
+}
 }
