@@ -9,15 +9,15 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./cart-form.component.scss']
 })
 export class CartFormComponent implements OnInit {
-@Input() inStockArray;
-@Input ()currentProduct
-allColor=Color;
-allSizes=Size;
-error:string = "";
-id:any;
-  constructor(private cartService:CartService,private activatedRoute: ActivatedRoute) {
+  @Input() inStockArray;
+  @Input() currentProduct
+  allColor = Color;
+  allSizes = Size;
+  error: string = "";
+  id: any;
+  constructor(private cartService: CartService, private activatedRoute: ActivatedRoute) {
 
-   }
+  }
 
   ngOnInit(): void {
 
@@ -25,18 +25,19 @@ id:any;
       if (params.get('id') != null) {
         this.id = params.get('id');
       }
-console.log(this.id)
-    })  }
-  addToCart(){
+      console.log(this.id)
+    })
+  }
+  addToCart() {
     this.cartService.addToCart(this.id).subscribe(
       (data) => {
         console.log(data)
-       this.error =""
+        this.error = ""
       },
-     err => this.error ="error"
+      err => this.error = "error"
 
-  )
-}
+    )
   }
+}
 
 
