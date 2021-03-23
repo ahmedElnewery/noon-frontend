@@ -43,6 +43,6 @@
   <app-properties-table [product]= 'detailsProduct'></app-properties-table>
 
   <hr />
-<app-cart-form [inStockArray]= 'inStockArr' [currentProduct]="product"></app-cart-form>
+<app-cart-form [countInStock]= 'detailsProduct.countInStock' [currentProduct]="product"></app-cart-form>
 
 </section>

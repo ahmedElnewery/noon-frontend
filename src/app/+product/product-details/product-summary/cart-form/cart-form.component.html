@@ -2,11 +2,9 @@
   <div class="row align-items-end">
     <div class="col-3">
       <label for="quantity">quantity</label>
-      <select id="quantity" class="form-control">
-        <ng-container *ngFor="let count of inStockArray">
-          <option [ngValue]="count">{{ count }}</option>
-        </ng-container>
-      </select>
+      <app-quantity-dropdown [numberValue]="countInStock"></app-quantity-dropdown>
+
+
     </div>
     <div class="col-9">
       <input

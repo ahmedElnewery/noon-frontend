@@ -1,0 +1,5 @@
+<select id="quantity" class="form-control">
+  <ng-container *ngFor="let count of numberValue | numberToArr">
+    <option [ngValue]="count">{{ count }}</option>
+  </ng-container>
+</select>

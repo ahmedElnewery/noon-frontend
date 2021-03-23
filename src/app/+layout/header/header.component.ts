@@ -20,7 +20,6 @@ export class HeaderComponent implements OnInit {
 
   }
   goToFillter(subcategory) {
-    console.log("cliced")
     this.router.navigate(['/filter', subcategory])
   }
   leaveList() {

@@ -39,6 +39,11 @@ import { ByCategoryComponent } from './+filter/by-category/by-category.component
 import { FilterComponent } from './+filter/filter/filter.component';
 import { ProductFashionComponent } from './+product/+main-page/product-fashion/product-fashion.component';
 import { SelectRatingComponent } from './+shared-UI/select-rating/select-rating.component';
+import { CartItemComponent } from './+cart/cart-item/cart-item.component';
+import { CartItemsComponent } from './+cart/cart-items/cart-items.component';
+import { CartComponent } from './+cart/cart.component';
+import { QuantityDropdownComponent } from './+shared-UI/quantity-dropdown/quantity-dropdown.component';
+import { NumberToArrPipe } from './+shared/pipes/number-to-arr.pipe';
 
 
 @NgModule({
@@ -75,7 +80,12 @@ import { SelectRatingComponent } from './+shared-UI/select-rating/select-rating.
     ByCategoryComponent,
     FilterComponent,
     ProductFashionComponent,
-    SelectRatingComponent
+    SelectRatingComponent,
+    CartItemComponent,
+    CartItemsComponent,
+    CartComponent,
+    QuantityDropdownComponent,
+    NumberToArrPipe
   ],
   imports: [
     BrowserModule,

@@ -9,7 +9,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./cart-form.component.scss']
 })
 export class CartFormComponent implements OnInit {
-  @Input() inStockArray;
+  @Input() countInStock;
   @Input() currentProduct
   allColor = Color;
   allSizes = Size;
@@ -20,12 +20,10 @@ export class CartFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
       if (params.get('id') != null) {
         this.id = params.get('id');
       }
-      console.log(this.id)
     })
   }
   addToCart() {
