@@ -6,6 +6,7 @@ export enum ScreenSize{
   sm="4inch"
 
 }
+//"screensize":[ "6.5inch","6inch","5inch","4inch"]
 export enum InternalMemory{
   _16="16g",
   _32 = "32g",

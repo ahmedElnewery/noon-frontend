@@ -8,6 +8,13 @@ export interface ISubCategeory{
   name:string,
   displayName:string,
  }
+ export interface IOptions{
+
+    options:object,
+    cateid:number,
+    name:string
+   
+ }
 export interface IFashion{
 size:string,
 color:string,
