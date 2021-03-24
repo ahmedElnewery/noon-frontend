@@ -15,14 +15,26 @@ export class CartService {
     }
  addToCart(productId:string){
 
-  this._url="http://localhost:8000/api/products/cart"
+  this._url="http://localhost:8000/api/cart/addcart"
   return this._http.post<any>(this._url,{productId:productId},{
     headers:{
       'Content-Type':'application/json',
-      Authorization:`Bearer ${this.getToken()}`
+      'Authorization':`Bearer ${this.getToken()}`
     }
   }).pipe(
     catchError(err => { return throwError(err.message); })
   )}
+  getAllCarts(){
+    this._url="http://localhost:8000/api/cart/getcart"
+    return this._http.get<any>(this._url,{
+      headers:{
+        'Content-Type':'application/json',
+        'Authorization':`Bearer ${this.getToken()}`,
+
+      }
+    }).pipe(
+      catchError(err => { return throwError(err.message); })
+    )
+  }
 }
 
