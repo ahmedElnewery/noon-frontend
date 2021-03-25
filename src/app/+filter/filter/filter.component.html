@@ -39,7 +39,49 @@
 
            
            <!-- 5_types   -->
-          
+           <div class="row">
+          <div class="col-12">
+      
+       
+
+
+
+            <ul>
+              <li *ngFor="let group of optionArray| keyvalue">
+             <h5> {{group.key}}</h5>
+            
+                <ul *ngIf="group.key=='color'">
+                  <li (click)="filterWithSpical(group.key,item)"    *ngFor="let item of group.value"
+                  [style.background]="item" style="width: 50px; height: 50px;"
+                  >
+                  
+                  
+                  </li>
+              </ul>
+              <ul *ngIf="group.key!='color'">
+                  <li (click)="filterWithSpical(group.key,item)"    *ngFor="let item of group.value">
+                  {{item}}
+                  
+                  </li>
+              </ul>
+              </li>
+          </ul>
+
+
+
+
+
+
+
+<!-- end -->
+</div>
+           </div>  
+
+
+
+
+
+
              <!-- end side bar--> 
           </div>
             <!-- end side bar -->

@@ -10,7 +10,7 @@ export interface ISubCategeory{
  }
  export interface IOptions{
 
-    options:object,
+    options:Array<any>,
     cateid:number,
     name:string
    

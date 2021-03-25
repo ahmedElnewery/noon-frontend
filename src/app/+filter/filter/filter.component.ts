@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+declare var jq: any;
+import * as $ from 'jquery';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { FilterService } from 'src/app/+shared/services/filter.service';
 import { IProduct } from 'src/app/+shared/interfaces/IProduct';
 import { IOptions, ISubCategeory } from 'src/app/+shared/interfaces/ICategory';
+import { HairType } from 'src/app/+shared/enums/beauty';
+//import { $ } from 'protractor';
+
 @Component({
   selector: 'app-filter',
   templateUrl: './filter.component.html',
@@ -21,6 +26,7 @@ export class FilterComponent implements OnInit {
   showProductSize: number;
   specialProperties:string[];
   option:IOptions;
+  optionArray:any;
   constructor(private activatedRoute: ActivatedRoute, private filterService: FilterService) { }
   getProducts(subcategory) {
     this.filterService.getProductBySubcategory(subcategory).subscribe(
@@ -145,6 +151,15 @@ export class FilterComponent implements OnInit {
     this.productSize = this.products.length;
     this.buildpages()
   }
+  filterWithSpical(group,item){
+   console.log("group:"+ group)
+console.log("item"+item)
+
+this.products = this.orginalProduct.filter((itemm) => itemm[group] == item );
+//this.orginalProduct = this.products;
+this.productSize = this.products.length;
+this.buildpages()
+  }
   goBrand(brand){
     var val1 = brand.toString();
     
@@ -153,16 +168,26 @@ export class FilterComponent implements OnInit {
     this.productSize = this.products.length;
     this.buildpages()
   }
+  test(){
+    alert("salma clicked")
+  }
   ngOnInit(): void {
+    	
+$( ".options" ).remove();
+$(".create").append(`<div class="options"></div>`)
     this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
 
       this.subcategoryName = params.get('subcateName');
 
       this.getProducts(this.subcategoryName);
       this.filterService.getAllSubcategoryByName(this.subcategoryName).subscribe(
-        (date)=>{
-          console.log(date.opti);
-
+        (data)=>{
+          console.log(data);
+          this.option=data;
+           console.log("option");
+         this.optionArray=   this.option[0].options[0];
+         console.log(   this.optionArray);
+        
         }
       );
 
