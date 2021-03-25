@@ -15,17 +15,17 @@ id="60545e33b09d6330209d8be6";
   productList:any
 
   ngOnInit(): void {
-   this.cartService.addToCart(this.id).subscribe(
+  //  this.cartService.addToCart(this.id).subscribe(
 
-    (data)=>{this.productList=data;
-        console.log(data+"data data");
-     
-     },(err)=>{
-       console.log(err);
-     }
+  //   (data)=>{this.productList=data;
+  //       console.log(data+"data data");
 
-   );
-   console.log(this.productList+"productlist");
+  //    },(err)=>{
+  //      console.log(err);
+  //    }
+
+  //  );
+  //  console.log(this.productList+"productlist");
   }
 
 

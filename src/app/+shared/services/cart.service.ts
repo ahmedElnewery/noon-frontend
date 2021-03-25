@@ -13,10 +13,10 @@ export class CartService {
   getToken(){
     return localStorage.getItem("userToken")
     }
- addToCart(productId:string){
+ addToCart(productId:string,qty:number){
 
   this._url="http://localhost:8000/api/cart/addcart"
-  return this._http.post<any>(this._url,{productId:productId},{
+  return this._http.post<any>(this._url,{productId:productId,qty:qty},{
     headers:{
       'Content-Type':'application/json',
       'Authorization':`Bearer ${this.getToken()}`
