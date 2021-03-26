@@ -7,34 +7,49 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CartService {
-  _url="";
+  _url = "";
 
-  constructor(private _http:HttpClient) { }
-  getToken(){
+  constructor(private _http: HttpClient) { }
+  getToken() {
     return localStorage.getItem("userToken")
-    }
- addToCart(productId:string,qty:number){
+  }
+  addToCart(productId: string, qty: number) {
 
-  this._url="http://localhost:8000/api/cart/addcart"
-  return this._http.post<any>(this._url,{productId:productId,qty:qty},{
-    headers:{
-      'Content-Type':'application/json',
-      'Authorization':`Bearer ${this.getToken()}`
-    }
-  }).pipe(
-    catchError(err => { return throwError(err.message); })
-  )}
-  getAllCarts(){
-    this._url="http://localhost:8000/api/cart/getcart"
-    return this._http.get<any>(this._url,{
+    this._url = "http://localhost:8000/api/cart/addcart"
+    return this._http.post<any>(this._url, { productId: productId, qty: qty }, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.getToken()}`
+      }
+    }).pipe(
+      catchError(err => { return throwError(err.message); })
+    )
+  }
+  deleteCart(prodId:string){
+
+    this._url="http://localhost:8000/api/products/cart-delete-item"
+    return this._http.post<any>(this._url,{prodId:prodId},{
       headers:{
         'Content-Type':'application/json',
-        'Authorization':`Bearer ${this.getToken()}`,
+        Authorization:`Bearer ${this.getToken()}`
+      }
+    }).pipe(
+      catchError(err => { return throwError(err.message); })
+    )}
+  
+  getAllCarts() {
+    this._url = "http://localhost:8000/api/cart/getcart"
+    return this._http.get<any>(this._url, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.getToken()}`,
 
       }
     }).pipe(
       catchError(err => { return throwError(err.message); })
     )
   }
+
 }
+
 

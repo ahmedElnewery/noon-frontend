@@ -1,5 +1,5 @@
 import { CartService } from 'src/app/+shared/services/cart.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { IProduct } from './../../+shared/interfaces/IProduct';
 import { ProductService } from './../../+shared/services/product.service';
 import { Component, OnInit } from '@angular/core';
@@ -10,13 +10,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart-items.component.scss']
 })
 export class CartItemsComponent implements OnInit {
-  cartItems;
+  cartItems:IProduct[];
   error=""
-  constructor(private cartService:CartService,private router:Router) {
+  prodId:string;
+  constructor(private cartService:CartService,private router:Router,private activatedRoute: ActivatedRoute) {
 
   }
 
   ngOnInit(): void {
+    this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
+      if (params.get('prodId') != null) {
+        this.prodId = params.get('.prodId');
+      }
+    })
+
+
+
 this.getcarts()
   }
   getcarts(){
@@ -29,5 +38,17 @@ this.getcarts()
   navigateToDetails(){
     // this.router.navigate([`/productdetails/${this.productList[0]._id}`])
   }
+  deleteCart(){
 
+    this.cartService.deleteCart(this.prodId).subscribe(
+      (data) => {
+        console.log(data)
+        this.error = ""
+      },
+      err=> this.error = "error"
+
+    )
+  }
 }
+
+
