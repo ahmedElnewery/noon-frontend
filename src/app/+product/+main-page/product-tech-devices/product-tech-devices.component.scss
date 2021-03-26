@@ -3,6 +3,8 @@
   justify-content: center;
 
 }
+.product-slider{display:none;}
+.product-slider.slick-initialized{display:block;}
 
 // .fa{
 //   font-size: xx-large;

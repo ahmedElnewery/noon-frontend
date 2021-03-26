@@ -1,3 +1,4 @@
+import { SliderComponent } from './shared-UI/slider/slider.component';
 import { RelatedProductComponent } from './+product/product-details/related-product/related-product.component';
 
 import { BrowserModule } from '@angular/platform-browser';
@@ -89,7 +90,8 @@ import { ProductCardDesignComponent } from './+product/+main-page/product-card-d
     QuantityDropdownComponent,
     NumberToArrPipe,
     SearchitemComponent,
-    ProductCardDesignComponent
+    ProductCardDesignComponent,
+    SliderComponent,
   ],
   imports: [
     BrowserModule,
