@@ -1,5 +1,9 @@
 <div class=" related-product">
-  <app-product-card [productList]='relatedProducts'></app-product-card>
+  <!-- <app-product-card [productList]='relatedProducts'></app-product-card> -->
+  <div class="product-slider">
+    <app-product-card-design  [product] ="pro"  *ngFor="let pro of relatedProducts"></app-product-card-design>
 
+</div>
+  <!-- <app-slider [productList] ="relatedProducts"></app-slider> -->
 
 </div>

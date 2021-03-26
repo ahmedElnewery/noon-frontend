@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { IProduct } from 'src/app/+shared/interfaces/IProduct';
 import { ProductService } from 'src/app/+shared/services/product.service';
 declare var $: any;
@@ -16,16 +16,29 @@ export class RelatedProductComponent implements OnInit {
   loading: boolean = false
 
   ngOnInit(): void {
-    this.getProductsBySubcategory()
-
-
   }
-  getProductsBySubcategory() {
-    this.loading = true
-    this.productServ.getProductsBySubcategory(this.subcategory).subscribe(
-      data => {
-        this.loading = false
-        this.relatedProducts = data
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['subcategory']) {
+         this.getProductsBySubcategory()
+        }
+        console.log("related")
+      }
+      getProductsBySubcategory() {
+        this.loading = true
+        this.productServ.getProductsBySubcategory(this.subcategory).subscribe(
+          data => {
+            this.loading = false
+            this.relatedProducts = data
+            $(document).ready(function () {
+
+              $('.product-slider').slick({
+                infinite: true,
+                slidesToShow: 5,
+                slidesToScroll: 5
+              });
+            })
+
+
       },
 
       err => {
