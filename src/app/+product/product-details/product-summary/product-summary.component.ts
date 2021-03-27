@@ -12,20 +12,21 @@ import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 export class ProductSummaryComponent implements OnInit {
   @Input() currentProduct:IProduct
   detailsProduct:IProduct
-  inStockArr:number[];
   allSizes =Size;
   allColor =Color;
   allSubcategories =AllSubcategories
   allCategories =categeories;
-  constructor() { }
+  product:IProduct
+  constructor() {
+    this.product = this.currentProduct
+
+   }
 
   ngOnInit(): void {
   }
   ngOnChanges(changes: SimpleChanges) {
     if (changes['currentProduct']) {
       this.detailsProduct = this.currentProduct;
-      console.log(this.detailsProduct)
-      this.inStockArr = Array.from({ length: this.detailsProduct.countInStock }, (_, i) => i + 1);
 
     }
 

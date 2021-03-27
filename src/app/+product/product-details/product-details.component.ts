@@ -1,6 +1,6 @@
 import { IProduct } from './../../+shared/interfaces/IProduct';
 import { ProductService } from './../../+shared/services/product.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 declare var $: any;
 @Component({
@@ -14,19 +14,25 @@ export class ProductDetailsComponent implements OnInit {
   loading: Boolean = false
   errorMessage = ""
   productID;
-  constructor(private productServ: ProductService, private router: Router, private activatedRoute: ActivatedRoute) { }
+  constructor(private productServ: ProductService, private router: Router, private activatedRoute: ActivatedRoute) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+
+   }
 
   ngOnInit(): void {
     this.getActivatedRoute()
     this.getProductById(this.productID)
   }
-
+  ngOnChanges(changes: SimpleChanges): void {
+    //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
+    //Add '${implements OnChanges}' to the class.
+    this.getActivatedRoute()
+    this.getProductById(this.productID)
+  }
   getActivatedRoute() {
     this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
       if (params.get('id') != null) {
-        console.log(params.get('id'))
         this.productID = params.get('id');
-
       }
 
     })

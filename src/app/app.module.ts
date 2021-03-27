@@ -1,5 +1,6 @@
 import { CheckoutFooterComponent } from './+product/+checkout/checkout-footer/checkout-footer.component';
 import { CheckoutHeaderComponent } from './+product/+checkout/checkout-header/checkout-header.component';
+import { SliderComponent } from './shared-UI/slider/slider.component';
 import { RelatedProductComponent } from './+product/product-details/related-product/related-product.component';
 
 import { BrowserModule } from '@angular/platform-browser';
@@ -47,6 +48,14 @@ import { CheckoutSignUpComponent } from './+product/+checkout/checkout-content/c
 import { ChekcoutShipAddressComponent } from './+product/+checkout/checkout-content/chekcout-ship-address/chekcout-ship-address.component';
 import { ChekcoutPaymentComponent } from './+product/+checkout/checkout-content/chekcout-payment/chekcout-payment.component';
 import { ChekcoutOrdersComponent } from './+product/+checkout/checkout-content/chekcout-orders/chekcout-orders.component';
+import { SelectRatingComponent } from './+shared-UI/select-rating/select-rating.component';
+import { CartItemComponent } from './+cart/cart-item/cart-item.component';
+import { CartItemsComponent } from './+cart/cart-items/cart-items.component';
+import { CartComponent } from './+cart/cart.component';
+import { QuantityDropdownComponent } from './+shared-UI/quantity-dropdown/quantity-dropdown.component';
+import { NumberToArrPipe } from './+shared/pipes/number-to-arr.pipe';
+import { SearchitemComponent } from './+filter/searchitem/searchitem.component';
+import { ProductCardDesignComponent } from './+product/+main-page/product-card-design/product-card-design.component';
 
 
 @NgModule({
@@ -91,7 +100,16 @@ import { ChekcoutOrdersComponent } from './+product/+checkout/checkout-content/c
     CheckoutSignUpComponent,
     ChekcoutShipAddressComponent,
     ChekcoutPaymentComponent,
-    ChekcoutOrdersComponent
+    ChekcoutOrdersComponent,
+    SelectRatingComponent,
+    CartItemComponent,
+    CartItemsComponent,
+    CartComponent,
+    QuantityDropdownComponent,
+    NumberToArrPipe,
+    SearchitemComponent,
+    ProductCardDesignComponent,
+    SliderComponent,
   ],
   imports: [
     BrowserModule,

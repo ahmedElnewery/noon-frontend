@@ -11,6 +11,20 @@ export class HeaderComponent implements OnInit {
   allcategory: any[] = [];
   allSubctegory: any[] = [];
   isHover = false;
+  categeories=["fashion","electronics","home","beauty&health"];
+  AllSubcategories=[ "menWear",
+  "womenWear",
+   "kidWear",
+    "mobiles",
+    "labtops",
+    "tv",
+    "kitchen",
+   "homeDecor",
+   "furniture",
+   "makeup",
+    "skinCare",
+    "hairCare",
+  ];
   //productSubcategory:any[]=[];
   productSubcategory = ['Electronics', 'Mobiles', 'Fachion', 'Home', 'Beauty', 'Baby', 'Deals'];
   constructor(private filterService: FilterService, private router: Router) { }
@@ -20,19 +34,41 @@ export class HeaderComponent implements OnInit {
 
   }
   goToFillter(subcategory) {
-    console.log("cliced")
     this.router.navigate(['/filter', subcategory])
   }
   leaveList() {
     this.isHover = false;
-    console.log("lesrfr")
+  }
+  onEnter(search){
+   
+    let matchingSearch;
+  var filter1 =this.categeories.filter((item,index)=>{
+   return item.toLocaleLowerCase().match(search.toString().toLocaleLowerCase());
+  
+      
+  })
+  if (filter1[0]!=null){
+    console.log("cate search for " +filter1[0] )
+    this.router.navigate([`/allcategory/${filter1[0]}`]);
+  }
+  else{
+  var filter2=this.AllSubcategories.filter((item,index)=>{
+  return item.toLocaleLowerCase().match(search.toString().toLocaleLowerCase());
+  
+})
+if (filter2[0]!=null){
+  console.log("subcate search for " +filter2[0] )
+  this.router.navigate([`/filter/${filter2[0]}`]);
+}else{
+  console.log("not found")
+  alert("not fonund");
+}
+  }
   }
   getSubcategory(cateid) {
     this.filterService.getAllSubcategoryByCateId(cateid).subscribe(
       data => {
-        //console.log("Success",data);
         this.allSubctegory = data;
-        // console.log(this.allSubctegory)
       },
       error => {
         console.log('error', error)

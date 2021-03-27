@@ -1,8 +1,8 @@
 <div class="container-fluid  mainbady">
 <div class="row">
 
-    <div class="col-sm-3" *ngFor="let item of allproduct">
-        <div class="card" >
+    <div class="col-sm-3" *ngFor="let product of allproduct">
+        <!-- <div class="card" >
             <img class="card-img-top img1" src="{{item.image[0]}}" alt="Card image" style="width:100%">
             <div class="card-body">
               <p style="font-size: 12px; color:gray;" class="card-title">
@@ -12,6 +12,28 @@
               <h5>EGP {{item.price}}</h5> 
               <button class="btn btn-outline-info" >show details</button>
             </div>
+          </div> -->
+          <div class="card p-2">
+            <span class="cart-icon">
+              <img src="./../../../../assets/Img/icons/cart.svg" alt="">
+          
+              <!-- <img src="./../../../../assets/Img/icons/filledCart.svg" alt=""> -->
+            </span>
+            <a class="product-link" [routerLink]="'/productdetails/'+product._id">
+              <img [src]="product.image[0]" alt="" class="w-100 d-block">
+              <div class="product-body">
+                <p class="brand">{{ product.brand }}</p>
+              <p class="product-name">{{ product.name }}</p>
+              <b>
+                <div class="product-price">EGY {{ product.price }}</div>
+              </b>
+              <div class="discount">
+                <span class="price-was">{{product.price - (product.price * product.discount/100)}}</span>
+                <span class="discount">{{product.discount}}%</span>
+              </div>
+              <app-rating [value]="product.rating" [color]="'#FEEE00'"></app-rating>
+            </div>
+            </a>
           </div>
     </div>
     <!-- end card -->

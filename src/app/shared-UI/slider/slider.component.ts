@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 declare var $: any;
 
 @Component({
@@ -7,19 +7,19 @@ declare var $: any;
   styleUrls: ['./slider.component.scss']
 })
 export class SliderComponent implements OnInit {
+@Input()productList
+  // images = [
+  //   { src: "../../../assets/Img/products/chothes/product-1.jpg" },
+  //   { src: "../../../assets/Img/products/chothes/product-2.jpg" },
+  //   { src: "../../../assets/Img/products/chothes/product-3.jpg" },
+  //   { src: "../../../assets/Img/products/chothes/product-4.jpg" },
+  //   { src: "../../../assets/Img/products/chothes/product-5.jpg" },
 
-  images = [
-    { src: "../../../assets/Img/products/chothes/product-1.jpg" },
-    { src: "../../../assets/Img/products/chothes/product-2.jpg" },
-    { src: "../../../assets/Img/products/chothes/product-3.jpg" },
-    { src: "../../../assets/Img/products/chothes/product-4.jpg" },
-    { src: "../../../assets/Img/products/chothes/product-5.jpg" },
-
-  ]
+  // ]
   constructor() { }
 
   ngOnInit(): void {
-    this.initializeSlider()
+    // this.initializeSlider()
   }
 
   ngAfterViewInit(){
@@ -27,23 +27,11 @@ export class SliderComponent implements OnInit {
   }
   initializeSlider() {
     $(document).ready(function () {
-      $('.product-slider-single').slick({
-        infinite: true,
-        autoplay: true,
-        dots: false,
-        fade: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
 
-        asNavFor: '.product-slider-single-nav'
-      });
-      $('.product-slider-single-nav').slick({
+      $('.product-slider').slick({
+        infinite: true,
         slidesToShow: 3,
-        slidesToScroll: 1,
-        dots: false,
-        centerMode: true,
-        focusOnSelect: true,
-        asNavFor: '.product-slider-single'
+        slidesToScroll: 3
       });
     })
   }

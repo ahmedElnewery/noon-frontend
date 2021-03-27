@@ -1,18 +1,22 @@
-<form>
+<form [formGroup]="cartForm" (ngSubmit)="addToCart()">
   <div class="row align-items-end">
     <div class="col-3">
       <label for="quantity">quantity</label>
-      <select id="quantity" class="form-control">
-        <ng-container *ngFor="let count of inStockArray">
-          <option [ngValue]="count">{{ count }}</option>
-        </ng-container>
+      <!-- <app-quantity-dropdown [controlName]="qty" [numberValue]="countInStock"></app-quantity-dropdown> -->
+      <select id="quantity" class="form-control" formControlName="qty" name="qty" (ngModelChange)="changeQty($event)" >
+
+          <option *ngFor="let count of currentProduct.countInStock | numberToArr" [ngValue]="count">{{ count }}</option>
+
       </select>
+
+
     </div>
     <div class="col-9">
       <input
         type="submit"
         class="btn btn-primary w-100"
         value="add To Cart"
+
       />
     </div>
   </div>

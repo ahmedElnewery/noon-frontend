@@ -1,35 +1,58 @@
 <div class="container-fluid">
   <header>
-    <div class="row head">
-      <div class="col-lg-1 col-md-2 col-sm-2 col-4">
-        <a href="#">
-          <img src="https://k.nooncdn.com/s/app/com/noon/images/logos/noon-black-en.svg" alt="noon"
-            style="width: 100%; height: 100%;">
-        </a>
-      </div>
-      <div class="col-lg-8 col-md-7 col-sm-4 col-8">
-        <div class="form-group">
-          <input type="text" style="margin-top: 1%;" class="form-control" placeholder="what are you looking for?">
+    <div class="row head align-items-center">
+      <div class="col-md-7 col-lg-8 ">
+        <div class="row no-gutters align-items-center">
+          <div class="col-md-2  col-3">
+            <a routerLink="/">
+              <img
+                src="https://k.nooncdn.com/s/app/com/noon/images/logos/noon-black-en.svg"
+                alt="noon"
+                style="width: 100%; height: 100%"
+              />
+            </a>
+          </div>
+          <div class="col-md-10 col-9">
+            <div class="form-group">
+              <input
+              (keyup.enter)="onEnter(search.value)"
+                type="text"
+                style="margin-top: 1%"
+                class="form-control"
+                #search
+                placeholder="what are you looking for?"
+              />
+            </div>
+          </div>
         </div>
       </div>
-      <div class="col-lg-1 col-md-1 col-sm-2 col-4">
-        <span class="dropdown">
-          <button href="#" class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">Ship
-            to<span class="caret"></span></button>
-          <ul class="dropdown-menu">
-            <li> <a class="dropdown-item" href="#">UAE</a> </li>
-            <li> <a class="dropdown-item" href="#">KSA</a> </li>
-            <li> <a class="dropdown-item" href="#">EGYPT</a> </li>
-          </ul>
-        </span>
-      </div>
-      <div class="col-lg-1 col-md-1 col-sm-2 col-4">
-        <button class="btn" data-toggle="modal" data-target="#signInModal">Sign
-          In</button>&nbsp;&nbsp;<i class="fa fa-user-o" aria-hidden="true"></i>
-      </div>
-      <div class="col-lg-1 col-md-1 col-sm-2 col-4">
-        <button class="btn" routerLink="/product_cart">Cart&nbsp;<i class="fa fa-shopping-cart"
-            aria-hidden="true"></i></button>
+      <div class="col-lg-4 col-md-5">
+        <div class="row no-gutters align-items-center">
+          <div class="col d-flex justify-content-center">
+            <span class="dropdown">
+              <a
+                class=" dropdown-toggle  "
+                id="dropdownMenu1"
+                data-toggle="dropdown"
+                >Ship to<span class="caret"></span
+              ></a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item">UAE</a></li>
+                <li><a class="dropdown-item">KSA</a></li>
+                <li><a class="dropdown-item">EGYPT</a></li>
+              </ul>
+            </span>
+          </div>
+          <div class="col d-flex justify-content-center">
+            <a class="" data-toggle="modal" data-target="#signInModal">
+              Sign In &nbsp;&nbsp; <i class="far fa-user"></i></a>
+          </div>
+          <div class="col  d-flex justify-content-center">
+            <a class="" routerLink="/product_cart">
+              Cart&nbsp;<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </header>
@@ -37,31 +60,42 @@
 
 <div class="container-fluid">
   <div class="row secondNav" style="padding: 1% 2%">
-    <div class="col-lg-2 col-md-2  dropdown">
-      <button class="btn  dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+    <div class="col-lg-2 col-md-2 dropdown">
+      <button
+        class="btn dropdown-toggle"
+        type="button"
+        id="dropdownMenu1"
+        data-toggle="dropdown"
+      >
         All category<span class="caret"></span>
       </button>
-      <div class="dropdown-menu" style="width: 400px;" (mouseleave)="leaveList()">
-        <div class="row" style="width: 100%;">
-
-
-          <ul class="col-sm-5 " style="list-style: none;">
+      <div
+        class="dropdown-menu"
+        style="width: 400px"
+        (mouseleave)="leaveList()"
+      >
+        <div class="row" style="width: 100%">
+          <ul class="col-sm-5" style="list-style: none">
             <li *ngFor="let cate of allcategory">
-              <a class="dropdown-item" (click)="goToThisCategory(cate.name)"
-                (mouseover)="getSubcategory(cate.cateid)">{{cate.name}}</a>
+              <a
+                class="dropdown-item"
+                (click)="goToThisCategory(cate.name)"
+                (mouseover)="getSubcategory(cate.cateid)"
+                >{{ cate.name }}</a
+              >
             </li>
           </ul>
 
-          <div class="col-sm-5 " *ngIf="isHover">
-            <p (click)="goToFillter(item.name)" class="dropdown-item" *ngFor="let item of allSubctegory">{{item.name}}
+          <div class="col-sm-5" *ngIf="isHover">
+            <p
+              (click)="goToFillter(item.name)"
+              class="dropdown-item"
+              *ngFor="let item of allSubctegory"
+            >
+              {{ item.name }}
             </p>
-
           </div>
         </div>
-
-
-
-
 
         <!-- end dropdown -->
       </div>
@@ -89,15 +123,22 @@
     </div> -->
     <ng-container *ngFor="let ele of productSubcategory">
       <div class="col-lg-1 col-md-2 col-2">
-        <a href="#"><b>{{ele}}</b></a>
+        <a href="#"
+          ><b>{{ ele }}</b></a
+        >
       </div>
     </ng-container>
-
   </div>
 </div>
 
 <!-- hideen sign in modal -->
-<div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-  aria-hidden="true">
+<div
+  class="modal fade"
+  id="signInModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myLargeModalLabel"
+  aria-hidden="true"
+>
   <app-sign-in></app-sign-in>
 </div>

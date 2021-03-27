@@ -21,12 +21,12 @@
             </div>
           </div>
           <app-products-specification [currentProduct]="product"></app-products-specification>
-          <app-related-product [subcategory]="product.subcategory"></app-related-product>
         </div>
       </div>
+      <app-related-product [subcategory]="product.subcategory"></app-related-product>
+
     </ng-template>
     <div class="container-fluid" *ngIf="loading; then spinner; else wrapper">
-      *ngIf="isLoggedIn; then userBlock; else elseBlock"
     </div>
   </div>
 </div>

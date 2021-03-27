@@ -10,10 +10,11 @@ import { SignInComponent } from './+auth/sign-in/sign-in.component';
 import { SignUpComponent } from './+auth/sign-up/sign-up.component';
 import { ByCategoryComponent } from './+filter/by-category/by-category.component';
 import { FilterComponent } from './+filter/filter/filter.component';
-import { ProductCartComponent } from './+product/+main-page/product-cart/product-cart.component';
+//import { ProductCartComponent } from './+product/+main-page/product-cart/product-cart.component';
 import { CheckoutComponent } from './+product/+checkout/checkout.component';
 import { ChekcoutPaymentComponent } from './+product/+checkout/checkout-content/chekcout-payment/chekcout-payment.component';
 import { ChekcoutOrdersComponent } from './+product/+checkout/checkout-content/chekcout-orders/chekcout-orders.component';
+import { CartComponent } from './+cart/cart.component';
 
 const routes: Routes = [
   { path: "productdetails/:id", component: ProductDetailsComponent },
@@ -34,8 +35,7 @@ const routes: Routes = [
   { path: "signup", component: SignUpComponent },
   { path: 'allcategory/:cateName', component: ByCategoryComponent },
   { path: 'filter/:subcateName', component: FilterComponent },
-  { path: 'product_cart', component: ProductCartComponent },
-  //{ path: 'checkout', component: CheckoutComponent },
+  { path: 'product_cart', component: CartComponent }
 ];
 
 @NgModule({

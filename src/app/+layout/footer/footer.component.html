@@ -1,135 +1,144 @@
-<div class="container-fluid contain">
-  <br>
+<div class="container-fluid contain py-sm-5 py-3">
+
   <div class="row">
-    <div class="col-lg-4 col-md-4 col-4">
+    <div class="col-lg-4">
       <h5>We're Always Here To Help</h5>
       <p>Reach out to us through any of these support channels</p>
     </div>
-    <div class="col-lg-2 col-md-2 col-6 offset-2 foot">
+
+    <div class="col-lg-8 foot">
+
       <div class="row">
-        <div class="col-2"><i class="fa fa-exclamation" aria-hidden="true"></i></div>
-        <div class="col-10">
-          <h6>HELP</h6><b>
-            <h5>help.noon.com</h5>
-          </b>
+        <div class="col-md-4 foot">
+          <div class="d-flex align-items-center">
+            <div class="icon">
+              <i class="fa fa-exclamation" aria-hidden="true"></i>
+            </div>
+            <div class="ml-4">
+              <small class="text-muted">HELP</small>
+              <b>
+                <h5>help.noon.com</h5>
+              </b>
+            </div>
+          </div>
+          <hr class="d-md-none">
+        </div>
+        <div class="col-md-4 foot">
+          <div class="d-flex align-items-center">
+            <div class="icon">
+              <i class="fa fa-envelope-open" aria-hidden="true"></i>
+            </div>
+            <div class="ml-4">
+              <small class="text-muted">EMAIL</small>
+              <b>
+                <h5>egypt@noon.com</h5>
+              </b>
+            </div>
+          </div>
+          <hr class="d-md-none">
+
+        </div>
+        <div class="col-md-4 foot">
+          <div class="d-flex align-items-center">
+            <div class="icon">
+              <i class="fa fa-phone" aria-hidden="true"></i>
+            </div>
+            <div class="ml-4">
+              <small class="text-muted">PHONE</small>
+              <b>
+                <h5>16358</h5>
+              </b>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
-    <div class="col-lg-2 col-md-2 col-6 foot">
-      <div class="row">
-        <div class="col-2"><i class="fa fa-envelope-open" aria-hidden="true"></i></div>
-        <div class="col-10">
-          <h6>EMAIL</h6><b>
-            <h5>egypt@noon.com</h5>
-          </b>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-2 col-md-2 col-6 foot">
-      <div class="row">
-        <div class="col-2"><i class="fa fa-phone" aria-hidden="true"></i></div>
-        <div class="col-10">
-          <h6>PHONE</h6><b>
-            <h5>16358</h5>
-          </b>
-        </div>
-      </div>
     </div>
   </div>
+
+<br />
+<div class="container-fluid">
+  <div class="row no-gutters">
+    <div class="col-sm-6 my-2">
+      <div class="row">
+        <div class="col-6">
+          <ul>
+            <b>
+              <h6 class="text-bold text-muted">ELECTRONICS</h6>
+            </b>
+            <ng-container class="middelFoot" *ngFor="let ele of electronics">
+              <a href="#">
+                <li>{{ ele }}</li>
+              </a>
+            </ng-container>
+          </ul>
+        </div>
+        <div class="col-6">
+          <ul>
+            <b>
+              <h6 class="text-bold text-muted">FASHION</h6>
+            </b>
+            <ng-container class="middelFoot" *ngFor="let ele of fashion">
+              <a href="#">
+                <li>{{ ele }}</li>
+              </a>
+            </ng-container>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-6 my-2">
+      <div class="row">
+        <div class="col-6">
+          <ul>
+            <b>
+              <h6 class="text-bold text-muted">HOME AND KITCHEN</h6>
+            </b>
+            <ng-container class="middelFoot" *ngFor="let ele of home">
+              <a href="#">
+                <li>{{ ele }}</li>
+              </a>
+            </ng-container>
+          </ul>
+        </div>
+        <div class="col-6">
+          <ul>
+            <b>
+              <h6 class="text-bold text-muted">BEAUTY</h6>
+            </b>
+            <ng-container class="middelFoot" *ngFor="let ele of beauty">
+              <a href="#">
+                <li>{{ ele }}</li>
+              </a>
+            </ng-container>
+          </ul>
+        </div>
+      </div>
+    </div>
 </div>
-<br>
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-3">
-      <ul>
-        <b>
-          <h6>ELECTRONICS</h6>
-        </b>
-        <ng-container class="middelFoot" *ngFor="let ele of electronics">
-
-          <a href="#">
-            <li>{{ ele }}</li>
-          </a>
-        </ng-container>
-      </ul>
-    </div>
-    <div class="col-3">
-      <ul>
-        <b>
-          <h6>FASHION</h6>
-        </b>
-        <ng-container class="middelFoot" *ngFor="let ele of fashion">
-
-          <a href="#">
-            <li>{{ ele }}</li>
-          </a>
-        </ng-container>
-      </ul>
-    </div>
-    <div class="col-3">
-      <ul>
-        <b>
-          <h6>HOME AND KITCHEN</h6>
-        </b>
-        <ng-container class="middelFoot" *ngFor="let ele of home">
-
-          <a href="#">
-            <li>{{ ele }}</li>
-          </a>
-        </ng-container>
-      </ul>
-    </div>
-    <div class="col-3">
-      <ul>
-        <b>
-          <h6>BEAUTY</h6>
-        </b>
-        <ng-container class="middelFoot" *ngFor="let ele of beauty">
-
-          <a href="#">
-            <li>{{ ele }}</li>
-          </a>
-        </ng-container>
-      </ul>
-    </div>
-    <!-- <div class="col-2">
-      <ul>
-        <b>
-          <h6>Kids</h6>
-        </b>
-        <ng-container class="middelFoot" *ngFor="let ele of kids">
-
-          <a href="#">
-            <li>{{ ele }}</li>
-          </a>
-        </ng-container>
-      </ul>
-    </div> -->
-    <!-- <div class="col-2">
-      <ul>
-        <b>
-          <h6>ELECTRONICS</h6>
-        </b>
-        <ng-container class="middelFoot" *ngFor="let ele of topBrands">
-
-          <a href="#">
-            <li>{{ ele }}</li>
-          </a>
-        </ng-container>
-      </ul>
-    </div> -->
   </div>
 
-</div><br>
 <div class="container-fluid">
   <div class="row">
-    <div class="col-lg-6 col-12" style="text-align: center;">
-      <a href="#"><img src="https://k.nooncdn.com/s/app/com/common/images/logos/app-store.svg" alt="App Store"
-          class="ko4e2j-16 llIndi" style="width: 30%; height: 90%;"></a>
-      <a href="#"><img src="https://k.nooncdn.com/s/app/com/common/images/logos/google-play.svg" alt="Google Play"
-          class="ko4e2j-16 llIndi" style="width: 30%; height: 90%;"></a>
+    <div class="col-lg-6 col-12" style="text-align: center">
+      <a href="#"
+        ><img
+          src="https://k.nooncdn.com/s/app/com/common/images/logos/app-store.svg"
+          alt="App Store"
+          class="ko4e2j-16 llIndi"
+          style="width: 30%; height: 90%"
+      /></a>
+      <a href="#"
+        ><img
+          src="https://k.nooncdn.com/s/app/com/common/images/logos/google-play.svg"
+          alt="Google Play"
+          class="ko4e2j-16 llIndi"
+          style="width: 30%; height: 90%"
+      /></a>
     </div>
-    <div class="col-lg-6 col-12" style="text-align: center;">
+    <div class="col-lg-6 col-12" style="text-align: center">
       <div class="social-icons">
         <a class="social-icon" href="#"><i class="fab fa-facebook-f"></i></a>
         <a class="social-icon" href="#"><i class="fab fa-twitter"></i></a>
@@ -139,8 +148,8 @@
     </div>
   </div>
 </div>
-<br><br>
-<div class="container-fluid" style="opacity: 0.5; padding-left: 5%;">
+<br /><br />
+<div class="container-fluid" style="opacity: 0.5; padding-left: 5%">
   <div class="row">
     <p>© 2021 noon. All Rights Reserved</p>
   </div>
