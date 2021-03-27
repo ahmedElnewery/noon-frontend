@@ -57,7 +57,7 @@
                 </span>
                 <span class="ml-3 delete">
                   <i class="far fa-trash-alt text-danger"></i>
-                  <span class="ml-1 text-muted">remove</span>
+                  <span (click)="deletCart( item._Id)"  class="ml-1 text-muted">remove</span>
                 </span>
               </div>
             </div>
@@ -74,7 +74,7 @@
               </span>
               <span class="ml-3 delete d-flex align-items-center">
                 <i class="far fa-trash-alt text-danger"></i>
-                <span class="ml-1 text-muted d-none d-sm-block">remove</span>
+                <span (click)="deletCart(item._Id)" class="ml-1 text-muted d-none d-sm-block">remove</span>
               </span>
             </div>
           </div>
