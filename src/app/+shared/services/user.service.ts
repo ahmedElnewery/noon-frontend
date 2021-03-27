@@ -10,11 +10,11 @@ import { Injectable } from '@angular/core';
 })
 export class UserService {
   user;
-private loginListner=new Subject<boolean>()
+  private loginListner = new Subject<boolean>()
   constructor(private _http: HttpClient) { }
-getLoginListner(){
-  return this.loginListner.asObservable()
-}
+  getLoginListner() {
+    return this.loginListner.asObservable()
+  }
 
   signUp(user: UserData) {
     this._http.post<UserData>(UserAPI.SIGN_UP, user).subscribe(
@@ -24,28 +24,32 @@ getLoginListner(){
   }
 
   signIn(user: UserData) {
-     this._http.post<UserData>(UserAPI.SGIN_IN, user).subscribe(
-        data => {
-          this.user =data
-          console.warn(data);
-          alert("sign in successfully");
-          this.loginListner.next(true)
-          localStorage.setItem('userToken', this.user.token);
-          document.getElementById('signInModel').click();
-        },
-        err => {
-          console.warn(err.message);
-          alert('email or password is incorrect');
-        }
-      );
+    this._http.post<UserData>(UserAPI.SGIN_IN, user).subscribe(
+      data => {
+        this.user = data
+        console.warn(data);
+        alert("sign in successfully");
+        this.loginListner.next(true)
+        localStorage.setItem('userToken', this.user.token);
+        document.getElementById('signInModel').click();
+      },
+      err => {
+        console.warn(err.message);
+        alert('email or password is incorrect');
+      }
+    );
 
   }
-  logOut(){
-      console.log("deleted")
-      localStorage.removeItem("userToken");
-      this.loginListner.next(false)
+  logOut() {
+    console.log("deleted")
+    localStorage.removeItem("userToken");
+    this.loginListner.next(false)
 
 
-    }
   }
+
+  signInCheckout(user: UserData) {
+    return this._http.post<UserData>(UserAPI.SGIN_IN, user)
+  }
+}
 

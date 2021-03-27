@@ -31,10 +31,7 @@ export class ChekcoutShipAddressComponent implements OnInit {
     this.clientInfo = { city, address, mobileNumber, firstName, lastName }
 
     localStorage.setItem('clientInfo', JSON.stringify(this.clientInfo));
-    console.warn("reached here");
 
-
-    console.warn('client info saved');
     this.router.navigate(['checkout/payment']);
   }
 

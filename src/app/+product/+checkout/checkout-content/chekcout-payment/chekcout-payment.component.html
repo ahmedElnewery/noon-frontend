@@ -63,16 +63,19 @@
                 <p>Client Address <span>{{clientInfo.city }} {{clientInfo.address }}</span></p>
                 <p>Client mobile <span>{{clientInfo.mobileNumber }}</span></p>
             </div>
-        </div>
+        </div><br>
 
         <div class="row">
+            <div class="col-12">
+                <h4>Your Orders</h4>
+            </div>
             <div class="col-7">
                 <div class="cart-item my-3" *ngFor="let item of cartItems">
                     <div class="row">
                         <div class="col-2">
-                            <!-- <a (click)="navigateToDetails(item)">
+                            <a>
                                 <img class="w-100 d-block" src="{{ item.productId.image[0] }}" />
-                            </a> -->
+                            </a>
                         </div>
                         <div class="col-10">
                             <div class="row justify-content-between">
