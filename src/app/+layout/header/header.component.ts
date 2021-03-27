@@ -66,7 +66,7 @@ if (filter2[0]!=null){
   this.router.navigate([`/filter/${filter2[0]}`]);
 }else{
   console.log("not found")
-  alert("not fonund");
+  this.router.navigate([`/not_found`]);
 }
   }
   }

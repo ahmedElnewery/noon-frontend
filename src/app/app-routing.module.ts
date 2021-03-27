@@ -14,6 +14,7 @@ import { CheckoutComponent } from './+product/+checkout/checkout.component';
 import { ChekcoutPaymentComponent } from './+product/+checkout/checkout-content/chekcout-payment/chekcout-payment.component';
 import { ChekcoutOrdersComponent } from './+product/+checkout/checkout-content/chekcout-orders/chekcout-orders.component';
 import { CartComponent } from './+cart/cart.component';
+import { NotFoundComponent } from './+filter/not-found/not-found.component';
 
 const routes: Routes = [
   { path: "productdetails/:id", component: ProductDetailsComponent },
@@ -31,9 +32,10 @@ const routes: Routes = [
   },
   { path: "signin", component: SignInComponent },
   { path: "signup", component: SignUpComponent },
-  { path: 'allcategory/:cateName', component: ByCategoryComponent },
-  { path: 'filter/:subcateName', component: FilterComponent },
-  { path: 'product_cart', component: CartComponent }
+  {path:'allcategory/:cateName',component:ByCategoryComponent},
+  {path:'filter/:subcateName',component:FilterComponent},
+  {path:'product_cart',component:CartComponent},
+  {path:'not_found',component:NotFoundComponent}
 ];
 
 @NgModule({
