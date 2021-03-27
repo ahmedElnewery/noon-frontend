@@ -1,0 +1,517 @@
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-10">
+      <h2>Add Product</h2>
+      <form [formGroup]="addProductForm"   ngNativeValidate>
+        <div class="form-group">
+          <label for="productName">Product Name</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="name"
+            name="productName"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="brand"> Brand</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="brand"
+            name="brand"
+            required
+          />
+        </div>
+        <button
+          type="button"
+          class="btn btn-secondary btn-sm"
+          (click)="addNewImgSrc()"
+        >
+          +
+        </button>
+        <div class="row">
+          <div
+            class="col-md-4"
+            formArrayName="image"
+            *ngFor="let img of image.controls; let i = index"
+          >
+            <div class="form-group">
+              <label for="imgSrc"> Image Source </label>
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="imgSrc"
+                  required
+                  [formControlName]="i"
+                />
+                <div class="input-group-append">
+                  <button class="btn btn-danger" (click)="removeImgSrc(i)">
+                    <i class="far fa-trash-alt"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="description">Product Describtion</label>
+          <textarea
+            class="form-control"
+            name="description"
+            rows="3"
+            formControlName="description"
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <label for="overview">Overview</label>
+          <textarea
+            class="form-control"
+            name="overview"
+            rows="3"
+            formControlName="overview"
+          ></textarea>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">
+            <div class="form-group">
+              <label for="countInStock">Count In Stock</label>
+              <input
+                type="number"
+                class="form-control"
+                name="countInStock"
+                required
+                formControlName="countInStock"
+                min="0"
+              />
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="form-group">
+              <label for="price">Price</label>
+              <input
+                type="number"
+                class="form-control"
+                name="price"
+                required
+                formControlName="price"
+              />
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="form-group">
+              <label for="category">Categeory</label>
+              <select
+                class="form-control"
+                name="category"
+                formControlName="category"
+                (ngModelChange)="onCategeoryChange()"
+              >
+                <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+                <option *ngFor="let cat of allCategeories" [ngValue]="cat.name">
+                  {{ cat.displayName }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="form-group">
+              <label for="subcategory">Sub Categeory</label>
+
+              <select
+                class="form-control"
+                name="subcategory"
+                formControlName="subcategory"
+
+              >
+                <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+                <option *ngFor="let cat of subcategeoryList" [ngValue]="cat.name" (ngModelChange)="onsubCategeoryChange()">
+                  {{ cat.displayName }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </form>
+      <!-- start fashion -->
+      <!-- men wear chocie -->
+      <div [ngSwitch]="selectedSubCategeory">
+      <div *ngSwitchCase = "fashion.menWear">
+        <form [formGroup]="menWear" (ngSubmit)="addProduct()" ngNativeValidate >
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="size">size</label>
+                <select class="form-control" name="size" formControlName="size">
+                  <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+                  <option *ngFor="let size of allsizes" [ngValue]="size.value"> {{ size.value }}   </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="material">material</label>
+                <select class="form-control" name="material" formControlName="material">
+                  <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+                  <option *ngFor="let material of allMaterial" [ngValue]="material.value"> {{ material.value }}   </option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="color">color</label>
+                <select class="form-control" name="color" formControlName="color">
+                  <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+                  <option *ngFor="let color of allColor" [value]="color.value"> {{ color.value }}   </option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <input class="btn btn-primary" type="submit" value="add product" />
+
+        </form>
+      </div>
+<!-- women wear chocie -->
+<div *ngSwitchCase = "fashion.womenWear">
+  <form [formGroup]="womenWear" (ngSubmit)="addProduct()" ngNativeValidate  >
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="size">size</label>
+          <select class="form-control" name="size" formControlName="size">
+            <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+            <option *ngFor="let size of allsizes" [ngValue]="size.value"> {{ size.value }}   </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="material">material</label>
+          <select class="form-control" name="material" formControlName="material">
+            <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+            <option *ngFor="let material of allMaterial" [ngValue]="material.value"> {{ material.value }}   </option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="color">color</label>
+          <select class="form-control" name="color" formControlName="color">
+            <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+            <option *ngFor="let color of allColor" [value]="color.value"> {{ color.value }}   </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <input class="btn btn-primary" type="submit" value="add product" />
+
+  </form>
+</div>
+
+
+<!-- kids wear chocie -->
+<div *ngSwitchCase = "fashion.kidWear">
+  <form [formGroup]="kidsWear" (ngSubmit)="addProduct()" ngNativeValidate >
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="size">size</label>
+          <select class="form-control" name="size" formControlName="size">
+            <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+            <option *ngFor="let size of allsizes" [ngValue]="size.value"> {{ size.value }}   </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="material">material</label>
+          <select class="form-control" name="material" formControlName="material">
+            <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+            <option *ngFor="let material of allMaterial" [ngValue]="material.value"> {{ material.value }}   </option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="color">color</label>
+          <select class="form-control" name="color" formControlName="color">
+            <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+            <option *ngFor="let color of allColor" [value]="color.value"> {{ color.value }}   </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <input class="btn btn-primary" type="submit" value="add product" />
+
+  </form>
+</div>
+<!-- end fashion -->
+<!-- start electonics -->
+<!-- mobile choice -->
+<div *ngSwitchCase = "electronics.mobiles">
+  <form [formGroup]="mobile" (ngSubmit)="addProduct()" ngNativeValidate>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="screenSize">screen Size</label>
+          <select class="form-control" name="screenSize" formControlName="screenSize">
+            <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+            <option *ngFor="let size of mobileScreenSize" [ngValue]="size.value"> {{ size.value }}   </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="internalMemory">Internal Memroy</label>
+          <select class="form-control" name="internalMemory" formControlName="internalMemory">
+            <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+            <option *ngFor="let memory of mobileInternalMemroy" [ngValue]="memory.value"> {{ memory.value }}   </option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="mobileBattery">mobileBattery</label>
+          <select class="form-control" name="battery" formControlName="battery">
+            <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+            <option *ngFor="let battery of mobileBattery" [value]="battery.value"> {{ battery.value }}   </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <input class="btn btn-primary" type="submit" value="add product" />
+
+  </form>
+</div>
+<!-- labtop choice -->
+<div *ngSwitchCase = "electronics.labtops">
+  <form [formGroup]="labtop" (ngSubmit)="addProduct()" ngNativeValidate>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="operatingSystem">Operation System</label>
+          <select class="form-control" name="operatingSystem" formControlName="operatingSystem">
+            <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+            <option *ngFor="let sys of operatingSystem" [ngValue]="sys.value"> {{ sys.value }}   </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="memorySize">Memory Size</label>
+          <select class="form-control" name="memorySize" formControlName="memorySize">
+            <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+            <option *ngFor="let memory of memorySize" [ngValue]="memory.value"> {{ memory.value }}   </option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="proccessor">proccessor</label>
+          <select class="form-control" name="proccessor" formControlName="proccessor">
+            <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+            <option *ngFor="let processsor of proccessor" [value]="processsor.value"> {{ processsor.value }}   </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <input class="btn btn-primary" type="submit" value="add product" />
+
+  </form>
+</div>
+<!-- labtop choice -->
+<div *ngSwitchCase = "electronics.tv">
+  <form [formGroup]="tv" (ngSubmit)="addProduct()" ngNativeValidate>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="screenSize">Screen Size</label>
+          <select class="form-control" name="screenSize" formControlName="tvScreenSize">
+            <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+            <option *ngFor="let size of tvScreenSize" [ngValue]="size.value"> {{ size.value }}   </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="noOfUsbPort">No.of USB Ports</label>
+          <select class="form-control" name="noOfUsbPort" formControlName="noOfUsbPort">
+            <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+            <option *ngFor="let usb of usbPorts" [ngValue]="usb.value"> {{ usb.value }}   </option>
+          </select>
+        </div>
+      </div>
+
+    </div>
+    <input class="btn btn-primary" type="submit" value="add product" />
+
+  </form>
+</div>
+<!-- end electronic -->
+<!-- start beauty -->
+<!-- makeup choice -->
+<div *ngSwitchCase = "beauty.makeup">
+  <form [formGroup]="makeup" (ngSubmit)="addProduct()" ngNativeValidate>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="foundation">Foundation</label>
+          <select class="form-control" name="foundation" formControlName="foundation">
+            <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+            <option *ngFor="let found of foundation" [ngValue]="found.value"> {{ found.value }}   </option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="color">Color</label>
+        <select class="form-control" name="color" formControlName="color">
+          <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+          <option *ngFor="let color of allColor" [ngValue]="color.value"> {{ color.value }}   </option>
+        </select>
+      </div>
+
+
+    </div>
+    <input class="btn btn-primary" type="submit" value="add product" />
+
+  </form>
+</div>
+
+<!-- hair care choice -->
+<div *ngSwitchCase = "beauty.hairCare">
+  <form [formGroup]="hairCare" (ngSubmit)="addProduct()" ngNativeValidate>
+    <div class="row">
+     <div class="col-md-4">
+        <div class="form-group">
+          <label for="hairType">Hair Type</label>
+          <select class="form-control" name="hairType" formControlName="hairType">
+            <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+            <option *ngFor="let hair of hairType" [ngValue]="hair.value"> {{ hair.value }}   </option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="formulation">Formulation</label>
+        <select class="form-control" name="formulation" formControlName="formulation">
+          <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+          <option *ngFor="let formul of formulation" [ngValue]="formul.value"> {{ formul.value }}   </option>
+        </select>
+      </div>
+
+
+    </div>
+    <input class="btn btn-primary" type="submit" value="add product" />
+
+  </form>
+</div>
+
+<!-- skin care choice -->
+<div *ngSwitchCase = "beauty.skinCare">
+  <form [formGroup]="skinCare" (ngSubmit)="addProduct()" ngNativeValidate>
+    <div class="row">
+     <div class="col-md-4">
+        <div class="form-group">
+          <label for="skinType">Skin Type</label>
+          <select class="form-control" name="skinType" formControlName="skinType">
+            <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+            <option *ngFor="let skin of skinType" [ngValue]="skin.value"> {{ skin.value }}   </option>
+          </select>
+        </div>
+      </div>
+
+
+
+    </div>
+    <input class="btn btn-primary" type="submit" value="add product" />
+
+  </form>
+</div>
+<!-- end bueaty -->
+<!-- start home -->
+<!-- kitchen choice -->
+<div *ngSwitchCase = "home.kitchen">
+  <form [formGroup]="kitchen" (ngSubmit)="addProduct()" ngNativeValidate>
+    <div class="row">
+     <div class="col-md-4">
+        <div class="form-group">
+          <label for="baseMaterial">Base Material</label>
+          <select class="form-control" name="baseMaterial" formControlName="baseMaterial">
+            <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+            <option *ngFor="let mat of baseMaterial" [ngValue]="mat.value"> {{ mat.value }}   </option>
+          </select>
+        </div>
+      </div>
+
+    </div>
+    <input class="btn btn-primary" type="submit" value="add product" />
+
+  </form>
+</div>
+
+<!-- home decore choice -->
+<div *ngSwitchCase = "home.homeDecor">
+  <form [formGroup]="homeDecore" (ngSubmit)="addProduct()" ngNativeValidate>
+    <div class="row">
+     <div class="col-md-4">
+        <div class="form-group">
+          <label for="baseMaterial">Base Material</label>
+          <select class="form-control" name="baseMaterial" formControlName="baseMaterial">
+            <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+            <option *ngFor="let mat of baseMaterial" [ngValue]="mat.value"> {{ mat.value }}   </option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="color">Color</label>
+          <select class="form-control" name="color" formControlName="color">
+            <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+            <option *ngFor="let color of allColor" [ngValue]="color.value"> {{ color.value }}   </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <input class="btn btn-primary" type="submit" value="add product" />
+
+  </form>
+</div>
+<!-- furniture choice -->
+<div *ngSwitchCase = "home.furniture">
+  <form [formGroup]="furniture" (ngSubmit)="addProduct()" ngNativeValidate>
+    <div class="row">
+     <div class="col-md-4">
+        <div class="form-group">
+          <label for="baseMaterial">Base Material</label>
+          <select class="form-control" name="baseMaterial" formControlName="baseMaterial">
+            <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+            <option *ngFor="let mat of baseMaterial" [ngValue]="mat.value"> {{ mat.value }}   </option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="color">Color</label>
+          <select class="form-control" name="color" formControlName="color">
+            <option [ngValue]="defaultOption">{{ defaultOption }}</option>
+            <option *ngFor="let color of allColor" [ngValue]="color.value"> {{ color.value }}   </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <input class="btn btn-primary" type="submit" value="add product" />
+
+  </form>
+</div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
