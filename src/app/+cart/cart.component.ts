@@ -8,8 +8,14 @@ import { Component, OnInit } from '@angular/core';
 export class CartComponent implements OnInit {
 
   constructor() { }
+  totalPrice: number = 0;
 
   ngOnInit(): void {
+    localStorage.setItem('totalPrice', this.totalPrice.toString())
+  }
+
+  ngAfterViewChecked(): void {
+    this.totalPrice = parseInt(localStorage.getItem('totalPrice'));
   }
 
 }

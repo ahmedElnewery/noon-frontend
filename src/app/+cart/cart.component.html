@@ -1,12 +1,26 @@
 <section class="cart-section">
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-8">
-      <app-cart-items></app-cart-items>
-    </div>
-    <div class="col-md-4">
-      checkout component
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8">
+        <app-cart-items></app-cart-items>
+      </div>
+      <div class="col-md-4">
+        <div class="cart-item py-5 ">
+          <div class="cart-item my-3 orderSummary">
+            <section>
+              <h6>ORDER SUMMARY</h6>
+              <p>Subtotal <span>EGY {{totalPrice}}</span></p>
+              <p>Shipping Fee <span style=" color: blue;">Free</span></p>
+            </section>
+            <hr>
+            <section>
+              <p>Total<span>EGY {{totalPrice}}</span></p>
+              <button routerLink='/checkout/sign-in' class="btn btn-lg btn-block btn-primary">Checkout</button>
+            </section>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
-</div>
 </section>

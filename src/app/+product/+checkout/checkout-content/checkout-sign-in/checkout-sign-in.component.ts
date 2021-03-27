@@ -33,7 +33,7 @@ export class CheckoutSignInComponent implements OnInit {
   signIn() {
     //alert("still working on it");
     if (this.formGroup.valid) {
-      this.userSer.signIn(this.formGroup.value).subscribe(
+      this.userSer.signInCheckout(this.formGroup.value).subscribe(
         data => {
           this.user = data;
           console.warn(data);

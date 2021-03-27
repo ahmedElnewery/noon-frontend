@@ -1,9 +1,8 @@
 import { Order } from './../../../../+shared/classes/order';
 import { OrderService } from './../../../../+shared/services/order.service';
-import { Router } from '@angular/router';
-import { IClient, IOrder } from './../../../../+shared/interfaces/IOrder';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { IClient } from './../../../../+shared/interfaces/IOrder';
 import { Component, Input, OnInit } from '@angular/core';
-import { IUser } from 'src/app/+shared/interfaces/IUser';
 import { CartService } from 'src/app/+shared/services/cart.service';
 
 @Component({
@@ -13,7 +12,7 @@ import { CartService } from 'src/app/+shared/services/cart.service';
 })
 export class ChekcoutPaymentComponent implements OnInit {
 
-  constructor(private router: Router, private orderServ: OrderService, private cartService: CartService) { }
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private orderServ: OrderService, private cartService: CartService) { }
 
   //order:IOrder = {products:[],user:{userId}, clientInfo: {} };
 
@@ -22,7 +21,7 @@ export class ChekcoutPaymentComponent implements OnInit {
   temClientInfo: IClient;
   leaveAtHome: boolean = false;
   getItTogether: boolean = false;
-  totalPrice: number = 1000;
+  totalPrice: number = parseInt(localStorage.getItem('totalPrice'));
   priceWithVAT: number;
 
   cartItems: any;
@@ -31,6 +30,7 @@ export class ChekcoutPaymentComponent implements OnInit {
   prodId: string;
 
 
+  //function to pic if client choose leaveAtHome or getItTogether
   checked(option: number) {
 
     if (option == 1) {
@@ -64,22 +64,36 @@ export class ChekcoutPaymentComponent implements OnInit {
 
 
   ngOnInit(): void {
+    // to load your order component
+    this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
+      if (params.get('prodId') != null) {
+        this.prodId = params.get('.prodId');
+      }
+    })
+    this.getcarts()
+
+
+    // load client info from localStorage
     this.temClientInfo = JSON.parse(localStorage.getItem('clientInfo'));
     this.clientInfo = { ...this.temClientInfo };
     //console.warn(this.clientInfo);
-
-    this.priceWithVAT = this.totalPrice + this.totalPrice * 0.1;
-    console.warn(this.priceWithVAT);
-
     this.order.clientInfo = this.clientInfo;
     console.warn(this.order);
 
   }
 
+  ngAfterViewInit(): void {
+    //calculate VAT
+    this.priceWithVAT = this.totalPrice + this.totalPrice * 0.1;
+    console.warn(this.priceWithVAT);
+
+  }
+
+  // confirm order
   addOrder() {
     this.order.leaveAtHome = this.leaveAtHome;
     this.order.getItTogether = this.getItTogether;
-    this.order.totalPrice = this.totalPrice;
+    this.order.totalPrice = parseInt(localStorage.getItem('totalPrice'));
 
     this.orderServ.addOrder(this.order).subscribe(
       data => {
