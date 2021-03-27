@@ -1,0 +1,67 @@
+<div class="row">
+    <div class="container">
+        <div class="row">
+            <div class="col-7">
+                <h5>Payment</h5>
+                <h4>payment Method</h4><br>
+                <div class="alert alert-secondary" role="alert">
+                    <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;&nbsp; Sorry you
+                    can only pay with cash, Now we working on paying with card
+                </div>
+                <div class="row" style="justify-content:space-between" style="margin: 5% 0;">
+                    <div class="col-6">
+                        <button class="btn btn-lg btn-block  btn-outline-primary" disabled> <i class="fa fa-money"
+                                aria-hidden="true" style="color: green;"></i> pay with cash</button>
+                    </div>
+                    <div class="col-6">
+                        <button class="btn btn-lg btn-block  btn-outline-dark" disabled style="opacity: 0.8;"><i
+                                class="fa fa-id-card" aria-hidden="true"></i> pay with
+                            card</button>
+                    </div>
+                </div>
+                <div class="row" style="justify-content:space-around">
+                    <div class="col-12">
+                        <h5>Delivery Options</h5>
+                    </div>
+                    <div class="col-5" style="padding:2%">
+                        <i class="fa fa-check-circle deliveryOption" id="option1" (click)="checked(1)"
+                            aria-hidden="true"></i>
+                        <p style="display: inline-block;">&nbsp;&nbsp; Leave At My Door</p>
+                        <p style="font-size: small;">Your delivery will be left at your door and a photo will be sent to
+                            you as confirmation.
+                            Valid on prepaid orders</p>
+
+                    </div>
+                    <div class="col-5 " style="padding:2%">
+                        <i class="fa fa-check-circle deliveryOption" id="option2" (click)="checked(2)"
+                            aria-hidden="true"></i>
+                        <p style="display: inline-block;"> &nbsp;&nbsp;Get It Together</p>
+                        <p style="font-size: small;">We'll try to deliver your items in the fewest shipments possible.
+                            You'll receive the last</p>
+
+                    </div>
+                </div>
+
+                <button class="btn btn-lg btn-primary btn-block placrOrder" (click)="addOrder()">Place Order</button>
+
+            </div>
+            <div class="col-4" style="font-size: small; background-color: white;">
+                <section>
+                    <h6>ORDER SUMMARY</h6>
+                    <p>Subtotal</p>
+                    <p>Subtotal</p>
+                </section>
+                <hr>
+                <section>
+                    <p>Total <span style="font-size: large;">(Inclusive of VAT)</span> </p>
+                    <p>Estimated VAT</p>
+                </section>
+                <div class="alert alert-secondary" role="alert">
+                    SHIP TO
+                </div>
+                <p>CLient Name</p>
+                <p>Client Address</p>
+            </div>
+        </div>
+    </div>
+</div><br><br>

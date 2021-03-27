@@ -1,3 +1,5 @@
+import { CheckoutFooterComponent } from './+product/+checkout/checkout-footer/checkout-footer.component';
+import { CheckoutHeaderComponent } from './+product/+checkout/checkout-header/checkout-header.component';
 import { RelatedProductComponent } from './+product/product-details/related-product/related-product.component';
 
 import { BrowserModule } from '@angular/platform-browser';
@@ -38,6 +40,13 @@ import { RatingComponent } from './+shared-UI/rating/rating.component';
 import { ByCategoryComponent } from './+filter/by-category/by-category.component';
 import { FilterComponent } from './+filter/filter/filter.component';
 import { ProductFashionComponent } from './+product/+main-page/product-fashion/product-fashion.component';
+import { CheckoutComponent } from './+product/+checkout/checkout.component';
+import { CheckoutContentComponent } from './+product/+checkout/checkout-content/checkout-content.component';
+import { CheckoutSignInComponent } from './+product/+checkout/checkout-content/checkout-sign-in/checkout-sign-in.component';
+import { CheckoutSignUpComponent } from './+product/+checkout/checkout-content/checkout-sign-up/checkout-sign-up.component';
+import { ChekcoutShipAddressComponent } from './+product/+checkout/checkout-content/chekcout-ship-address/chekcout-ship-address.component';
+import { ChekcoutPaymentComponent } from './+product/+checkout/checkout-content/chekcout-payment/chekcout-payment.component';
+import { ChekcoutOrdersComponent } from './+product/+checkout/checkout-content/chekcout-orders/chekcout-orders.component';
 
 
 @NgModule({
@@ -73,7 +82,16 @@ import { ProductFashionComponent } from './+product/+main-page/product-fashion/p
     RatingComponent,
     ByCategoryComponent,
     FilterComponent,
-    ProductFashionComponent
+    ProductFashionComponent,
+    CheckoutComponent,
+    CheckoutHeaderComponent,
+    CheckoutFooterComponent,
+    CheckoutContentComponent,
+    CheckoutSignInComponent,
+    CheckoutSignUpComponent,
+    ChekcoutShipAddressComponent,
+    ChekcoutPaymentComponent,
+    ChekcoutOrdersComponent
   ],
   imports: [
     BrowserModule,
