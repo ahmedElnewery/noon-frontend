@@ -3,7 +3,7 @@
     Sign Up Now</button>
 </div>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true"> -->
-<div class="modal-dialog modal-lg">
+<div id='signUpModal' class="modal-dialog modal-lg">
   <div class="modal-content">
     <!-- <div class="container" style="padding: 5% 0;"> -->
     <div class="modal-body">
@@ -62,7 +62,8 @@
               <small class="text-danger" *ngIf="lastName.errors.required && lastName.touched">name is requered</small>
               <small class="text-danger" *ngIf="lastName.errors.pattern">name must start with only charcter </small>
             </div>
-            <button type="submit" class="btn btn-block">
+            <button [disabled]="firstName.invalid || email.invalid || lastName.invalid || password.invalid"
+              type="submit" class="btn btn-block">
               <h4>CREATE AN ACCOUNT</h4>
             </button>
           </form>

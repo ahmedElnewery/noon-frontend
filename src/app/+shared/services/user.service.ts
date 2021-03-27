@@ -14,7 +14,7 @@ export class UserService {
 
   signUp(user: UserData) {
     this._http.post<UserData>(UserAPI.SIGN_UP, user).subscribe(
-      data => console.warn(data),
+      data => { console.warn(data); document.getElementById('signUpModal').click(); },
       err => throwError(err)
     );
   }

@@ -34,14 +34,30 @@ export class ChekcoutPaymentComponent implements OnInit {
   checked(option: number) {
 
     if (option == 1) {
-      (<HTMLInputElement>document.getElementById('option1')).style.color = 'blue';
-      this.leaveAtHome = true;
+      let op1 = (<HTMLInputElement>document.getElementById('option1'));
+      if (op1.style.color == 'white') {
+        op1.style.color = 'blue';
+        this.leaveAtHome = true;
+
+      }
+      else {
+        op1.style.color = 'white';
+        this.leaveAtHome = false;
+      }
       return this.leaveAtHome;
 
     }
     else if (option == 2) {
-      (<HTMLInputElement>document.getElementById('option2')).style.color = 'blue';
-      this.getItTogether = true;
+      let op2 = (<HTMLInputElement>document.getElementById('option2'));
+      if (op2.style.color == 'white') {
+        op2.style.color = 'blue';
+        this.getItTogether = true;
+
+      }
+      else {
+        op2.style.color = 'white';
+        this.getItTogether = false;
+      }
       return this.getItTogether;
     }
   }

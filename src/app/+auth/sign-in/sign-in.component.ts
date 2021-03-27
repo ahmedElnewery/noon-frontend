@@ -39,8 +39,8 @@ export class SignInComponent implements OnInit {
           this.user = data;
           console.warn(data);
           alert("sign in successfully");
-          console.warn(this.user.token);
           localStorage.setItem('userToken', this.user.token);
+          document.getElementById('signInModel').click();
         },
         err => {
           console.warn(err.message);
@@ -53,5 +53,9 @@ export class SignInComponent implements OnInit {
       alert('please fill email and password to sign in');
 
   }
+
+  // closeAndGoToSignUp() {
+  //   document.getElementById('signIpModal').click();
+  // }
 
 }
