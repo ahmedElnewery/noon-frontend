@@ -5,14 +5,14 @@ import { IProduct } from '../interfaces/IProduct';
 export class Order {
     constructor(
         public products?: IProduct[],
-        public user?: number,
+        public userId?: number,
         public clientInfo?: IClient,
         public paymentMethod?: string,
         public orderStatus?: string,
         //public deliveryOptions?: IDeliveryOption,
         public leaveAtHome?: boolean,
         public getItTogether?: boolean,
-        public totalPrice?: string,
+        public totalPrice?: number,
         public isDelivered?: boolean
     ) { }
 }

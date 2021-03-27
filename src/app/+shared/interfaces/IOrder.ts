@@ -16,12 +16,12 @@ export interface IClient {
 
 export interface IOrder {
     products: IProduct[];
-    user: number;
+    userId: number;
     clientInfo: IClient;
     paymentMethod: string;
     orderStatus: string;
     leaveAtHome: boolean;
     getItTogether: boolean;
-    totalPrice: string;
+    totalPrice: number;
     isDelivered: boolean;
 }

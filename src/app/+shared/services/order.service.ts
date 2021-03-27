@@ -36,6 +36,13 @@ export class OrderService {
     )
   };
 
+  //function to get all orders ofspecific user
+  getOrdersOfUser(userId): Observable<Order[]> {
+    return this._http.get<Order[]>(`${OrderAPI.GET_ORDER_OF_USER}/${userId}`).pipe(
+      catchError(err => { return throwError(err.message); })
+    )
+  };
+
   //function to remove specific order
   removeOrder(orderId) {
     this._http.delete(`${OrderAPI.REMOVE_ORDER}/${orderId}`).pipe(

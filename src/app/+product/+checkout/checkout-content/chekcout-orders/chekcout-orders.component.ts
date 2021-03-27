@@ -23,6 +23,8 @@ export class ChekcoutOrdersComponent implements OnInit {
   }
 
   deleteOrder(orderID) {
+    console.warn(orderID);
+
     this.orderServ.removeOrder(orderID);
     console.warn('item deleted');
 
