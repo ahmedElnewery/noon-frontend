@@ -37,7 +37,7 @@
                         class="form-control"
                         formControlName="qty"
                         name="qty"
-                        
+
                         (ngModelChange)="changeQty(qty,item)"
                         >
                         <option  *ngFor="let count of item.productId.countInStock | numberToArr" [ngValue]="count">
@@ -57,12 +57,13 @@
                 </span>
                 <span class="ml-3 delete">
                   <i class="far fa-trash-alt text-danger"></i>
-                  <span (click)="deletCart( item._Id)"  class="ml-1 text-muted">remove</span>
+                  <span (click)="deletCart(item.productId._id)" class="ml-1 text-muted">remove</span>
                 </span>
               </div>
             </div>
           </div>
         </div>
+
         <div class="row align-items-center no-gutters justify-content-around">
           <div class="col-6 d-md-none d-block">
             <div class="d-flex">
@@ -74,7 +75,7 @@
               </span>
               <span class="ml-3 delete d-flex align-items-center">
                 <i class="far fa-trash-alt text-danger"></i>
-                <span (click)="deletCart(item._Id)" class="ml-1 text-muted d-none d-sm-block">remove</span>
+                <span (click)="deletCart(item.productId._Id)" class="ml-1 text-muted d-none d-sm-block">remove</span>
               </span>
             </div>
           </div>
@@ -86,9 +87,9 @@
               <span class="">
                 <!-- <form [formGroup]="cartForm" >
                 <select  class="form-control" formControlName="qty" name="qty"  (ngModelChange)="changeQty(qty)">
-      
+
                   <option *ngFor="let count of carItem.productId.countInStock | numberToArr" [ngValue]="count">{{ count }}</option>
-      
+
               </select>
               </form> -->
                 <!-- <app-quantity-dropdown [numberValue] = " carItem.quantity" ></app-quantity-dropdown> -->
@@ -97,5 +98,5 @@
           </div>
         </div>
       </div>
-      
+
 </div>

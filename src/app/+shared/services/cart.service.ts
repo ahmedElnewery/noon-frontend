@@ -1,6 +1,6 @@
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -25,18 +25,20 @@ export class CartService {
       catchError(err => { return throwError(err.message); })
     )
   }
-  deleteCart(prodId:string){
-
-    this._url="http://localhost:8000/api/cart/delete-cart"
-    return this._http.delete<any>(this._url,{
-      headers:{
-        'Content-Type':'application/json',
+  deleteCart(productId:string){
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
         Authorization:`Bearer ${this.getToken()}`
-      },body:{productId:prodId}
-    }).pipe(
+      }),
+      body:{productId:productId}
+
+    };
+    this._url="http://localhost:8000/api/cart/delete-cart"
+    return this._http.delete<any>(this._url, options).pipe(
       catchError(err => { return throwError(err.message); })
     )}
-  
+
   getAllCarts() {
     this._url = "http://localhost:8000/api/cart/getcart"
     return this._http.get<any>(this._url, {
