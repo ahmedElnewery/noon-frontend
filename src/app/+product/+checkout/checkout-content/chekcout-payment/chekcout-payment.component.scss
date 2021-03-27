@@ -15,7 +15,13 @@
     cursor: pointer
 
 }
+.orderSummary{
+    font-size: small; background-color: white;
+}
 
+.orderSummary span{
+    float: right;
+}
 // .deliveryOption:hover{
 //     color: blue;
 //     opacity: 1;

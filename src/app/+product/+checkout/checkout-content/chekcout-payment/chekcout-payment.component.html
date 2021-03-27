@@ -21,7 +21,7 @@
                 </div>
                 <div class="row" style="justify-content:space-around">
                     <div class="col-12">
-                        <h5>Delivery Options</h5>
+                        <h4>Delivery Options</h4>
                     </div>
                     <div class="col-5" style="padding:2%">
                         <i class="fa fa-check-circle deliveryOption" id="option1" (click)="checked(1)"
@@ -45,22 +45,23 @@
                 <button class="btn btn-lg btn-primary btn-block placrOrder" (click)="addOrder()">Place Order</button>
 
             </div>
-            <div class="col-4" style="font-size: small; background-color: white;">
+            <div class="col-4 orderSummary">
                 <section>
                     <h6>ORDER SUMMARY</h6>
-                    <p>Subtotal</p>
-                    <p>Subtotal</p>
+                    <p>Subtotal <span>EGY {{ totalPrice}}</span></p>
+                    <p>Shipping Fee <span style=" color: blue;">Free</span></p>
                 </section>
                 <hr>
                 <section>
-                    <p>Total <span style="font-size: large;">(Inclusive of VAT)</span> </p>
-                    <p>Estimated VAT</p>
+                    <p>Total(Inclusive of VAT)<span>EGY {{totalPrice}}</span></p>
+                    <p>Estimated VAT <span>EGY {{ priceWithVAT-totalPrice}}</span></p>
                 </section>
-                <div class="alert alert-secondary" role="alert">
+                <div class="alert alert-secondary" role="alert" style="opacity: 0.5;">
                     SHIP TO
                 </div>
-                <p>CLient Name</p>
-                <p>Client Address</p>
+                <p>CLient Name <span>{{clientInfo.firstName }} {{clientInfo.lastName }}</span></p>
+                <p>Client Address <span>{{clientInfo.city }} {{clientInfo.address }}</span></p>
+                <p>Client mobile <span>{{clientInfo.mobileNumber }}</span></p>
             </div>
         </div>
 
