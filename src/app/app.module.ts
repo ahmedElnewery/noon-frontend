@@ -45,8 +45,9 @@ import { CartItemsComponent } from './+cart/cart-items/cart-items.component';
 import { CartComponent } from './+cart/cart.component';
 import { QuantityDropdownComponent } from './+shared-UI/quantity-dropdown/quantity-dropdown.component';
 import { NumberToArrPipe } from './+shared/pipes/number-to-arr.pipe';
-import { SearchitemComponent } from './+filter/searchitem/searchitem.component';
+
 import { ProductCardDesignComponent } from './+product/+main-page/product-card-design/product-card-design.component';
+import { NotFoundComponent } from './+filter/not-found/not-found.component';
 
 
 @NgModule({
@@ -89,9 +90,10 @@ import { ProductCardDesignComponent } from './+product/+main-page/product-card-d
     CartComponent,
     QuantityDropdownComponent,
     NumberToArrPipe,
-    SearchitemComponent,
+    
     ProductCardDesignComponent,
     SliderComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 declare var jq: any;
 import * as $ from 'jquery';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { FilterService } from 'src/app/+shared/services/filter.service';
 import { IProduct } from 'src/app/+shared/interfaces/IProduct';
 import { IOptions, ISubCategeory } from 'src/app/+shared/interfaces/ICategory';
@@ -27,7 +27,12 @@ export class FilterComponent implements OnInit {
   specialProperties:string[];
   option:IOptions;
   optionArray:any;
-  constructor(private activatedRoute: ActivatedRoute, private filterService: FilterService) { }
+  // arrStringCondtion:string=""; 
+  constructor(private router:Router, private activatedRoute: ActivatedRoute, private filterService: FilterService) { }
+ notFound(){
+  if (this.productSize==0)
+  this.router.navigate([`/not_found`]);
+ }
   getProducts(subcategory) {
     this.filterService.getProductBySubcategory(subcategory).subscribe(
 
@@ -40,6 +45,14 @@ export class FilterComponent implements OnInit {
     );
 
   }
+  // filterWithColor(item){
+  //   var val1 = item.toString();
+    
+  //   this.products = this.orginalProduct.filter((item) => item.color>=val1 );
+  //   //this.orginalProduct = this.products;
+  //   this.productSize = this.products.length;
+  //   this.buildpages() 
+  // }
   buildpages(){
     this.showProductSize = Math.ceil(this.productSize / 4);
         
@@ -141,7 +154,9 @@ export class FilterComponent implements OnInit {
     this.products = this.orginalProduct.filter((item) => item.price >= val1 && item.price<= val2);
     //this.orginalProduct = this.products;
     this.productSize = this.products.length;
+    this.notFound();
     this.buildpages()
+    
   }
   startFilter(rang){
     var val1 = parseFloat(rang);
@@ -149,50 +164,99 @@ export class FilterComponent implements OnInit {
     this.products = this.orginalProduct.filter((item) => item.rating>=val1 );
     //this.orginalProduct = this.products;
     this.productSize = this.products.length;
+    this.notFound();
     this.buildpages()
   }
-  filterWithSpical(group,item){
-   console.log("group:"+ group)
-console.log("item"+item)
-
-this.products = this.orginalProduct.filter((itemm) => itemm[group] == item );
-//this.orginalProduct = this.products;
-this.productSize = this.products.length;
-this.buildpages()
-  }
+ 
   goBrand(brand){
     var val1 = brand.toString();
     
     this.products = this.orginalProduct.filter((item) => item.brand>=val1 );
     //this.orginalProduct = this.products;
     this.productSize = this.products.length;
+    this.notFound();
     this.buildpages()
   }
-  test(){
-    alert("salma clicked")
+  arrayFilter:any;
+  keyFilter:any;
+  //a:any[]=[];
+  test(key,item){
+//   this.keyFilter[key].push(item);
+
+
+if(!this.keyFilter[key].includes(item))
+  this.keyFilter[key].push(item);
+  else{
+    const index = this.keyFilter[key].indexOf(item);
+    if (index > -1) {
+    this.keyFilter[key].splice(index, 1);
+    }
+    
   }
+  console.log(this.keyFilter);
+  this.filterWithSpical(this.keyFilter);
+}
+filterWithSpical(keys){
+ var arr=Object.keys(keys);
+ var arrStringCondtion="";
+ for(var i=0;i<arr.length;i++){
+   if (this.keyFilter[arr[i]].length>0){
+    
+         for(var j=0;j<this.keyFilter[arr[i]].length;j++){
+          arrStringCondtion+=`item["${arr[i]}"] == "${this.keyFilter[arr[i]][j]}"||`;
+         }
+         arrStringCondtion=arrStringCondtion.substr(0,arrStringCondtion.length-2);
+    arrStringCondtion+="&&";
+   }
+  
+ }
+ arrStringCondtion=arrStringCondtion.substr(0,arrStringCondtion.length-2);
+ console.log(arrStringCondtion);
+
+ if(arrStringCondtion.length>1){
+this.products = this.orginalProduct.filter(
+  (item) =>eval(arrStringCondtion)
+  
+  
+  );
+
+this.productSize = this.products.length;
+this.notFound();
+this.buildpages()}
+else{
+  this.products = this.orginalProduct;
+  this.productSize = this.products.length;
+  this.notFound();
+}
+
+ }
+  
   ngOnInit(): void {
     	
-$( ".options" ).remove();
-$(".create").append(`<div class="options"></div>`)
+
     this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
 
       this.subcategoryName = params.get('subcateName');
 
       this.getProducts(this.subcategoryName);
+
       this.filterService.getAllSubcategoryByName(this.subcategoryName).subscribe(
         (data)=>{
           console.log(data);
           this.option=data;
            console.log("option");
+           console.log(data);
          this.optionArray=   this.option[0].options[0];
          console.log(   this.optionArray);
-        
+          var keys=Object.keys(this.optionArray);
+        this.keyFilter =keys.reduce((ac,a) => ({...ac,[a]:[]}),{});
+          console.log(this.keyFilter);
+      
         }
       );
 
     })
-   
+  
   }
 
 }

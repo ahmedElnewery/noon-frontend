@@ -2,25 +2,38 @@
  <main class="container-fluid mainbady">
     <div class="row">
         <!-- side bar -->
-        <div class="col-sm-3">
+        <div class="col-sm-3 ">
           <div class="row my-5">
-            <label>brand</label>
-            <input #brand  class="col-sm-7" type="text">
-          
-            <button class="btn col-sm-2" (click)="goBrand(brand)">go</button>
+            <div class="col-sm-12  ">
+            <h5 for="brand" >Brand</h5>
+            <div class="row">
+            <input #brand    placeholder="brand" style="height:35px;" class="myInput form-control col-sm-8" id="brand" type="text">
+            <p class="btn col-sm-4 go" (click)="goBrand(brand)">GO</p>
+          </div>
+          </div>
+           
+         
            </div>
            <!-- 1-brand -->
            <div class="row my-5">
-           <input #input1  class="col-sm-4" type="number">
-           <span class="col-sm-2" > to</span>
-           <input #input2  class="col-sm-4" type="number">
-           <button class="btn col-sm-2" (click)="goProduct(input1.value,input2.value)">go</button>
+           <div class="col-sm-12"><h5>Price (EGP)</h5></div>
+
+
+               <section class="row">
+           <input #input1  style="height:30px;" class="form-control col-sm-4" type="number">
+           <span class="col-sm-2"  style="color: grey; padding: auto; "> TO</span>
+           <input #input2  style="height:30px;"   class="col-sm-4 form-control"  type="number">
+           <button class="btn col-sm-2 go"  (click)="goProduct(input1.value,input2.value)">GO</button>
+              </section>
           </div>
            <!-- 2-price -->
            <div class="row my-5">
          <div class="col-sm-12">
-           <span>{{rang.value}} Stars or More</span><br>
-          <input width="100%" type="range" max="5" value="1" min="1" step=".3" #rang (change)="startFilter(rang.value)">
+          <h5>Product Rating</h5>
+
+
+           <small style="color: blue;">{{rang.value}} Stars or More</small><br>
+          <input  class="form-control-range" type="range" max="5" value="1" min="1" step=".3" #rang (change)="startFilter(rang.value)">
 
 
          </div>
@@ -46,26 +59,35 @@
 
 
 
-            <ul>
-              <li *ngFor="let group of optionArray| keyvalue">
-             <h5> {{group.key}}</h5>
+            <div>
+              <div class="my-4" *ngFor="let group of optionArray| keyvalue">
+             <h4> {{group.key}}</h4>
             
-                <ul *ngIf="group.key=='color'">
-                  <li (click)="filterWithSpical(group.key,item)"    *ngFor="let item of group.value"
+                <div *ngIf="group.key=='color'" class="row">
+                  <!-- <li (click)="test(group.key,item)"    "
                   [style.background]="item" style="width: 50px; height: 50px;"
-                  >
+                  > </li> -->
+                  <div  class="col-4 my-1 " *ngFor="let item of group.value">
+                    <section class="row p-2"  style="background-color: white;">
+                     <span class="col-5"  (click)="test(group.key,item)" [style.background]="item" style=" height: 30px;"></span>
+                   <span class="col-5" style="font-size: x-small;">  {{item}}</span>
+                    </section>
+                  </div>
+                </div>
+              <div   *ngIf="group.key!='color'" >
+                  <!-- <li (click)="filterWithSpical(group.key,item)"    *ngFor="let item of group.value">
+                
                   
-                  
-                  </li>
-              </ul>
-              <ul *ngIf="group.key!='color'">
-                  <li (click)="filterWithSpical(group.key,item)"    *ngFor="let item of group.value">
-                  {{item}}
-                  
-                  </li>
-              </ul>
-              </li>
-          </ul>
+                  </li> -->
+                  <div class="form-check" *ngFor="let item of group.value">
+                  <label class="form-check-label types" for="check1" >
+                    <input (change)="test(group.key,item)" type="checkbox" class="scustom-control-input" [id]="item"  [value]="item" > 
+                    {{item}} 
+                  </label>
+                  </div>
+                </div>
+              </div>
+            </div>
 
 
 
@@ -111,18 +133,31 @@
     </div>
          </div>
     <div class="row">
-      <div class="col-sm-3" *ngFor="let item of products">
-        <div class="card" >
-            <img class="card-img-top" src="{{item.image[0]}}" alt="Card image" style="width:100%">
-            <div class="card-body">
-              <p style="font-size: 12px; color:gray;" class="card-title">
-              {{item.brand}}<br>
-              {{item.description}}
-              </p>
-              <h5>EGP {{item.price}}</h5>
-              <span> {{item.rating}}</span><span>*</span> 
+      <div class="col-sm-3 my-3" *ngFor="let product of products">
+        <div class="card p-2">
+          <span class="cart-icon">
+            <img src="./../../../../assets/Img/icons/cart.svg" alt="">
+        
+          
+          </span>
+          <a class="product-link" [routerLink]="'/productdetails/'+product._id">
+            <img [src]="product.image[0]" alt="" class="w-100 d-block">
+            <div class="product-body">
+              <p class="brand">{{ product.brand }}</p>
+            <p class="product-name">{{ product.name }}</p>
+            <b>
+              <div class="product-price">EGY {{ product.price }}</div>
+            </b>
+            <div class="discount">
+              <span class="price-was">{{product.price - (product.price * product.discount/100)}}</span>
+              <span class="discount">{{product.discount}}%</span>
             </div>
+            <app-rating [value]="product.rating" [color]="'#FEEE00'"></app-rating>
           </div>
+          </a>
+        </div>
+        
+        <!-- card -->
     </div>
     <!-- end card -->
     </div>

@@ -9,6 +9,7 @@ import { ByCategoryComponent } from './+filter/by-category/by-category.component
 import { FilterComponent } from './+filter/filter/filter.component';
 import { ProductCartComponent } from './+product/+main-page/product-cart/product-cart.component';
 import { CartComponent } from './+cart/cart.component';
+import { NotFoundComponent } from './+filter/not-found/not-found.component';
 
 const routes: Routes = [
   { path: "productdetails/:id", component: ProductDetailsComponent },
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: "signup", component: SignUpComponent },
   {path:'allcategory/:cateName',component:ByCategoryComponent},
   {path:'filter/:subcateName',component:FilterComponent},
-  {path:'product_cart',component:CartComponent}
+  {path:'product_cart',component:CartComponent},
+  {path:'not_found',component:NotFoundComponent}
 ];
 
 @NgModule({
