@@ -61,12 +61,15 @@ export class CartItemsComponent implements OnInit {
 
         console.log(data)
         this.error = ""
-
+       
+   
 
       },
       err => this.error = "error"
 
     )
+  this.cartItems=  this.cartItems.filter(ele=>ele.productId._id!=item);
+
   }
 
 
