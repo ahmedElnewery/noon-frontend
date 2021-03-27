@@ -1,0 +1,26 @@
+<div class="row" style="justify-content: center; text-align: center;">
+    <div class="col-3">
+        <b>
+            <h5>Sign In to continue</h5>
+        </b>
+        <form (ngSubmit)="signIn()" [formGroup]="formGroup">
+            <div class="form-group">
+                <label for="email" style="float: left;">Email</label>
+                <input type="email" #email class="form-control" formControlName="email">
+            </div>
+            <div class="form-group">
+                <label for="password" style="float: left;">Password</label>
+                <input type="password" #password class="form-control" formControlName="password">
+            </div>
+            <a href="#" style="float: left;">Forget Your Password?</a><br><br>
+            <button type="submit" class="btn btn-block btn-lg btn-primary"
+                [disabled]=" email.invalid || password.invalid">
+                <h6>SIGN IN</h6>
+            </button>
+        </form><br>
+        <p>___ Don’t have an account? ___</p>
+        <button (click)="goToSignUp()" class="btn btn-block ">
+            <h6>Craete An Account</h6>
+        </button><br>
+    </div>
+</div>

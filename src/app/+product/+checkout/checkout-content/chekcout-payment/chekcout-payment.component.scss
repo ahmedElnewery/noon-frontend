@@ -1,0 +1,31 @@
+
+.placrOrder{
+    opacity: 0.5;
+}
+
+.placrOrder:hover{
+    opacity: 1;
+}
+
+.deliveryOption{
+    font-size: x-large;
+    color: white;
+    border: 1px solid black;
+    border-radius: 50%;
+    cursor: pointer
+
+}
+.orderSummary{
+    font-size: small; background-color: white;
+}
+
+.orderSummary span{
+    float: right;
+}
+// .deliveryOption:hover{
+//     color: blue;
+//     opacity: 1;
+//     border: 0;
+
+// }
+

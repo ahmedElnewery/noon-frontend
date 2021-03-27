@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-6">
+        <h5>Location Information</h5><br>
+        <form>
+            <div class="form-group">
+                <input type="text" class="form-control" id="city" placeholder="City">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="address" placeholder="flat Number / Building Name">
+            </div>
+        </form>
+    </div>
+    <div class="col-6">
+        <h5>Personal Information</h5><br>
+        <form>
+            <div class="form-group">
+                <input type="tel" class="form-control" id="mobile" placeholder="Mobile Number">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="firstName" placeholder="First Name">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+            </div>
+        </form>
+    </div>
+    <div class="col-12">
+        <button class="btn btn-md btn-primary" (click)="saveClientInfo()" style="float: right;">Save Address</button>
+    </div>
+</div>

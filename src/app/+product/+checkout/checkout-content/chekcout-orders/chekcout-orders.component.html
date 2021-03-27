@@ -1,0 +1,29 @@
+<div class="row" style="justify-content: center;">
+    <div class="container-fluid" style="padding: 1% 2%;">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <ng-container *ngFor='let ele of tableHeaders'>
+                        <th>{{ele}}</th>
+
+                    </ng-container>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngFor='let ele of ordersList'>
+                    <tr>
+                        <th>{{ele._id}}</th>
+                        <th>{{ele.clientInfo.firstName}} {{ele.clientInfo.lastName}}</th>
+                        <th>{{ele.clientInfo.city}} / {{ele.clientInfo.address}}</th>
+                        <th>{{ele.createdDate.substring(0,10)}}</th>
+                        <th>{{ele.leaveAtHome}}</th>
+                        <th>{{ele.getItTogether}}</th>
+                        <th>{{ele.orderStatus}}</th>
+                        <th>{{ele.totalPrice}}</th><i class="fa fa-trash" aria-hidden="true" style="padding-top: 0.5%;"
+                            (click)='deleteOrder(ele._id)'></i>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { SignInComponent } from 'src/app/+auth/sign-in/sign-in.component';
+import { UserService } from './../../+shared/services/user.service';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription, Observable } from 'rxjs';
 import { FilterService } from 'src/app/+shared/services/filter.service';
 
 @Component({
@@ -8,6 +11,8 @@ import { FilterService } from 'src/app/+shared/services/filter.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+ private isLoginsub :Subscription;
+ isLogin:boolean =false
   allcategory: any[] = [];
   allSubctegory: any[] = [];
   isHover = false;
@@ -27,7 +32,7 @@ export class HeaderComponent implements OnInit {
   ];
   //productSubcategory:any[]=[];
   productSubcategory = ['Electronics', 'Mobiles', 'Fachion', 'Home', 'Beauty', 'Baby', 'Deals'];
-  constructor(private filterService: FilterService, private router: Router) { }
+  constructor(private filterService: FilterService, private router: Router,private userService:UserService) { }
   goToThisCategory(category) {
 
     this.router.navigate(['/allcategory', category])
@@ -40,12 +45,12 @@ export class HeaderComponent implements OnInit {
     this.isHover = false;
   }
   onEnter(search){
-   
+
     let matchingSearch;
   var filter1 =this.categeories.filter((item,index)=>{
    return item.toLocaleLowerCase().match(search.toString().toLocaleLowerCase());
-  
-      
+
+
   })
   if (filter1[0]!=null){
     console.log("cate search for " +filter1[0] )
@@ -54,7 +59,7 @@ export class HeaderComponent implements OnInit {
   else{
   var filter2=this.AllSubcategories.filter((item,index)=>{
   return item.toLocaleLowerCase().match(search.toString().toLocaleLowerCase());
-  
+
 })
 if (filter2[0]!=null){
   console.log("subcate search for " +filter2[0] )
@@ -73,16 +78,15 @@ if (filter2[0]!=null){
       error => {
         console.log('error', error)
       }
-
-
-
-
     );
     this.isHover = true;
   }
   ngOnInit(): void {
+  //   console.log(this.isLogin)
+   this.isLoginsub= this.userService.getLoginListner().subscribe(isAuth=>{
+    this.isLogin= isAuth
+   })
     this.filterService.getAllCategory().subscribe(
-
       data => {
         //console.log("Success",data);
         this.allcategory = data;
@@ -93,6 +97,16 @@ if (filter2[0]!=null){
       }
     );
 
+
   }
+
+ngOnDestroy(): void {
+this.isLoginsub.unsubscribe()
+
+}
+logout(){
+  this.userService.logOut()
+}
+
 
 }

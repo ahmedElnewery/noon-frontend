@@ -1,0 +1,169 @@
+<div class="row">
+    <div class="container">
+        <div class="row">
+            <div class="col-7">
+                <h5>Payment</h5>
+                <h4>payment Method</h4><br>
+                <div class="alert alert-secondary" role="alert">
+                    <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;&nbsp; Sorry you
+                    can only pay with cash, Now we working on paying with card
+                </div>
+                <div class="row" style="justify-content:space-between" style="margin: 5% 0;">
+                    <div class="col-6">
+                        <button class="btn btn-lg btn-block  btn-outline-primary" disabled> <i class="fa fa-money"
+                                aria-hidden="true" style="color: green;"></i> pay with cash</button>
+                    </div>
+                    <div class="col-6">
+                        <button class="btn btn-lg btn-block  btn-outline-dark" disabled style="opacity: 0.8;"><i
+                                class="fa fa-id-card" aria-hidden="true"></i> pay with
+                            card</button>
+                    </div>
+                </div>
+                <div class="row" style="justify-content:space-around">
+                    <div class="col-12">
+                        <h4>Delivery Options</h4>
+                    </div>
+                    <div class="col-5" style="padding:2%">
+                        <i class="fa fa-check-circle deliveryOption" id="option1" (click)="checked(1)"
+                            aria-hidden="true"></i>
+                        <p style="display: inline-block;">&nbsp;&nbsp; Leave At My Door</p>
+                        <p style="font-size: small;">Your delivery will be left at your door and a photo will be sent to
+                            you as confirmation.
+                            Valid on prepaid orders</p>
+
+                    </div>
+                    <div class="col-5 " style="padding:2%">
+                        <i class="fa fa-check-circle deliveryOption" id="option2" (click)="checked(2)"
+                            aria-hidden="true"></i>
+                        <p style="display: inline-block;"> &nbsp;&nbsp;Get It Together</p>
+                        <p style="font-size: small;">We'll try to deliver your items in the fewest shipments possible.
+                            You'll receive the last</p>
+
+                    </div>
+                </div>
+
+                <button class="btn btn-lg btn-primary btn-block placrOrder" (click)="addOrder()">Place Order</button>
+
+            </div>
+            <div class="col-4 orderSummary">
+                <section>
+                    <h6>ORDER SUMMARY</h6>
+                    <p>Subtotal <span>EGY {{ totalPrice}}</span></p>
+                    <p>Shipping Fee <span style=" color: blue;">Free</span></p>
+                </section>
+                <hr>
+                <section>
+                    <p>Total(Inclusive of VAT)<span>EGY {{totalPrice}}</span></p>
+                    <p>Estimated VAT <span>EGY {{ priceWithVAT-totalPrice}}</span></p>
+                </section>
+                <div class="alert alert-secondary" role="alert" style="opacity: 0.5;">
+                    SHIP TO
+                </div>
+                <p>CLient Name <span>{{clientInfo.firstName }} {{clientInfo.lastName }}</span></p>
+                <p>Client Address <span>{{clientInfo.city }} {{clientInfo.address }}</span></p>
+                <p>Client mobile <span>{{clientInfo.mobileNumber }}</span></p>
+            </div>
+        </div><br>
+
+        <div class="row">
+            <div class="col-12">
+                <h4>Your Orders</h4>
+            </div>
+            <div class="col-7">
+                <div class="cart-item my-3" *ngFor="let item of cartItems">
+                    <div class="row">
+                        <div class="col-2">
+                            <a>
+                                <img class="w-100 d-block" src="{{ item.productId.image[0] }}" />
+                            </a>
+                        </div>
+                        <div class="col-10">
+                            <div class="row justify-content-between">
+                                <div class="col-md-9">
+                                    <p class="mb-2 text-muted text-uppercase small">
+                                        {{ item.productId.subcategory }}
+                                        <app-rating [value]="item.productId.rating" color="#FFFF00"></app-rating>
+                                    </p>
+                                    <h5>
+                                        {{ item.productId.name }}
+                                    </h5>
+                                    <span>
+                                        {{ item.productId.description }}
+                                    </span>
+                                </div>
+                                <div class="col-3 d-none d-md-block">
+                                    <div class="d-flex flex-column align-items-start">
+                                        <div class="">
+                                            EGY
+                                            <span class="h4 text-bold">{{ item.productId.price }}</span>
+                                        </div>
+                                        <span class="mt-5">
+                                            <!-- <form [formGroup]="cartForm">
+                                  <select
+                                    class="form-control"
+                                    formControlName="qty"
+                                    name="qty"
+                                    
+                                    (ngModelChange)="changeQty(qty,item)"
+                                    >
+                                    <option  *ngFor="let count of item.productId.countInStock | numberToArr" [ngValue]="count">
+                                      {{ count }}
+                                    </option>
+                                  </select>
+                                </form> -->
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="col-12 p-0 d-none d-md-block">
+                          <div class="d-flex">
+                            <span class="add-wishlist">
+                              <i class="fas fa-heart"></i>
+                              <span class="ml-1 text-muted">move to wishlist</span>
+                            </span>
+                            <span class="ml-3 delete">
+                              <i class="far fa-trash-alt text-danger"></i>
+                              <span class="ml-1 text-muted">remove</span>
+                            </span>
+                          </div>
+                        </div> -->
+                        </div>
+                    </div>
+                    <div class="row align-items-center no-gutters justify-content-around">
+                        <!-- <div class="col-6 d-md-none d-block">
+                        <div class="d-flex">
+                          <span class="add-wishlist d-flex align-items-center">
+                            <i class="fas fa-heart"></i>
+                            <span class="ml-1 text-muted d-none d-sm-block"
+                              >move to wishlist</span
+                            >
+                          </span>
+                          <span class="ml-3 delete d-flex align-items-center">
+                            <i class="far fa-trash-alt text-danger"></i>
+                            <span class="ml-1 text-muted d-none d-sm-block">remove</span>
+                          </span>
+                        </div>
+                      </div> -->
+                        <div class="col-6 d-md-none d-block">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="">
+                                    EGY <span class="h4 text-bold">{{ item.productId.price }}</span>
+                                </div>
+                                <span class="">
+                                    <!-- <form [formGroup]="cartForm" >
+                            <select  class="form-control" formControlName="qty" name="qty"  (ngModelChange)="changeQty(qty)">
+                  
+                              <option *ngFor="let count of carItem.productId.countInStock | numberToArr" [ngValue]="count">{{ count }}</option>
+                  
+                          </select>
+                          </form> -->
+                                    <!-- <app-quantity-dropdown [numberValue] = " carItem.quantity" ></app-quantity-dropdown> -->
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><br><br>

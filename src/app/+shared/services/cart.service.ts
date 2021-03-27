@@ -27,12 +27,12 @@ export class CartService {
   }
   deleteCart(prodId:string){
 
-    this._url="http://localhost:8000/api/products/cart-delete-item"
-    return this._http.post<any>(this._url,{prodId:prodId},{
+    this._url="http://localhost:8000/api/cart/delete-cart"
+    return this._http.delete<any>(this._url,{
       headers:{
         'Content-Type':'application/json',
         Authorization:`Bearer ${this.getToken()}`
-      }
+      },body:{productId:prodId}
     }).pipe(
       catchError(err => { return throwError(err.message); })
     )}

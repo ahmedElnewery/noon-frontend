@@ -1,5 +1,6 @@
+import { UserAPI } from './../../../@core/APIs/usersAPI';
 import { IUser } from './../interfaces/IUser';
-import { Observable, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, throwError } from 'rxjs';
 import { UserData } from './../classes/user-data';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -8,20 +9,47 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UserService {
-
+  user;
+  private loginListner = new Subject<boolean>()
   constructor(private _http: HttpClient) { }
-  _url = "http://localhost:8000/api/users/register";
-  _url2 = "http://localhost:8000/api/users/authenticate";
+  getLoginListner() {
+    return this.loginListner.asObservable()
+  }
 
   signUp(user: UserData) {
-    this._http.post<UserData>(this._url, user).subscribe(
-      data => console.warn(data),
+    this._http.post<UserData>(UserAPI.SIGN_UP, user).subscribe(
+      data => { console.warn(data); document.getElementById('signUpModal').click(); },
       err => throwError(err)
     );
   }
 
   signIn(user: UserData) {
-    return this._http.post<UserData>(this._url2, user)
+    this._http.post<UserData>(UserAPI.SGIN_IN, user).subscribe(
+      data => {
+        this.user = data
+        console.warn(data);
+        alert("sign in successfully");
+        this.loginListner.next(true)
+        localStorage.setItem('userToken', this.user.token);
+        document.getElementById('signInModel').click();
+      },
+      err => {
+        console.warn(err.message);
+        alert('email or password is incorrect');
+      }
+    );
 
   }
+  logOut() {
+    console.log("deleted")
+    localStorage.removeItem("userToken");
+    this.loginListner.next(false)
+
+
+  }
+
+  signInCheckout(user: UserData) {
+    return this._http.post<UserData>(UserAPI.SGIN_IN, user)
+  }
 }
+
