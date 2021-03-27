@@ -16,6 +16,7 @@ export class CartItemsComponent implements OnInit {
   error = ""
   prodId: string;
   totalPrice: number = 0;
+  item:any;
 
   constructor(private cartService: CartService, private fb: FormBuilder, private router: Router, private activatedRoute: ActivatedRoute) {
 
@@ -51,6 +52,24 @@ export class CartItemsComponent implements OnInit {
 
     )
   }
+
+
+  deletCart( item) {
+    this.cartService.deleteCart(item).subscribe(
+      (data) => {
+        console.log(data)
+
+        console.log(data)
+        this.error = ""
+       
+
+      },
+      err => this.error = "error"
+
+    )
+  }
+
+
   ngOnChanges(changes: SimpleChanges) {
     if (changes['carItem']) {
       // this.currentItem = this.carItem;
@@ -79,17 +98,7 @@ export class CartItemsComponent implements OnInit {
     )
   }
 
-  deleteCart() {
 
-    this.cartService.deleteCart(this.prodId).subscribe(
-      (data) => {
-        console.log(data)
-        this.error = ""
-      },
-      err => this.error = "error"
-
-    )
-  }
 
   navigateToDetails(item) {
 
