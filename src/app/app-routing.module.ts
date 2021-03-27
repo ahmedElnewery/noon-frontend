@@ -1,7 +1,6 @@
 import { CheckoutSignUpComponent } from './+product/+checkout/checkout-content/checkout-sign-up/checkout-sign-up.component';
 import { ChekcoutShipAddressComponent } from './+product/+checkout/checkout-content/chekcout-ship-address/chekcout-ship-address.component';
 import { CheckoutSignInComponent } from './+product/+checkout/checkout-content/checkout-sign-in/checkout-sign-in.component';
-import { AddProductComponent } from './+admin/add-product/add-product.component';
 import { ProductDetailsComponent } from './+product/product-details/product-details.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -19,7 +18,6 @@ import { NotFoundComponent } from './+filter/not-found/not-found.component';
 
 const routes: Routes = [
   { path: "productdetails/:id", component: ProductDetailsComponent },
-  { path: "admin", component: AddProductComponent },
   { path: "", component: MainPageComponent },
   {
     path: 'checkout',

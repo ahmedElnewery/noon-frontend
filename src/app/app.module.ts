@@ -1,3 +1,4 @@
+import { AdminModule } from './admin/admin.module';
 import { CheckoutFooterComponent } from './+product/+checkout/checkout-footer/checkout-footer.component';
 import { CheckoutHeaderComponent } from './+product/+checkout/checkout-header/checkout-header.component';
 import { SliderComponent } from './shared-UI/slider/slider.component';
@@ -25,7 +26,6 @@ import { MainPageComponent } from './+product/+main-page/main-page.component';
 import { ProductHotDealsComponent } from './+product/+main-page/product-hot-deals/product-hot-deals.component';
 import { ProductTechDevicesComponent } from './+product/+main-page/product-tech-devices/product-tech-devices.component';
 import { ProductByBrandComponent } from './+product/+main-page/product-by-brand/product-by-brand.component';
-import { AddProductComponent } from './+admin/add-product/add-product.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignInComponent } from './+auth/sign-in/sign-in.component';
 import { SignUpComponent } from './+auth/sign-up/sign-up.component';
@@ -80,7 +80,6 @@ import { NotFoundComponent } from './+filter/not-found/not-found.component';
     FooterComponent,
     SignInComponent,
     SignUpComponent,
-    AddProductComponent,
     EnumToArrayPipe,
     ProductCardComponent,
     SpinnerComponent,
@@ -118,7 +117,8 @@ import { NotFoundComponent } from './+filter/not-found/not-found.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AdminModule
   ],
   providers: [],
   bootstrap: [AppComponent]

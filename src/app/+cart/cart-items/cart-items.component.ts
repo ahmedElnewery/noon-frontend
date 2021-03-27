@@ -55,13 +55,13 @@ export class CartItemsComponent implements OnInit {
 
 
   deletCart( item) {
+    console.log("we try to delete")
     this.cartService.deleteCart(item).subscribe(
       (data) => {
-        console.log(data)
 
         console.log(data)
         this.error = ""
-       
+
 
       },
       err => this.error = "error"
