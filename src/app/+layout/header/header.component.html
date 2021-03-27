@@ -31,7 +31,7 @@
           <div class="col d-flex justify-content-center">
             <span class="dropdown">
               <a
-                class=" dropdown-toggle  "
+                class=" dropdown-toggle ship-to  "
                 id="dropdownMenu1"
                 data-toggle="dropdown"
                 >Ship to<span class="caret"></span
@@ -43,12 +43,29 @@
               </ul>
             </span>
           </div>
-          <div class="col d-flex justify-content-center">
-            <a class="" data-toggle="modal" data-target="#signInModal">
-              Sign In &nbsp;&nbsp; <i class="far fa-user"></i></a>
-          </div>
+
+          <ng-container *ngIf="isLogin; then logoutblock ;else signinblock"></ng-container>
+
+
+
+
+<ng-template #logoutblock>
+  <div class="col d-flex justify-content-center">
+    <a class="logout" (click)="logout()">
+      logout &nbsp;&nbsp; <i class="far fa-user"></i></a>
+  </div>
+</ng-template>
+
+<ng-template #signinblock>
+
+  <div class="col d-flex justify-content-center">
+    <a class="signin" data-toggle="modal" data-target="#signInModal">
+      Sign In &nbsp;&nbsp; <i class="far fa-user"></i></a>
+  </div>
+</ng-template>
+
           <div class="col  d-flex justify-content-center">
-            <a class="" routerLink="/product_cart">
+            <a class="" routerLink="/product_cart" >
               Cart&nbsp;<i class="fa fa-shopping-cart" aria-hidden="true"></i>
             </a>
           </div>

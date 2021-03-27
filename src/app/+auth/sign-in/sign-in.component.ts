@@ -34,20 +34,21 @@ export class SignInComponent implements OnInit {
   signIn() {
     //alert("still working on it");
     if (this.formGroup.valid) {
-      this.userSer.signIn(this.formGroup.value).subscribe(
-        data => {
-          this.user = data;
-          console.warn(data);
-          alert("sign in successfully");
-          localStorage.setItem('userToken', this.user.token);
-          document.getElementById('signInModel').click();
-        },
-        err => {
-          console.warn(err.message);
-          alert('email or password is incorrect');
-          return;
-        }
-      );
+      this.userSer.signIn(this.formGroup.value)
+      // .subscribe(
+      //   data => {
+      //     this.user = data;
+      //     console.warn(data);
+      //     alert("sign in successfully");
+      //     localStorage.setItem('userToken', this.user.token);
+      //     document.getElementById('signInModel').click();
+      //   },
+      //   err => {
+      //     console.warn(err.message);
+      //     alert('email or password is incorrect');
+      //     return;
+      //   }
+      // );
     }
     else
       alert('please fill email and password to sign in');
