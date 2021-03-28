@@ -34,7 +34,7 @@
             <div class="form-group">
               <label for="password">Password</label>
               <input type="password" #password="ngModel" [(ngModel)]="userModel.password" required class="form-control"
-                id="password" name="password">
+                 name="password">
             </div>
             <small class="text-danger" *ngIf="password.invalid && password.touched">password is requered</small>
 
@@ -74,7 +74,7 @@
 </div>
 <!-- </div> -->
 
-<!-- 
+<!--
 <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
   aria-hidden="true">
   <app-sign-in></app-sign-in>

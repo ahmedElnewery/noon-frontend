@@ -1,3 +1,4 @@
+import { UnauthorizedComponent } from './+shared-UI/unauthorized/unauthorized.component';
 import { CheckoutSignUpComponent } from './+product/+checkout/checkout-content/checkout-sign-up/checkout-sign-up.component';
 import { ChekcoutShipAddressComponent } from './+product/+checkout/checkout-content/chekcout-ship-address/chekcout-ship-address.component';
 import { CheckoutSignInComponent } from './+product/+checkout/checkout-content/checkout-sign-in/checkout-sign-in.component';
@@ -35,7 +36,9 @@ const routes: Routes = [
   {path:'allcategory/:cateName',component:ByCategoryComponent},
   {path:'filter/:subcateName',component:FilterComponent},
   {path:'product_cart',component:CartComponent},
-  {path:'not_found',component:NotFoundComponent}
+  {path:'not_found',component:NotFoundComponent},
+  {path:'notauthorized',component:UnauthorizedComponent}
+
 ];
 
 @NgModule({

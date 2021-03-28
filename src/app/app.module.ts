@@ -57,6 +57,7 @@ import { NumberToArrPipe } from './+shared/pipes/number-to-arr.pipe';
 
 import { ProductCardDesignComponent } from './+product/+main-page/product-card-design/product-card-design.component';
 import { NotFoundComponent } from './+filter/not-found/not-found.component';
+import { UnauthorizedComponent } from './+shared-UI/unauthorized/unauthorized.component';
 
 
 @NgModule({
@@ -111,6 +112,7 @@ import { NotFoundComponent } from './+filter/not-found/not-found.component';
     ProductCardDesignComponent,
     SliderComponent,
     NotFoundComponent,
+    UnauthorizedComponent,
   ],
   imports: [
     BrowserModule,
