@@ -1,8 +1,8 @@
 <div class="container-fluid">
   <div class="row categoryImg">
-    <ng-container *ngFor="let img of categoryImg">
+    <ng-container *ngFor="let item of categoryImg">
       <div class="col-lg-1 col-3">
-        <img [src]="img.src" alt="">
+        <img [src]="item.src" alt="" (click)="GoToThisCategory(item)">
       </div>
     </ng-container>
 

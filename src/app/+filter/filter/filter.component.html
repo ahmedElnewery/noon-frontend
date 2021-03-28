@@ -135,11 +135,11 @@
     <div class="row">
       <div class="col-sm-3 my-3" *ngFor="let product of products">
         <div class="card p-2">
-          <span class="cart-icon">
+          <!-- <span class="cart-icon">
             <img src="./../../../../assets/Img/icons/cart.svg" alt="">
         
           
-          </span>
+          </span> -->
           <a class="product-link" [routerLink]="'/productdetails/'+product._id">
             <img [src]="product.image[0]" alt="" class="w-100 d-block">
             <div class="product-body">
