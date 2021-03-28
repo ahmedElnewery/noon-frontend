@@ -39,13 +39,11 @@ export class CartItemsComponent implements OnInit {
   addToCart(qty, item) {
     this.cartService.addToCart(item.productId._id, qty).subscribe(
       (data) => {
-        console.log('qty :' + this.qty.value)
 
         console.log(data)
         this.error = ""
         this.totalPrice += item.productId.price * qty;
         localStorage.setItem('totalPrice', this.totalPrice.toString())
-        console.warn(this.totalPrice);
 
       },
       err => this.error = "error"
@@ -61,8 +59,8 @@ export class CartItemsComponent implements OnInit {
 
         console.log(data)
         this.error = ""
-       
-   
+
+
 
       },
       err => this.error = "error"

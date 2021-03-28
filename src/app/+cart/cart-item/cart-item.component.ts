@@ -46,7 +46,6 @@ changeQty(formControl) {
   addToCart(qty) {
     this.cartService.addToCart(this.currentItem.productId._id,qty).subscribe(
       (data) => {
-        console.log('qty :'+this.qty.value)
 
         console.log(data)
         this.error = ""
