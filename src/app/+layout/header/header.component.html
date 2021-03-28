@@ -138,13 +138,13 @@
     <div class="col-lg-1 col-md-2 col-sm-2">
       <a href="#"><b class="text-danger">Deals</b></a>
     </div> -->
+  <div class="row">
     <ng-container *ngFor="let ele of productSubcategory">
-      <div class="col-lg-1 col-md-2 col-2">
-        <a href="#"
-          ><b>{{ ele }}</b></a
-        >
+      <div class="col-lg col-md col">
+        <a (click)= "goToThisCategory(ele)" 
+          ><b>{{ ele }}</b></a>
       </div>
-    </ng-container>
+    </ng-container></div>
   </div>
 </div>
 
