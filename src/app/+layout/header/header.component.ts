@@ -31,11 +31,11 @@ export class HeaderComponent implements OnInit {
     "hairCare",
   ];
   //productSubcategory:any[]=[];
-  productSubcategory = ['Electronics', 'Mobiles', 'Fachion', 'Home', 'Beauty', 'Baby', 'Deals'];
+  productSubcategory = ['Electronics', 'Fashion', 'Home', 'Beauty&Health'];
   constructor(private filterService: FilterService, private router: Router,private userService:UserService) { }
   goToThisCategory(category) {
-
-    this.router.navigate(['/allcategory', category])
+    
+    this.router.navigate(['/allcategory', category.toLocaleLowerCase()])
 
   }
   goToFillter(subcategory) {
