@@ -17,6 +17,9 @@ export class CheckoutSignInComponent implements OnInit {
   formGroup: FormGroup;
   constructor(private userSer: UserService, private router: Router, private activeRoute: ActivatedRoute) { }
 
+  successAlert: boolean = false;
+  falidAlert: boolean = false;
+  wrongAlert: boolean = false;
   ngOnInit(): void {
     this.initForm();
   }
@@ -37,6 +40,7 @@ export class CheckoutSignInComponent implements OnInit {
         data => {
           this.user = data;
           console.warn(data);
+          this.successAlert = true;
           //alert("sign in successfully");
           console.warn(this.user.token);
           localStorage.setItem('userToken', this.user.token);
@@ -44,13 +48,15 @@ export class CheckoutSignInComponent implements OnInit {
         },
         err => {
           console.warn(err.message);
-          alert('email or password is incorrect');
+          this.wrongAlert = true;
+          //alert('email or password is incorrect');
           return;
         }
       );
     }
     else
-      alert('please fill email and password to sign in');
+      this.falidAlert = true;
+    //alert('please fill email and password to sign in');
 
   }
 

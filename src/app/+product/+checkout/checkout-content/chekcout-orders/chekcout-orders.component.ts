@@ -12,7 +12,8 @@ export class ChekcoutOrdersComponent implements OnInit {
   tableHeaders = ['order ID', 'client name', 'shipping address', 'date', 'leve aT door', 'Get it together', 'statues', 'total Price']
   constructor(private orderServ: OrderService) { }
 
-  ordersList: IOrder[] = [];
+  //ordersList: IOrder[] = [];
+  ordersList: any[] = [];
   errorMessage: string = '';
 
   ngOnInit(): void {
@@ -24,9 +25,13 @@ export class ChekcoutOrdersComponent implements OnInit {
 
   deleteOrder(orderID) {
     console.warn(orderID);
-
-    this.orderServ.removeOrder(orderID);
-    console.warn('item deleted');
+    return this.orderServ.removeOrder(orderID).subscribe(
+      () => {
+        console.warn('item deleted');
+        this.ordersList = this.ordersList.filter(ele => ele._id != orderID);
+      },
+      err => console.warn(err)
+    );
 
   }
 

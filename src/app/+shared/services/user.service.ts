@@ -28,10 +28,9 @@ export class UserService {
       data => {
         this.user = data
         console.warn(data);
-        alert("sign in successfully");
+        //alert("sign in successfully");
         this.loginListner.next(true)
         localStorage.setItem('userToken', this.user.token);
-        document.getElementById('signInModel').click();
       },
       err => {
         console.warn(err.message);
@@ -44,8 +43,6 @@ export class UserService {
     console.log("deleted")
     localStorage.removeItem("userToken");
     this.loginListner.next(false)
-
-
   }
 
   signInCheckout(user: UserData) {

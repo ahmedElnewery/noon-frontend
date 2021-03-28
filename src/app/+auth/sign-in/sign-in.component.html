@@ -27,6 +27,14 @@
           <p>Don't have an account? <button class="btn" data-toggle="modal" data-target="#signUpModal"
               style="color: blue;">
               Sign Up</button></p>
+          <div *ngIf='successAlert' class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Success!</strong> sign in successfully
+          </div>
+          <div *ngIf='falidAlert' class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Failed!</strong> please fill email and password to sign in
+          </div>
           <form (ngSubmit)="signIn()" [formGroup]="formGroup">
             <div class="form-group">
               <label for="email" style="float: left;">Email</label>

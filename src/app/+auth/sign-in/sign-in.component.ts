@@ -1,5 +1,5 @@
 import { IUser } from './../../+shared/interfaces/IUser';
-import { throwError } from 'rxjs';
+import { throwError, Subscription } from 'rxjs';
 import { UserService } from './../../+shared/services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { UserData } from 'src/app/+shared/classes/user-data';
@@ -17,6 +17,8 @@ export class SignInComponent implements OnInit {
   formGroup: FormGroup;
   constructor(private userSer: UserService) { }
 
+  successAlert: boolean = false;
+  falidAlert: boolean = false;
 
   ngOnInit(): void {
     this.initForm();
@@ -34,7 +36,8 @@ export class SignInComponent implements OnInit {
   signIn() {
     //alert("still working on it");
     if (this.formGroup.valid) {
-      this.userSer.signIn(this.formGroup.value)
+      this.userSer.signIn(this.formGroup.value);
+      this.successAlert = true;
       // .subscribe(
       //   data => {
       //     this.user = data;
@@ -51,7 +54,8 @@ export class SignInComponent implements OnInit {
       // );
     }
     else
-      alert('please fill email and password to sign in');
+      this.falidAlert = true;
+    //alert('please fill email and password to sign in');
 
   }
 

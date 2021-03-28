@@ -45,7 +45,7 @@ export class OrderService {
 
   //function to remove specific order
   removeOrder(orderId) {
-    this._http.delete(`${OrderAPI.REMOVE_ORDER}/${orderId}`).pipe(
+    return this._http.delete(`${OrderAPI.REMOVE_ORDER}/${orderId}`).pipe(
       catchError(err => { return throwError(err.message); })
     )
   };

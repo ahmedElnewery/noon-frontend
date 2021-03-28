@@ -9,7 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChekcoutShipAddressComponent implements OnInit {
 
-  clientInfo: IClient
+  clientInfo: IClient;
+  falidAlert: boolean = false;
   constructor(private router: Router) { }
 
   ngOnInit(): void {
@@ -19,12 +20,13 @@ export class ChekcoutShipAddressComponent implements OnInit {
     const city = (<HTMLInputElement>document.getElementById('city')).value;
     const address = (<HTMLInputElement>document.getElementById('address')).value;
     const mobileNumber = (<HTMLInputElement>document.getElementById('mobile')).value;
-    const firstName = (<HTMLInputElement>document.getElementById('firstName')).value;
-    const lastName = (<HTMLInputElement>document.getElementById('lastName')).value;
+    const firstName = (<HTMLInputElement>document.getElementById('firstNamee')).value;
+    const lastName = (<HTMLInputElement>document.getElementById('lastNamee')).value;
     console.warn(city + address + mobileNumber + firstName + lastName);
 
     if (!city || !address || !mobileNumber || !firstName || !lastName) {
-      alert('all fields required');
+      //alert('all fields required');
+      this.falidAlert = true;
       return
     }
 
